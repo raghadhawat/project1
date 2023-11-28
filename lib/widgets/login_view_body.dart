@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/constants.dart';
-import 'package:pharma_track/cubits/login_cubit/login_cubit.dart';
+import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
+import 'package:pharma_track/main.dart';
 import 'package:pharma_track/theme_color.dart';
 import 'package:pharma_track/views/sign_up_view.dart';
 import 'package:pharma_track/widgets/custom_button.dart';
@@ -90,7 +91,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               CustomButton(
                 onTap: () async {
                   if (formKey.currentState!.validate()) {
-                    BlocProvider.of<LoginCubit>(context)
+                    BlocProvider.of<AuthCubit>(context)
                         .login(phone: phone!, password: password!);
                   } else {}
                 },

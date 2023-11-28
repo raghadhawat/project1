@@ -6,6 +6,9 @@ import 'package:http/http.dart' as http;
 class Api {
   Future<dynamic> get({required String url, @required String? token}) async {
     Map<String, String> headers = {};
+    headers.addAll({
+      'Content-Type': 'raw',
+    });
     if (token != null) {
       headers.addAll({'Authorization': 'Bearer $token'});
     }

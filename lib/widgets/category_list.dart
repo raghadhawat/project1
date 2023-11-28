@@ -9,7 +9,7 @@ class CategoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<dynamic> category =
-        BlocProvider.of<AllCategoryCubit>(context).category!;
+        BlocProvider.of<AllCategoryCubit>(context).categoryModel!;
     return Padding(
       padding: const EdgeInsets.only(top: 24),
       child: SizedBox(

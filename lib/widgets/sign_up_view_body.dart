@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/constants.dart';
-import 'package:pharma_track/cubits/sign_up_cubit/sign_up_cubit.dart';
+import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
+import 'package:pharma_track/main.dart';
 import 'package:pharma_track/theme_color.dart';
 import 'package:pharma_track/views/login_view.dart';
 import 'package:pharma_track/widgets/custom_button.dart';
@@ -167,7 +168,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 text: 'Sign Up',
                 onTap: () {
                   if (formKey.currentState!.validate()) {
-                    BlocProvider.of<SignUpCubit>(context).signUp(
+                    BlocProvider.of<AuthCubit>(context).signUp(
                       pharmacyName: pharmacyName!,
                       address: address!,
                       pharmacistName: pharmacistName!,
