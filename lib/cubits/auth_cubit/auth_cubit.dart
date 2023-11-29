@@ -11,7 +11,7 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   static AuthCubit get(context) => BlocProvider.of(context);
-  EnterResponseModel? enterResponseModel;
+  EnterReponseModel? enterResponseModel;
   String? token1;
   login({required String phone, required String password}) async {
     emit(LoginLoading());
@@ -19,8 +19,8 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       enterResponseModel =
           await LoginService().loginUser(password: password, phone: phone);
-      print(enterResponseModel!.token);
-      token1 = enterResponseModel!.token;
+      print(enterResponseModel!.data!.token);
+      token1 = enterResponseModel!.data!.token;
       emit(LoginSuccess());
     } catch (e) {
       emit(LoginFailure(e.toString()));

@@ -2,7 +2,7 @@ import 'package:pharma_track/helper/api.dart';
 import 'package:pharma_track/models/enter_model.dart';
 
 class SignUpService {
-  Future<EnterResponseModel> signUpUser({
+  Future<EnterReponseModel> signUpUser({
     required String pharmacyName,
     required String address,
     required String pharmacistName,
@@ -24,7 +24,7 @@ class SignUpService {
       },
     );
 
-    EnterResponseModel signupResponseModel = EnterResponseModel.fromJson(data);
+    EnterReponseModel signupResponseModel = EnterReponseModel.fromJson(data);
     return signupResponseModel;
   }
 }

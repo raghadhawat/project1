@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
+import 'package:pharma_track/cubits/log_out_cubit/logout_cubit.dart';
 import 'package:pharma_track/views/medicine_view.dart';
 import 'package:pharma_track/views/home_view.dart';
 import 'package:pharma_track/views/login_view.dart';
@@ -20,6 +21,7 @@ class PharmaTrack extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(create: (context) => AllApiCubit()),
+        BlocProvider(create: (context) => LogoutCubit())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -2,7 +2,7 @@ import 'package:pharma_track/helper/api.dart';
 import 'package:pharma_track/models/enter_model.dart';
 
 class LoginService {
-  Future<EnterResponseModel> loginUser({
+  Future<EnterReponseModel> loginUser({
     required String phone,
     required String password,
   }) async {
@@ -12,7 +12,7 @@ class LoginService {
       'password': password,
     });
 
-    EnterResponseModel loginResponseModel = EnterResponseModel.fromJson(data);
+    EnterReponseModel loginResponseModel = EnterReponseModel.fromJson(data);
     return loginResponseModel;
   }
 }
