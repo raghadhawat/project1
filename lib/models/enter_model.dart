@@ -7,7 +7,7 @@ class EnterResponseModel {
   });
   factory EnterResponseModel.fromJson(json) {
     return EnterResponseModel(
-      token: json['data']['token'],
+      token: json["data"]["token"],
       error: json['success'],
     );
   }
