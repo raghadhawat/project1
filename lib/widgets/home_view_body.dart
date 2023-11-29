@@ -66,6 +66,7 @@ class HomeViewBody extends StatelessWidget {
                   title: 'Medicine',
                   onTap: () {
                     BlocProvider.of<AllApiCubit>(context).allCategory(context);
+                    BlocProvider.of<AllApiCubit>(context).allMedicine(context);
                     Navigator.pushNamed(context, MedicineView.id);
                   },
                 ),
