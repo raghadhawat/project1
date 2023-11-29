@@ -10,8 +10,7 @@ class CategoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AllCategoryCubit cubit = AllCategoryCubit.get(context);
-    List<dynamic>? category = ['all'];
-    // cubit.categoryModel;
+
     return Padding(
       padding: const EdgeInsets.only(top: 24),
       child: SizedBox(
@@ -19,10 +18,10 @@ class CategoryList extends StatelessWidget {
         child: ListView.builder(
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            itemCount: category!.length,
+            itemCount: cubit.categoryModel1!.data!.length,
             itemBuilder: (BuildContext context, int index) {
               return CategoryCard(
-                categoryName: category[index],
+                categoryName: "${cubit.categoryModel1!.data![index].name}",
               );
             }),
       ),
