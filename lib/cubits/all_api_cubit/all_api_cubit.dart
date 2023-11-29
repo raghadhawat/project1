@@ -4,25 +4,52 @@ import 'package:meta/meta.dart';
 import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
 import 'package:pharma_track/helper/api.dart';
 import 'package:pharma_track/models/category_model.dart';
+import 'package:pharma_track/models/log_out_service.dart';
 import 'package:pharma_track/models/medicine_model.dart';
-import 'package:pharma_track/services/all_category_service.dart';
 
-part 'all_category_state.dart';
+part 'all_api_state.dart';
 
-class AllApiCubit extends Cubit<AllCategoryState> {
-  AllApiCubit() : super(AllCategoryInitial());
+class AllApiCubit extends Cubit<AllApiState> {
+  AllApiCubit() : super(AllApiInitial());
   static AllApiCubit get(context) => BlocProvider.of(context);
+
+//////   logout service
+
+  logOut(context) async {
+    emit(AllApiLoading());
+    try {
+      await getLogOut(context);
+
+      emit(AllApiSuccess());
+    } catch (e) {
+      emit(AllApiFailur(e.toString()));
+    }
+  }
+
+  LogOutModel? logOutModel;
+  Future<List<Data>?> getLogOut(context) async {
+    //print(cubit.enterResponseModel!.token);
+    await Api()
+        .get(
+      url: 'http://10.0.2.2:8000/api/Pharmacy/logout',
+      token: AuthCubit.get(context).enterResponseModel!.token,
+    )
+        .then((value) {
+      logOutModel = LogOutModel.fromJson(value);
+      print(logOutModel!.messege!.message);
+    });
+  }
 
   //// category service
 
   allCategory(context) async {
-    emit(AllCategoryLoading());
+    emit(AllApiLoading());
     try {
-      await getAllCategory(context);
+      await getLogOut(context);
 
-      emit(AllCategorySuccess());
+      emit(AllApiSuccess());
     } catch (e) {
-      emit(AllCategoryFailur(e.toString()));
+      emit(AllApiFailur(e.toString()));
     }
   }
 
@@ -43,13 +70,13 @@ class AllApiCubit extends Cubit<AllCategoryState> {
   /// all medicine service
 
   allMedicine(context) async {
-    emit(AllCategoryLoading());
+    emit(AllApiLoading());
     try {
       await getAllMedicine(context);
 
-      emit(AllCategorySuccess());
+      emit(AllApiSuccess());
     } catch (e) {
-      emit(AllCategoryFailur(e.toString()));
+      emit(AllApiFailur(e.toString()));
     }
   }
 
