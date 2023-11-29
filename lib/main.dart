@@ -19,7 +19,7 @@ class PharmaTrack extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => AuthCubit()),
-        BlocProvider(create: (context) => AllCategoryCubit()),
+        BlocProvider(create: (context) => AllApiCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

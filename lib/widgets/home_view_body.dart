@@ -65,8 +65,7 @@ class HomeViewBody extends StatelessWidget {
                   color: kThirdColor2,
                   title: 'Medicine',
                   onTap: () {
-                    BlocProvider.of<AllCategoryCubit>(context)
-                        .allCategory(context);
+                    BlocProvider.of<AllApiCubit>(context).allCategory(context);
                     Navigator.pushNamed(context, MedicineView.id);
                   },
                 ),

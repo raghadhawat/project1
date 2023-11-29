@@ -13,44 +13,26 @@ class MedicineView extends StatelessWidget {
   static String id = 'MedicineView';
   @override
   Widget build(BuildContext context) {
-    bool isLoading = false;
-    return BlocConsumer<AllCategoryCubit, AllCategoryState>(
-      listener: (context, state) {
-        if (state is AllCategoryLoading) {
-          isLoading = true;
-        } else if (state is AllCategorySuccess) {
-          isLoading = false;
-        } else if (state is AllCategoryFailur) {
-          showSnakbar(context, state.errMessage);
-          isLoading = false;
-        }
-      },
-      builder: (context, state) {
-        return BlurryModalProgressHUD(
-          inAsyncCall: isLoading,
-          child: Scaffold(
-            appBar: AppBar(
-              backgroundColor: kPrimaryColor,
-              centerTitle: true,
-              title: const AppBarText(),
-            ),
-            body: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12),
-              child: CustomScrollView(
-                physics: BouncingScrollPhysics(),
-                slivers: [
-                  SliverToBoxAdapter(child: CategoryList()),
-                  SliverToBoxAdapter(
-                      child: SizedBox(
-                    height: 16,
-                  )),
-                  MedicineList(),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: kPrimaryColor,
+        centerTitle: true,
+        title: const AppBarText(),
+      ),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 12),
+        child: CustomScrollView(
+          physics: BouncingScrollPhysics(),
+          slivers: [
+            SliverToBoxAdapter(child: CategoryList()),
+            SliverToBoxAdapter(
+                child: SizedBox(
+              height: 16,
+            )),
+            MedicineList(),
+          ],
+        ),
+      ),
     );
   }
 }

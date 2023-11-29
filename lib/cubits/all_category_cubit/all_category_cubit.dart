@@ -8,9 +8,9 @@ import 'package:pharma_track/services/all_category_service.dart';
 
 part 'all_category_state.dart';
 
-class AllCategoryCubit extends Cubit<AllCategoryState> {
-  AllCategoryCubit() : super(AllCategoryInitial());
-  static AllCategoryCubit get(context) => BlocProvider.of(context);
+class AllApiCubit extends Cubit<AllCategoryState> {
+  AllApiCubit() : super(AllCategoryInitial());
+  static AllApiCubit get(context) => BlocProvider.of(context);
   List<dynamic>? categoryModel;
   allCategory(context) async {
     emit(AllCategoryLoading());
