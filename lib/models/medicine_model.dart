@@ -1,11 +1,11 @@
-class AllMedicineModel {
+class MedicineModel {
   bool? success;
   List<MedicineData>? data;
   String? messege;
 
-  AllMedicineModel({this.success, this.data, this.messege});
+  MedicineModel({this.success, this.data, this.messege});
 
-  AllMedicineModel.fromJson(Map<String, dynamic> json) {
+  MedicineModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     if (json['data'] != null) {
       data = <MedicineData>[];
@@ -29,46 +29,15 @@ class AllMedicineModel {
 
 class MedicineData {
   int? id;
-  String? scientificName;
-  String? tradeName;
-  String? companyName;
-  String? categoriesName;
-  int? quantity;
-  int? price;
-  String? form;
-  String? details;
-  String? expirationAt;
-  Null deletedAt;
+  String? name;
   String? createdAt;
   String? updatedAt;
 
-  MedicineData(
-      {this.id,
-      this.scientificName,
-      this.tradeName,
-      this.companyName,
-      this.categoriesName,
-      this.quantity,
-      this.price,
-      this.form,
-      this.details,
-      this.expirationAt,
-      this.deletedAt,
-      this.createdAt,
-      this.updatedAt});
+  MedicineData({this.id, this.name, this.createdAt, this.updatedAt});
 
   MedicineData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    scientificName = json['scientific_name'];
-    tradeName = json['trade_name'];
-    companyName = json['company_name'];
-    categoriesName = json['categories_name'];
-    quantity = json['quantity'];
-    price = json['price'];
-    form = json['form'];
-    details = json['details'];
-    expirationAt = json['expiration_at'];
-    deletedAt = json['deleted_at'];
+    name = json['name'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
@@ -76,16 +45,7 @@ class MedicineData {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    data['scientific_name'] = this.scientificName;
-    data['trade_name'] = this.tradeName;
-    data['company_name'] = this.companyName;
-    data['categories_name'] = this.categoriesName;
-    data['quantity'] = this.quantity;
-    data['price'] = this.price;
-    data['form'] = this.form;
-    data['details'] = this.details;
-    data['expiration_at'] = this.expirationAt;
-    data['deleted_at'] = this.deletedAt;
+    data['name'] = this.name;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
     return data;
