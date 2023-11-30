@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/helper/show_snack_bar.dart';
-import 'package:pharma_track/models/category_model.dart';
 import 'package:pharma_track/widgets/category_card.dart';
 
 class CategoryList extends StatelessWidget {

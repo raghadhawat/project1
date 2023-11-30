@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
-import 'package:pharma_track/main.dart';
 import 'package:pharma_track/theme_color.dart';
 import 'package:pharma_track/views/login_view.dart';
 import 'package:pharma_track/widgets/custom_button.dart';

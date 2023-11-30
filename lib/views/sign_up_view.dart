@@ -7,11 +7,12 @@ import 'package:pharma_track/views/home_view.dart';
 import 'package:pharma_track/widgets/sign_up_view_body.dart';
 
 class SignUpView extends StatelessWidget {
-  SignUpView({super.key});
+  const SignUpView({super.key});
   static String id = 'SignUpView';
-  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
+    bool isLoading = false;
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SignUpLoading) {

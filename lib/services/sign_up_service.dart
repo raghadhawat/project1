@@ -20,7 +20,7 @@ class SignUpService {
         'address': address,
         'email': email,
         'password': password,
-        'c_password': confirmPassword,
+        'confirm_password': confirmPassword,
       },
     );
 

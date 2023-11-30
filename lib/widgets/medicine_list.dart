@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
-import 'package:pharma_track/helper/show_snack_bar.dart';
 import 'package:pharma_track/widgets/medicine_tile.dart';
 
 class MedicineList extends StatelessWidget {

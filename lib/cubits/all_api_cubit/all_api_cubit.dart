@@ -4,7 +4,6 @@ import 'package:meta/meta.dart';
 import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
 import 'package:pharma_track/helper/api.dart';
 import 'package:pharma_track/models/category_model.dart';
-import 'package:pharma_track/models/log_out_service.dart';
 import 'package:pharma_track/models/medicine_model.dart';
 
 part 'all_api_state.dart';

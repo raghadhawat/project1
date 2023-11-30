@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_track/constants.dart';
+import 'package:pharma_track/theme_color.dart';
 
 class DrawerText extends StatelessWidget {
   const DrawerText({
@@ -10,14 +11,17 @@ class DrawerText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Text(
-        title,
-        style: const TextStyle(
-          fontFamily: kFont2,
-          fontSize: 30,
-          color: kPrimaryColor,
+    return Container(
+      decoration: BoxDecoration(gradient: ThemeColor()),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Text(
+          title,
+          style: const TextStyle(
+            fontFamily: kFont2,
+            fontSize: 24,
+            color: kPrimaryColor,
+          ),
         ),
       ),
     );

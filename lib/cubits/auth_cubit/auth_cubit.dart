@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/models/enter_model.dart';
 import 'package:pharma_track/services/login_service.dart';
 import 'package:pharma_track/services/sign_up_service.dart';

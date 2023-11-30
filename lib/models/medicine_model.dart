@@ -38,7 +38,7 @@ class MedicineData {
   String? form;
   String? details;
   String? expirationAt;
-  Null? deletedAt;
+  Null deletedAt;
   String? createdAt;
   String? updatedAt;
 
