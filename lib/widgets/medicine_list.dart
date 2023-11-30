@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/widgets/medicine_tile.dart';
 
@@ -15,18 +16,22 @@ class MedicineList extends StatelessWidget {
     return BlocConsumer<AllApiCubit, AllApiState>(
         listener: (context, state) {},
         builder: (context, state) {
-          return SliverList(
-              delegate: SliverChildBuilderDelegate(
-            childCount: cubit.allMedicineModel?.data?.length,
-            (context, index) {
+          return GridView.builder(
+            itemCount: cubit.allMedicineModel?.data?.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2),
+            itemBuilder: (context, index) {
               return Padding(
-                padding: EdgeInsets.only(bottom: 16),
+                padding: const EdgeInsets.only(bottom: 16),
                 child: MedicineTile(
-                  name: "${cubit.allMedicineModel?.data?[index].tradeName}",
+                  tName: "${cubit.allMedicineModel?.data?[index].tradeName}",
+                  name:
+                      "${cubit.allMedicineModel?.data?[index].scientificName}",
+                  image: kLogo,
                 ),
               );
             },
-          ));
+          );
         });
   }
 }

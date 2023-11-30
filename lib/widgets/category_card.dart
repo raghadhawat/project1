@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_track/constants.dart';
+import 'package:pharma_track/views/medicine_view.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({super.key, required this.categoryName});
@@ -9,7 +10,9 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, MedicineView.id);
+      },
       child: Padding(
         padding: const EdgeInsets.only(right: 16),
         child: Container(
