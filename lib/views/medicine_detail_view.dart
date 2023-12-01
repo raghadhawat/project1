@@ -23,81 +23,82 @@ class MedicineDetaileView extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: ThemeColor(),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              kLogo,
-              height: 350,
-              width: MediaQuery.of(context).size.width,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 24,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                kLogo,
+                height: 350,
+                width: MediaQuery.of(context).size.width,
               ),
-              child: Row(
-                children: [
-                  Text(
-                    details['name'],
-                    style: const TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const Spacer(),
-                  Text(
-                    r'$' ' ${details['price']}',
-                    style: const TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-              child: Container(
-                child: Text(
-                  '${details['tName']} MADE BY ${details['companyName']}',
-                  style: const TextStyle(fontSize: 18, color: Colors.black54),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      details['name'],
+                      style: const TextStyle(
+                          color: kPrimaryColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const Spacer(),
+                    Text(
+                      r'$' ' ${details['price']}',
+                      style: const TextStyle(
+                          color: kPrimaryColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
-              child: Row(
-                children: [
-                  Text(
-                    "FORM : ${details['form']}",
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                child: Container(
+                  child: Text(
+                    '${details['tName']} MADE BY ${details['companyName']}',
+                    style: const TextStyle(fontSize: 18, color: Colors.black54),
                   ),
-                  const Spacer(),
-                  Text("QUANTITY : ${details['quantity']}",
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+                child: Row(
+                  children: [
+                    Text(
+                      "FORM : ${details['form']}",
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                      )),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-              child: Text(
-                details['details'],
-                style: const TextStyle(
-                  color: Colors.black87,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    const Spacer(),
+                    Text("QUANTITY : ${details['quantity']}",
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ],
                 ),
               ),
-            ),
-            Text('Pro : ${details['expirationAt']}'),
-            Text('Exp : ${details['createdAt']}'),
-          ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                child: Text(
+                  details['details'],
+                  style: const TextStyle(
+                    color: Colors.black87,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ),
+              Text('${details['created_at']}')
+            ],
+          ),
         ),
       ),
     );

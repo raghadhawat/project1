@@ -39,9 +39,9 @@ class AllMedicineList extends StatelessWidget {
                 form: "${cubit.allMedicineModel?.data?[index].form}",
                 details: "${cubit.allMedicineModel?.data?[index].details}",
                 expirationAt:
-                    "${cubit.allMedicineModel?.data?[index].expirationAt}",
-                createdAt: "${cubit.allMedicineModel?.data?[index].createdAt}",
-                updatedAt: "${cubit.allMedicineModel?.data?[index].updatedAt}",
+                    '${cubit.allMedicineModel?.data?[index].expirationAt}',
+                createdAt: '${cubit.allMedicineModel?.data?[index].createdAt}',
+                updatedAt: '${cubit.allMedicineModel?.data?[index].updatedAt}',
                 price: cubit.allMedicineModel?.data?[index].price,
                 quantity: cubit.allMedicineModel?.data?[index].quantity,
               ),

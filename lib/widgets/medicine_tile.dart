@@ -61,7 +61,7 @@ class MedicineTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(6),
                   child: Image.asset(
                     image ?? "",
-                    height: 100,
+                    height: 90,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
@@ -74,12 +74,12 @@ class MedicineTile extends StatelessWidget {
                   maxLines: 2,
                   style: const TextStyle(
                     color: kPrimaryColor,
-                    fontSize: 18,
+                    fontSize: 17,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 SizedBox(
-                  height: 4,
+                  height: 1,
                 ),
                 Text(
                   tName,
