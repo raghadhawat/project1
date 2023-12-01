@@ -5,6 +5,7 @@ import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
 import 'package:pharma_track/views/all_medicine_view.dart';
 import 'package:pharma_track/views/home_view.dart';
 import 'package:pharma_track/views/login_view.dart';
+import 'package:pharma_track/views/medicine_detail_view.dart';
 import 'package:pharma_track/views/medicine_view.dart';
 import 'package:pharma_track/views/sign_up_view.dart';
 
@@ -24,12 +25,16 @@ class PharmaTrack extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: 'Poppins',
+        ),
         routes: {
           LoginView.id: (context) => LoginView(),
           SignUpView.id: (context) => SignUpView(),
           HomeView.id: (context) => HomeView(),
           AllMedicineView.id: (context) => AllMedicineView(),
           MedicineView.id: (context) => MedicineView(),
+          MedicineDetaileView.id: (context) => MedicineDetaileView(),
         },
         initialRoute: LoginView.id,
       ),

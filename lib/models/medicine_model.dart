@@ -22,7 +22,7 @@ class MedicineData {
   String? scientificName;
   String? tradeName;
   String? companyName;
-  Null photo;
+  String? photo;
   String? categoriesName;
   String? form;
   int? quantity;
@@ -33,21 +33,22 @@ class MedicineData {
   String? createdAt;
   String? updatedAt;
 
-  MedicineData(
-      {this.id,
-      this.scientificName,
-      this.tradeName,
-      this.companyName,
-      this.photo,
-      this.categoriesName,
-      this.form,
-      this.quantity,
-      this.price,
-      this.expirationAt,
-      this.details,
-      this.deletedAt,
-      this.createdAt,
-      this.updatedAt});
+  MedicineData({
+    this.id,
+    this.scientificName,
+    this.tradeName,
+    this.companyName,
+    this.photo,
+    this.categoriesName,
+    this.form,
+    this.quantity,
+    this.price,
+    this.expirationAt,
+    this.details,
+    this.deletedAt,
+    this.createdAt,
+    this.updatedAt,
+  });
 
   MedicineData.fromJson(Map<String, dynamic> json) {
     id = json['id'];

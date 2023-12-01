@@ -10,9 +10,9 @@ class CategoryList extends StatelessWidget {
     AllApiCubit cubit = AllApiCubit.get(context);
 
     return Padding(
-      padding: const EdgeInsets.only(top: 24),
+      padding: const EdgeInsets.only(top: 16),
       child: SizedBox(
-        height: 130,
+        height: 75,
         child: ListView.builder(
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
