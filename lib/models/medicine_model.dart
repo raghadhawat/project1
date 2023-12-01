@@ -7,47 +7,62 @@ class MedicineModel {
 
   MedicineModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
-    if (json['data'] != null) {
+    if (json['data'][1] != null) {
       data = <MedicineData>[];
-      json['data'].forEach((v) {
+      json['data'][1].forEach((v) {
         data!.add(new MedicineData.fromJson(v));
       });
     }
     messege = json['messege'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['success'] = this.success;
-    if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
-    }
-    data['messege'] = this.messege;
-    return data;
-  }
 }
 
 class MedicineData {
   int? id;
-  String? name;
+  String? scientificName;
+  String? tradeName;
+  String? companyName;
+  Null photo;
+  String? categoriesName;
+  String? form;
+  int? quantity;
+  int? price;
+  String? expirationAt;
+  String? details;
+  Null deletedAt;
   String? createdAt;
   String? updatedAt;
 
-  MedicineData({this.id, this.name, this.createdAt, this.updatedAt});
+  MedicineData(
+      {this.id,
+      this.scientificName,
+      this.tradeName,
+      this.companyName,
+      this.photo,
+      this.categoriesName,
+      this.form,
+      this.quantity,
+      this.price,
+      this.expirationAt,
+      this.details,
+      this.deletedAt,
+      this.createdAt,
+      this.updatedAt});
 
   MedicineData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    name = json['name'];
+    scientificName = json['scientific_name'];
+    tradeName = json['trade_name'];
+    companyName = json['company_name'];
+    photo = json['photo'];
+    categoriesName = json['categories_name'];
+    form = json['form'];
+    quantity = json['quantity'];
+    price = json['price'];
+    expirationAt = json['expiration_at'];
+    details = json['details'];
+    deletedAt = json['deleted_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    return data;
   }
 }

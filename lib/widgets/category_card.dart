@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/constants.dart';
+import 'package:pharma_track/cubits/medicine_cubit/medicine_cubit.dart';
 import 'package:pharma_track/views/medicine_view.dart';
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({super.key, required this.categoryName});
+  CategoryCard({super.key, required this.categoryName, required this.id});
 
-  final String categoryName;
+  String categoryName;
+  int? id;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        BlocProvider.of<MedicineCubit>(context).medicine(context, id: id!);
         Navigator.pushNamed(context, MedicineView.id);
       },
       child: Padding(

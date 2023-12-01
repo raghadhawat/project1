@@ -18,7 +18,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       enterResponseModel =
           await LoginService().loginUser(password: password, phone: phone);
-      print(enterResponseModel!.data!.token);
+
       token1 = enterResponseModel!.data!.token;
       emit(LoginSuccess());
     } catch (e) {

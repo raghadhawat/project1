@@ -5,6 +5,7 @@ import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
 import 'package:pharma_track/helper/api.dart';
 import 'package:pharma_track/models/category_model.dart';
 import 'package:pharma_track/models/all_medicine_model.dart';
+import 'package:pharma_track/models/medicine_model.dart';
 
 part 'all_api_state.dart';
 
@@ -27,7 +28,6 @@ class AllApiCubit extends Cubit<AllApiState> {
 
   CategoryModel? categoryModel1;
   Future<List<Data>?> getAllCategory(context) async {
-    //print(cubit.enterResponseModel!.token);
     await Api()
         .get(
       url: 'http://10.0.2.2:8000/api/Pharmacy/category',

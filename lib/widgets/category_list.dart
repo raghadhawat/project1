@@ -38,6 +38,7 @@ class CategoryList extends StatelessWidget {
                     return CategoryCard(
                       categoryName:
                           "${cubit.categoryModel1?.data?[index].name}",
+                      id: cubit.categoryModel1?.data?[index].id,
                     );
                   }),
             ),
