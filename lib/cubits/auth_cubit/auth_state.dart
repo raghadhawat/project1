@@ -22,3 +22,12 @@ final class SignUpFailure extends AuthState {
   final String errMessage;
   SignUpFailure(this.errMessage);
 }
+
+final class LogoutLoading extends AuthState {}
+
+final class LogoutSuccess extends AuthState {}
+
+final class LogoutFailure extends AuthState {
+  final String errMessage;
+  LogoutFailure(this.errMessage);
+}

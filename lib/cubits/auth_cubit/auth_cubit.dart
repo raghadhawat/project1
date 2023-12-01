@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:pharma_track/helper/api.dart';
 import 'package:pharma_track/models/enter_model.dart';
+import 'package:pharma_track/models/log_out_service.dart';
 import 'package:pharma_track/services/login_service.dart';
 import 'package:pharma_track/services/sign_up_service.dart';
 
@@ -46,11 +48,37 @@ class AuthCubit extends Cubit<AuthState> {
         email: email,
         confirmPassword: confirmPassword,
       );
-      // final SharedPreferences prefs = await SharedPreferences.getInstance();
-      // await prefs.setString(kToken, enterResponseModel!.token);
+
       emit(SignUpSuccess());
     } catch (e) {
       emit(SignUpFailure(e.toString()));
     }
+  }
+
+  //////   logout service
+
+  logOut(context) async {
+    emit(LogoutLoading());
+    try {
+      await getLogOut(context);
+
+      emit(LogoutSuccess());
+    } catch (e) {
+      emit(LogoutFailure(e.toString()));
+    }
+  }
+
+  LogOutModel? logOutModel;
+  Future<List<dynamic>?> getLogOut(context) async {
+    //print(cubit.enterResponseModel!.token);
+    await Api()
+        .get(
+      url: 'http://10.0.2.2:8000/api/Pharmacy/logout',
+      token: AuthCubit.get(context).enterResponseModel!.data!.token,
+    )
+        .then((value) {
+      logOutModel = LogOutModel.fromJson(value);
+      print("${logOutModel!.messege!.message}");
+    });
   }
 }

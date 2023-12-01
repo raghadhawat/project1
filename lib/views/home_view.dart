@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
-import 'package:pharma_track/cubits/log_out_cubit/logout_cubit.dart';
 import 'package:pharma_track/helper/show_snack_bar.dart';
 import 'package:pharma_track/views/login_view.dart';
 import 'package:pharma_track/widgets/app_bar_text.dart';
@@ -17,7 +16,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isLoading = false;
-    return BlocConsumer<LogoutCubit, LogoutState>(
+    return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is LogoutLoading) {
           isLoading = true;
@@ -68,9 +67,9 @@ class HomeView extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  BlocProvider.of<LogoutCubit>(context).logOut(context);
+                  BlocProvider.of<AuthCubit>(context).logOut(context);
                   print(
-                      "${LogoutCubit.get(context).logOutModel?.messege?.message}kk");
+                      "${AuthCubit.get(context).logOutModel?.messege?.message}kk");
                 },
                 child: const DrawerText(
                   title: 'LogOut',

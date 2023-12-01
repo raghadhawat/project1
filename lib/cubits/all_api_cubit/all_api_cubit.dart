@@ -41,13 +41,13 @@ class AllApiCubit extends Cubit<AllApiState> {
   /// all medicine service
 
   allMedicine(context) async {
-    emit(AllApiLoading());
+    emit(AllMedicineLoading());
     try {
       await getAllMedicine(context);
 
-      emit(AllApiSuccess());
+      emit(AllMedicineSuccess());
     } catch (e) {
-      emit(AllApiFailur(e.toString()));
+      emit(AllMedicineFailur(e.toString()));
     }
   }
 
@@ -60,6 +60,31 @@ class AllApiCubit extends Cubit<AllApiState> {
     )
         .then((value) {
       allMedicineModel = AllMedicineModel.fromJson(value);
+    });
+  }
+
+  /// medicine service
+
+  medicine(context, {required int id}) async {
+    emit(MedicineLoading());
+
+    try {
+      await getMedicine(context, id: id);
+      emit(MedicineSuccess());
+    } catch (e) {
+      emit(MedicineFailure(e.toString()));
+    }
+  }
+
+  MedicineModel? medicineModel;
+  Future<Map<String, dynamic>?> getMedicine(context, {required int id}) async {
+    await Api()
+        .get(
+      url: 'http://10.0.2.2:8000/api/Pharmacy/category/$id',
+      token: AuthCubit.get(context).enterResponseModel!.data!.token,
+    )
+        .then((value) {
+      medicineModel = MedicineModel.fromJson(value);
     });
   }
 }
