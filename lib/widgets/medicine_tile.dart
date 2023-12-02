@@ -55,6 +55,7 @@ class MedicineTile extends StatelessWidget {
               color: kThirdColor2,
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
                 ClipRRect(
@@ -66,28 +67,34 @@ class MedicineTile extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 12,
                 ),
-                Text(
-                  name,
-                  maxLines: 2,
-                  style: const TextStyle(
-                    color: kPrimaryColor,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w500,
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Text(
+                    name,
+                    maxLines: 2,
+                    style: const TextStyle(
+                      color: kPrimaryColor,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 1,
                 ),
-                Text(
-                  tName,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 14,
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Text(
+                    tName,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: const TextStyle(
+                      color: Colors.grey,
+                      fontSize: 14,
+                    ),
                   ),
                 )
               ],
