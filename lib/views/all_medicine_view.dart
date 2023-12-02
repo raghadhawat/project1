@@ -42,7 +42,7 @@ class AllMedicineView extends StatelessWidget {
                 itemBuilder: (context) => [
                       PopupMenuItem(
                         child: const Text(
-                          'Caregory',
+                          'Category',
                           style: TextStyle(
                             color: kPrimaryColor,
                           ),

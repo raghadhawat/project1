@@ -6,22 +6,38 @@ class DrawerText extends StatelessWidget {
   const DrawerText({
     super.key,
     required this.title,
+    required this.icon,
+    required this.size,
   });
   final String title;
+  final IconData icon;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(gradient: ThemeColor()),
+      decoration: BoxDecoration(
+          gradient: ThemeColor(), borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Text(
-          title,
-          style: const TextStyle(
-            fontFamily: kFont2,
-            fontSize: 24,
-            color: kPrimaryColor,
-          ),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: kPrimaryColor,
+            ),
+            SizedBox(
+              width: 8,
+            ),
+            Text(
+              title,
+              style: TextStyle(
+                fontFamily: kFont2,
+                fontSize: size,
+                color: kPrimaryColor,
+              ),
+            ),
+          ],
         ),
       ),
     );

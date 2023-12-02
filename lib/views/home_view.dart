@@ -38,6 +38,8 @@ class HomeView extends StatelessWidget {
                 height: 12,
               ),
               DrawerText(
+                size: 24,
+                icon: Icons.local_pharmacy_outlined,
                 title:
                     "${AuthCubit.get(context).enterResponseModel?.data?.name}",
               ),
@@ -45,6 +47,8 @@ class HomeView extends StatelessWidget {
                 height: 12,
               ),
               DrawerText(
+                size: 24,
+                icon: Icons.person,
                 title:
                     "${AuthCubit.get(context).enterResponseModel?.data?.userName}",
               ),
@@ -52,6 +56,8 @@ class HomeView extends StatelessWidget {
                 height: 12,
               ),
               DrawerText(
+                size: 24,
+                icon: Icons.place,
                 title:
                     "${AuthCubit.get(context).enterResponseModel?.data?.address}",
               ),
@@ -59,11 +65,13 @@ class HomeView extends StatelessWidget {
                 height: 12,
               ),
               DrawerText(
+                size: 16,
+                icon: Icons.email,
                 title:
                     "${AuthCubit.get(context).enterResponseModel?.data?.email}",
               ),
               const SizedBox(
-                height: 12,
+                height: 32,
               ),
               GestureDetector(
                 onTap: () {
@@ -72,6 +80,8 @@ class HomeView extends StatelessWidget {
                       "${AuthCubit.get(context).logOutModel?.messege?.message}kk");
                 },
                 child: const DrawerText(
+                  size: 24,
+                  icon: Icons.logout,
                   title: 'LogOut',
                 ),
               ),
