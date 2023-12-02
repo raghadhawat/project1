@@ -8,6 +8,7 @@ import 'package:pharma_track/views/medicine_view.dart';
 import 'package:pharma_track/widgets/app_bar_text.dart';
 import 'package:pharma_track/widgets/category_list.dart';
 import 'package:pharma_track/widgets/all_medicine_list.dart';
+import 'package:pharma_track/widgets/search_all_medicine.dart';
 import 'package:pharma_track/widgets/search_category.dart';
 
 class AllMedicineView extends StatelessWidget {
@@ -34,7 +35,10 @@ class AllMedicineView extends StatelessWidget {
           title: const AppBarText(),
           actions: [
             PopupMenuButton(
-                icon: const Icon(Icons.search),
+                icon: const Icon(
+                  Icons.search,
+                  size: 30,
+                ),
                 itemBuilder: (context) => [
                       PopupMenuItem(
                         child: const Text(
@@ -45,17 +49,20 @@ class AllMedicineView extends StatelessWidget {
                         ),
                         onTap: () {
                           showSearch(
-                              context: context, delegate: CustomSearch());
+                              context: context, delegate: SearchCategory());
                         },
                       ),
-                      const PopupMenuItem(
-                        child: Text(
+                      PopupMenuItem(
+                        child: const Text(
                           'Medicine',
                           style: TextStyle(
                             color: kPrimaryColor,
                           ),
                         ),
-                        // onTap  with its  search delegate
+                        onTap: () {
+                          showSearch(
+                              context: context, delegate: SearchAllMedicine());
+                        },
                       )
                     ])
           ],

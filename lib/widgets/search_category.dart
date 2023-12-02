@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 
-class CustomSearch extends SearchDelegate {
+class SearchCategory extends SearchDelegate {
   List? filter;
 
   @override
@@ -30,7 +30,34 @@ class CustomSearch extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return Text('s');
+    filter = AllApiCubit.get(context)
+        .categoryModel1
+        ?.data
+        ?.where((element) => element.name!.toLowerCase().contains(query))
+        .toList();
+    return ListView.builder(
+        itemCount: filter!.length,
+        itemBuilder: (BuildContext context, int index) {
+          return GestureDetector(
+            onTap: () {
+              BlocProvider.of<AllApiCubit>(context)
+                  .medicine(context, id: filter![index].id);
+            },
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "${filter![index].name}",
+                  style: TextStyle(
+                    color: kPrimaryColor,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ),
+          );
+        });
+    ;
   }
 
   @override
