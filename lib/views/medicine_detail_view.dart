@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/theme_color.dart';
 import 'package:pharma_track/widgets/app_bar_text.dart';
-import 'package:pharma_track/widgets/detaile_card.dart';
 
 class MedicineDetaileView extends StatelessWidget {
   const MedicineDetaileView({super.key});
@@ -12,6 +12,11 @@ class MedicineDetaileView extends StatelessWidget {
   Widget build(BuildContext context) {
     Map<String, dynamic> details =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    var inputDate1 = DateTime.parse(details['createdAt']);
+    var outputFormat1 = DateFormat('dd/MM/yyyy');
+    var outputDate1 = outputFormat1.format(inputDate1);
+    print(outputDate1);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
@@ -47,7 +52,7 @@ class MedicineDetaileView extends StatelessWidget {
                     ),
                     const Spacer(),
                     Text(
-                      r'$' ' ${details['price']}',
+                      ' ${details['price']} S.P',
                       style: const TextStyle(
                           color: kPrimaryColor,
                           fontSize: 20,
@@ -57,7 +62,8 @@ class MedicineDetaileView extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
                 child: Container(
                   child: Text(
                     '${details['tName']} MADE BY ${details['companyName']}',
@@ -66,7 +72,8 @@ class MedicineDetaileView extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
                 child: Row(
                   children: [
                     Text(
@@ -86,7 +93,10 @@ class MedicineDetaileView extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 8,
+                ),
                 child: Text(
                   details['details'],
                   style: const TextStyle(
@@ -96,7 +106,20 @@ class MedicineDetaileView extends StatelessWidget {
                   ),
                 ),
               ),
-              Text('${details['created_at']}')
+              Padding(
+                padding: const EdgeInsets.only(left: 260),
+                child: Text(
+                  'Pro : ${outputDate1}',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 260),
+                child: Text(
+                  'Exp : ${details['expirationAt']}',
+                  style: TextStyle(fontSize: 16),
+                ),
+              )
             ],
           ),
         ),
