@@ -1,7 +1,16 @@
-class AddOrderModel {
+import 'package:hive/hive.dart';
+
+part 'add_order_model.g.dart';
+
+@HiveType(typeId: 0)
+class AddOrderModel extends HiveObject {
+  @HiveField(0)
   final String name;
+  @HiveField(1)
   final String tName;
+  @HiveField(2)
   final String quantity;
+  @HiveField(3)
   final String image;
   AddOrderModel({
     required this.name,
