@@ -27,7 +27,7 @@ class CustomTextFormField extends StatelessWidget {
         keyboardType: inputType,
         onChanged: onChanged,
         validator: (data) {
-          if (data!.isEmpty) {
+          if (data?.isEmpty ?? true) {
             return 'field is required';
           }
           return null;

@@ -9,3 +9,4 @@ const kThirdColor2 = Color(0xffF8F0E5);
 const kFont1 = 'pacifico';
 const kFont2 = 'Poppins';
 const kToken = 'token';
+const kOrderBox = 'orders box';

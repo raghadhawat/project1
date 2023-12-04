@@ -25,6 +25,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
   String? password;
   String? confirmPassword;
   GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -167,6 +168,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 text: 'Sign Up',
                 onTap: () {
                   if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
                     BlocProvider.of<AuthCubit>(context).signUp(
                       pharmacyName: pharmacyName!,
                       address: address!,
@@ -176,7 +178,10 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       password: password!,
                       confirmPassword: confirmPassword!,
                     );
-                  } else {}
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
                 },
               ),
               const SizedBox(

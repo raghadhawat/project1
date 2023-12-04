@@ -1,36 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_track/widgets/custom_addorder_button.dart';
-import 'package:pharma_track/widgets/custom_text_form_field.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pharma_track/cubits/add_order_cubit/add_order_cubit.dart';
+import 'package:pharma_track/widgets/add_order_form.dart';
 
 class AddOrderButtomSheeet extends StatelessWidget {
   const AddOrderButtomSheeet({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            CustomTextFormField(
-              hint: "Medicine Name ",
-              label: "Medicine Name ",
-              icon: Icons.medication_outlined,
+    return BlocProvider(
+      create: (context) => AddOrderCubit(),
+      child: BlocConsumer<AddOrderCubit, AddOrderState>(
+        listener: (context, state) {
+          if (state is AddOrderFailure) {
+            print('failed ${state.errMessage}');
+          }
+          if (state is AddOrderSuccess) {
+            Navigator.pop(context);
+          }
+        },
+        builder: (context, state) {
+          return AbsorbPointer(
+            absorbing: state is AddOrderLoading ? true : false,
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.only(
+                    top: 8,
+                    left: 8,
+                    right: 8,
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: const AddOrderForm(),
+              ),
             ),
-            CustomTextFormField(
-              hint: 'Quantity',
-              label: 'Quantity',
-              icon: Icons.input,
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            CustomAddOrderButton(),
-            SizedBox(
-              height: 40,
-            )
-          ],
-        ),
+          );
+        },
       ),
     );
   }

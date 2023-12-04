@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
+import 'package:pharma_track/models/add_order_model.dart';
+import 'package:pharma_track/simple_bloc_observer.dart';
 import 'package:pharma_track/views/add_order_view.dart';
 import 'package:pharma_track/views/all_medicine_view.dart';
 import 'package:pharma_track/views/home_view.dart';
@@ -10,7 +14,12 @@ import 'package:pharma_track/views/medicine_detail_view.dart';
 import 'package:pharma_track/views/medicine_view.dart';
 import 'package:pharma_track/views/sign_up_view.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+
+  Bloc.observer = SimpleBlocObserver();
+  Hive.registerAdapter(AddOrderModelAdapter());
+  await Hive.openBox<AddOrderModel>(kOrderBox);
   runApp(const PharmaTrack());
 }
 

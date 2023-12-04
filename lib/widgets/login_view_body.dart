@@ -19,6 +19,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   String? phone;
   String? password;
   GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -90,9 +91,13 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               CustomButton(
                 onTap: () async {
                   if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
                     BlocProvider.of<AuthCubit>(context)
                         .login(phone: phone!, password: password!);
-                  } else {}
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
                 },
                 text: 'Login',
               ),
