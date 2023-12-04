@@ -48,6 +48,7 @@ class _AddOrderFormState extends State<AddOrderForm> {
           BlocBuilder<AddOrderCubit, AddOrderState>(
             builder: (context, state) {
               return CustomAddOrderButton(
+                title: 'Add To Order',
                 isLoading: state is AddOrderLoading ? true : false,
                 onTap: () {
                   if (formKey.currentState!.validate()) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/cubits/add_order_cubit/add_order_cubit.dart';
+import 'package:pharma_track/cubits/order_cubit/order_cubit.dart';
 import 'package:pharma_track/widgets/add_order_form.dart';
 
 class AddOrderButtomSheeet extends StatelessWidget {
@@ -16,6 +17,7 @@ class AddOrderButtomSheeet extends StatelessWidget {
             print('failed ${state.errMessage}');
           }
           if (state is AddOrderSuccess) {
+            BlocProvider.of<OrderCubit>(context).fetchAllOrder();
             Navigator.pop(context);
           }
         },

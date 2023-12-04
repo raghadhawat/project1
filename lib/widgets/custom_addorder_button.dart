@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:pharma_track/constants.dart';
 
 class CustomAddOrderButton extends StatelessWidget {
-  const CustomAddOrderButton({super.key, this.onTap, this.isLoading = false});
+  const CustomAddOrderButton(
+      {super.key, this.onTap, this.isLoading = false, required this.title});
   final void Function()? onTap;
+  final String title;
   final bool isLoading;
   @override
   Widget build(BuildContext context) {
@@ -21,9 +23,9 @@ class CustomAddOrderButton extends StatelessWidget {
               ? const CircularProgressIndicator(
                   color: Colors.white,
                 )
-              : const Text(
-                  'Add To Order',
-                  style: TextStyle(
+              : Text(
+                  title,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
+import 'package:pharma_track/cubits/order_cubit/order_cubit.dart';
 import 'package:pharma_track/helper/show_snack_bar.dart';
 import 'package:pharma_track/theme_color.dart';
 import 'package:pharma_track/views/add_order_view.dart';
@@ -92,6 +93,7 @@ class HomeViewBody extends StatelessWidget {
                       color: kThirdColor2,
                       title: 'Add Order',
                       onTap: () {
+                        BlocProvider.of<OrderCubit>(context).fetchAllOrder();
                         Navigator.pushNamed(context, AddOrderView.id);
                       },
                     ),

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/constants.dart';
+import 'package:pharma_track/cubits/order_cubit/order_cubit.dart';
+import 'package:pharma_track/models/add_order_model.dart';
 
 class OrderCard extends StatelessWidget {
   const OrderCard({
     super.key,
+    required this.order,
   });
-
+  final AddOrderModel order;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,21 +22,21 @@ class OrderCard extends StatelessWidget {
           color: kThirdColor2,
           child: Row(
             children: [
-              Image.asset(kLogo),
-              const Padding(
-                padding: EdgeInsets.all(16),
+              Image.asset(order.image),
+              Padding(
+                padding: const EdgeInsets.all(16),
                 child: Column(
                   children: [
                     Text(
-                      'cetamol',
-                      style: TextStyle(
+                      order.name,
+                      style: const TextStyle(
                           color: kPrimaryColor,
                           fontSize: 20,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      'bara',
-                      style: TextStyle(
+                      order.tName,
+                      style: const TextStyle(
                         color: kPrimaryColor,
                         fontSize: 18,
                       ),
@@ -41,18 +45,21 @@ class OrderCard extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              const Padding(
-                padding: EdgeInsets.all(32),
+              Padding(
+                padding: const EdgeInsets.all(8),
                 child: Text(
-                  '4',
-                  style: TextStyle(
+                  order.quantity,
+                  style: const TextStyle(
                       color: kPrimaryColor,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  order.delete();
+                  BlocProvider.of<OrderCubit>(context).fetchAllOrder();
+                },
                 icon: const Icon(
                   Icons.close,
                   color: kPrimaryColor,

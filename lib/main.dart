@@ -4,6 +4,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
+import 'package:pharma_track/cubits/order_cubit/order_cubit.dart';
 import 'package:pharma_track/models/add_order_model.dart';
 import 'package:pharma_track/simple_bloc_observer.dart';
 import 'package:pharma_track/views/add_order_view.dart';
@@ -32,6 +33,7 @@ class PharmaTrack extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(create: (context) => AllApiCubit()),
+        BlocProvider(create: (context) => OrderCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
