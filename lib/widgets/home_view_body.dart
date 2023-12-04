@@ -5,6 +5,7 @@ import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/helper/show_snack_bar.dart';
 import 'package:pharma_track/theme_color.dart';
+import 'package:pharma_track/views/add_order_view.dart';
 import 'package:pharma_track/views/all_medicine_view.dart';
 import 'package:pharma_track/widgets/custom-main-card.dart';
 
@@ -90,7 +91,9 @@ class HomeViewBody extends StatelessWidget {
                     CustomMainCard(
                       color: kThirdColor2,
                       title: 'Add Order',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, AddOrderView.id);
+                      },
                     ),
                   ],
                 ),

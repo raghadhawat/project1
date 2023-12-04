@@ -10,7 +10,7 @@ class SearchCategory extends SearchDelegate {
   List<Widget>? buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.close),
+        icon: const Icon(Icons.close),
         onPressed: () {
           query = '';
         },
@@ -21,7 +21,7 @@ class SearchCategory extends SearchDelegate {
   @override
   Widget? buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back),
+      icon: const Icon(Icons.arrow_back),
       onPressed: () {
         Navigator.pop(context);
       },
@@ -45,10 +45,10 @@ class SearchCategory extends SearchDelegate {
             },
             child: Card(
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(16),
                 child: Text(
                   "${filter![index].name}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: kPrimaryColor,
                     fontSize: 20,
                   ),
@@ -57,7 +57,6 @@ class SearchCategory extends SearchDelegate {
             ),
           );
         });
-    ;
   }
 
   @override
@@ -76,10 +75,10 @@ class SearchCategory extends SearchDelegate {
               },
               child: Card(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(16),
                   child: Text(
                     "${AllApiCubit.get(context).categoryModel1?.data?[index].name}",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: kPrimaryColor,
                       fontSize: 20,
                     ),
@@ -104,10 +103,10 @@ class SearchCategory extends SearchDelegate {
               },
               child: Card(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(16),
                   child: Text(
                     "${filter![index].name}",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: kPrimaryColor,
                       fontSize: 20,
                     ),

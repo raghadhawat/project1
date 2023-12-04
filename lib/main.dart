@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
+import 'package:pharma_track/views/add_order_view.dart';
 import 'package:pharma_track/views/all_medicine_view.dart';
 import 'package:pharma_track/views/home_view.dart';
 import 'package:pharma_track/views/login_view.dart';
@@ -29,12 +30,13 @@ class PharmaTrack extends StatelessWidget {
           fontFamily: 'Poppins',
         ),
         routes: {
-          LoginView.id: (context) => LoginView(),
-          SignUpView.id: (context) => SignUpView(),
-          HomeView.id: (context) => HomeView(),
-          AllMedicineView.id: (context) => AllMedicineView(),
-          MedicineView.id: (context) => MedicineView(),
-          MedicineDetaileView.id: (context) => MedicineDetaileView(),
+          LoginView.id: (context) => const LoginView(),
+          SignUpView.id: (context) => const SignUpView(),
+          HomeView.id: (context) => const HomeView(),
+          AllMedicineView.id: (context) => const AllMedicineView(),
+          MedicineView.id: (context) => const MedicineView(),
+          MedicineDetaileView.id: (context) => const MedicineDetaileView(),
+          AddOrderView.id: (context) => const AddOrderView(),
         },
         initialRoute: LoginView.id,
       ),

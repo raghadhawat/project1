@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/views/medicine_detail_view.dart';
+import 'package:pharma_track/widgets/search_medicine_card.dart';
 
 class SearchMedicine extends SearchDelegate {
   List? filter;
@@ -41,45 +42,26 @@ class SearchMedicine extends SearchDelegate {
         itemCount: filter!.length,
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, MedicineDetaileView.id, arguments: {
-                'name': "${filter![index].scientificName}",
-                'tName': "${filter![index].tradeName}",
-                'image': kLogo,
-                'companyName': "${filter![index].companyName}",
-                'form': "${filter![index].form}",
-                'quantity': filter![index].quantity,
-                'price': filter![index].price,
-                'expirationAt': "${filter![index].expirationAt}",
-                'details': "${filter![index].details}",
-                'createdAt': "${filter![index].createdAt}",
-                'updatedAt': "${filter![index].updatedAt}",
-              });
-            },
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "${filter![index].scientificName}",
-                        style: const TextStyle(
-                          color: kPrimaryColor,
-                          fontSize: 20,
-                        ),
-                      ),
-                      Text(
-                        "${filter![index].tradeName}",
-                        style: const TextStyle(
-                          color: kPrimaryColor,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ]),
-              ),
-            ),
-          );
+              onTap: () {
+                Navigator.pushNamed(context, MedicineDetaileView.id,
+                    arguments: {
+                      'name': "${filter![index].scientificName}",
+                      'tName': "${filter![index].tradeName}",
+                      'image': kLogo,
+                      'companyName': "${filter![index].companyName}",
+                      'form': "${filter![index].form}",
+                      'quantity': filter![index].quantity,
+                      'price': filter![index].price,
+                      'expirationAt': "${filter![index].expirationAt}",
+                      'details': "${filter![index].details}",
+                      'createdAt': "${filter![index].createdAt}",
+                      'updatedAt': "${filter![index].updatedAt}",
+                    });
+              },
+              child: SearchMedicineCard(
+                  image: kLogo,
+                  name: "${filter![index].scientificName}",
+                  tname: "${filter![index].tradeName}"));
         });
   }
 
@@ -120,29 +102,12 @@ class SearchMedicine extends SearchDelegate {
                           "${AllApiCubit.get(context).medicineModel!.data![index].updatedAt}",
                     });
               },
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "${AllApiCubit.get(context).medicineModel!.data![index].scientificName}",
-                          style: const TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 20,
-                          ),
-                        ),
-                        Text(
-                          "${AllApiCubit.get(context).medicineModel!.data![index].tradeName}",
-                          style: const TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ]),
-                ),
-              ),
+              child: SearchMedicineCard(
+                  image: kLogo,
+                  name:
+                      "${AllApiCubit.get(context).medicineModel!.data![index].scientificName}",
+                  tname:
+                      "${AllApiCubit.get(context).medicineModel!.data![index].tradeName}"),
             );
           });
     } else {
@@ -157,46 +122,26 @@ class SearchMedicine extends SearchDelegate {
           itemCount: filter!.length,
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, MedicineDetaileView.id,
-                    arguments: {
-                      'name': "${filter![index].scientificName}",
-                      'tName': "${filter![index].tradeName}",
-                      'image': kLogo,
-                      'companyName': "${filter![index].companyName}",
-                      'form': "${filter![index].form}",
-                      'quantity': filter![index].quantity,
-                      'price': filter![index].price,
-                      'expirationAt': "${filter![index].expirationAt}",
-                      'details': "${filter![index].details}",
-                      'createdAt': "${filter![index].createdAt}",
-                      'updatedAt': "${filter![index].updatedAt}",
-                    });
-              },
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "${filter![index].scientificName}",
-                          style: const TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 20,
-                          ),
-                        ),
-                        Text(
-                          "${filter![index].tradeName}",
-                          style: const TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ]),
-                ),
-              ),
-            );
+                onTap: () {
+                  Navigator.pushNamed(context, MedicineDetaileView.id,
+                      arguments: {
+                        'name': "${filter![index].scientificName}",
+                        'tName': "${filter![index].tradeName}",
+                        'image': kLogo,
+                        'companyName': "${filter![index].companyName}",
+                        'form': "${filter![index].form}",
+                        'quantity': filter![index].quantity,
+                        'price': filter![index].price,
+                        'expirationAt': "${filter![index].expirationAt}",
+                        'details': "${filter![index].details}",
+                        'createdAt': "${filter![index].createdAt}",
+                        'updatedAt': "${filter![index].updatedAt}",
+                      });
+                },
+                child: SearchMedicineCard(
+                    image: kLogo,
+                    name: "${filter![index].scientificName}",
+                    tname: "${filter![index].tradeName}"));
           });
     }
   }

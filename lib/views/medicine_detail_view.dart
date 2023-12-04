@@ -13,7 +13,7 @@ class MedicineDetaileView extends StatelessWidget {
     Map<String, dynamic> details =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     var inputDate1 = DateTime.parse(details['createdAt']);
-    var outputFormat1 = DateFormat('dd/MM/yyyy');
+    var outputFormat1 = DateFormat('yyyy-MM-dd');
     var outputDate1 = outputFormat1.format(inputDate1);
     print(outputDate1);
 
