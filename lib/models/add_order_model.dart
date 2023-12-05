@@ -7,7 +7,7 @@ class AddOrderModel extends HiveObject {
   @HiveField(0)
   String name;
   @HiveField(1)
-  String tName;
+  final String tName;
   @HiveField(2)
   String quantity;
   @HiveField(3)

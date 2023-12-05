@@ -7,16 +7,17 @@ import 'package:pharma_track/widgets/custom_addorder_button.dart';
 import 'package:pharma_track/widgets/custom_drop_down.dart';
 import 'package:pharma_track/widgets/custom_text_form_field.dart';
 
-class AddOrderForm extends StatefulWidget {
-  const AddOrderForm({
+class MedicineForm extends StatefulWidget {
+  MedicineForm({
     super.key,
+    required this.name,
   });
-
+  String name;
   @override
-  State<AddOrderForm> createState() => _AddOrderFormState();
+  State<MedicineForm> createState() => _MedicineFormState();
 }
 
-class _AddOrderFormState extends State<AddOrderForm> {
+class _MedicineFormState extends State<MedicineForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? name, quantity;
@@ -31,8 +32,8 @@ class _AddOrderFormState extends State<AddOrderForm> {
             onChanged: (value) {
               name = value;
             },
-            hint: "Medicine Name ",
-            label: "Medicine Name ",
+            hint: widget.name,
+            label: widget.name,
             icon: Icons.medication_outlined,
           ),
           CustomTextFormField(
@@ -54,6 +55,7 @@ class _AddOrderFormState extends State<AddOrderForm> {
                 onTap: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
+                    name = name ?? widget.name;
                     var addOrderModel = AddOrderModel(
                       name: name!,
                       quantity: quantity!,

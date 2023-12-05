@@ -43,6 +43,8 @@ class AddOrderView extends StatelessWidget {
                 return GestureDetector(
                     onTap: () {
                       showModalBottomSheet(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16)),
                           context: context,
                           builder: (context) {
                             return EditOrderButtomSheeet(

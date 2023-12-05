@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/widgets/app_bar_text.dart';
 import 'package:pharma_track/widgets/detaile_card.dart';
+import 'package:pharma_track/widgets/medicine_buttom_sheet.dart';
 
 class MedicineDetaileView extends StatelessWidget {
   const MedicineDetaileView({super.key});
@@ -18,6 +19,22 @@ class MedicineDetaileView extends StatelessWidget {
     print(outputDate1);
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: kPrimaryColor,
+        onPressed: () {
+          showModalBottomSheet(
+              isScrollControlled: true,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16)),
+              context: context,
+              builder: (context) {
+                return MedicineButtomSheeet(
+                  name: details['name'],
+                );
+              });
+        },
+        child: const Icon(Icons.add),
+      ),
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
         centerTitle: true,

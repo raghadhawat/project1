@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/cubits/order_cubit/order_cubit.dart';
 import 'package:pharma_track/models/add_order_model.dart';
 import 'package:pharma_track/widgets/custom_addorder_button.dart';
+import 'package:pharma_track/widgets/custom_drop_down.dart';
 import 'package:pharma_track/widgets/custom_text_form_field.dart';
 
 class EditOrderButtomSheeet extends StatefulWidget {
@@ -26,7 +27,7 @@ class _EditOrderButtomSheeetState extends State<EditOrderButtomSheeet> {
             bottom: MediaQuery.of(context).viewInsets.bottom),
         child: Column(
           children: [
-            CustomTextFormField(
+            CustomDropDown(
               onChanged: (value) {
                 name = value;
               },

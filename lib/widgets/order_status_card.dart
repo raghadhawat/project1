@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/constants.dart';
-import 'package:pharma_track/cubits/order_cubit/order_cubit.dart';
-import 'package:pharma_track/models/add_order_model.dart';
 
-class OrderCard extends StatelessWidget {
-  const OrderCard({
+class OrderStatusCard extends StatelessWidget {
+  const OrderStatusCard({
     super.key,
-    required this.order,
   });
-  final AddOrderModel order;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,39 +14,29 @@ class OrderCard extends StatelessWidget {
         decoration: BoxDecoration(
             color: kThirdColor, borderRadius: BorderRadius.circular(16)),
         height: 100,
-        child: Card(
+        child: const Card(
           color: kThirdColor2,
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: EdgeInsets.all(16),
                 child: Text(
-                  order.name,
-                  style: const TextStyle(
+                  'order.name',
+                  style: TextStyle(
                       color: kPrimaryColor,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              const Spacer(),
+              Spacer(),
               Padding(
-                padding: const EdgeInsets.all(8),
+                padding: EdgeInsets.all(8),
                 child: Text(
-                  order.quantity,
-                  style: const TextStyle(
+                  'status',
+                  style: TextStyle(
                       color: kPrimaryColor,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
-                ),
-              ),
-              IconButton(
-                onPressed: () {
-                  order.delete();
-                  BlocProvider.of<OrderCubit>(context).fetchAllOrder();
-                },
-                icon: const Icon(
-                  Icons.close,
-                  color: kPrimaryColor,
                 ),
               ),
             ],

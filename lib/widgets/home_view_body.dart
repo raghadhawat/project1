@@ -8,6 +8,7 @@ import 'package:pharma_track/helper/show_snack_bar.dart';
 import 'package:pharma_track/theme_color.dart';
 import 'package:pharma_track/views/add_order_view.dart';
 import 'package:pharma_track/views/all_medicine_view.dart';
+import 'package:pharma_track/views/order_status_view.dart';
 import 'package:pharma_track/widgets/custom-main-card.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -102,14 +103,17 @@ class HomeViewBody extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     CustomMainCard(
+                      onTap: () {
+                        Navigator.pushNamed(context, OrderStatusView.id);
+                      },
                       color: kThirdColor2,
                       title: 'Order Status',
                     ),
-                    CustomMainCard(
+                    const CustomMainCard(
                       color: kThirdColor2,
                       title: 'Favourit',
                     ),

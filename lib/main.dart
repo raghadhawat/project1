@@ -13,6 +13,7 @@ import 'package:pharma_track/views/home_view.dart';
 import 'package:pharma_track/views/login_view.dart';
 import 'package:pharma_track/views/medicine_detail_view.dart';
 import 'package:pharma_track/views/medicine_view.dart';
+import 'package:pharma_track/views/order_status_view.dart';
 import 'package:pharma_track/views/sign_up_view.dart';
 
 void main() async {
@@ -48,6 +49,7 @@ class PharmaTrack extends StatelessWidget {
           MedicineView.id: (context) => const MedicineView(),
           MedicineDetaileView.id: (context) => const MedicineDetaileView(),
           AddOrderView.id: (context) => const AddOrderView(),
+          OrderStatusView.id: (context) => const OrderStatusView(),
         },
         initialRoute: LoginView.id,
       ),
