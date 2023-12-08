@@ -92,7 +92,7 @@ class MedicineTile extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: const TextStyle(
-                      color: Colors.grey,
+                      color: Color.fromARGB(255, 46, 86, 46),
                       fontSize: 14,
                     ),
                   ),

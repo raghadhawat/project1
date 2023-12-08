@@ -33,7 +33,7 @@ class MedicineDetaileView extends StatelessWidget {
                 );
               });
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.shopping_cart_outlined),
       ),
       appBar: AppBar(
         backgroundColor: kPrimaryColor,

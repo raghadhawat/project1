@@ -108,6 +108,8 @@ class HomeViewBody extends StatelessWidget {
                   children: [
                     CustomMainCard(
                       onTap: () {
+                        BlocProvider.of<AllApiCubit>(context)
+                            .orderStatus(context);
                         Navigator.pushNamed(context, OrderStatusView.id);
                       },
                       color: kThirdColor2,

@@ -31,3 +31,21 @@ final class MedicineFailure extends AllApiState {
   final String errMessage;
   MedicineFailure(this.errMessage);
 }
+
+final class SendOrderLoading extends AllApiState {}
+
+final class SendOrderSuccess extends AllApiState {}
+
+final class SendOrderFailure extends AllApiState {
+  final String errMessage;
+  SendOrderFailure(this.errMessage);
+}
+
+final class OrderStateLoading extends AllApiState {}
+
+final class OrderStateSuccess extends AllApiState {}
+
+final class OrderStateFailure extends AllApiState {
+  final String errMessage;
+  OrderStateFailure(this.errMessage);
+}

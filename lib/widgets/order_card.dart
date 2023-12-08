@@ -46,6 +46,7 @@ class OrderCard extends StatelessWidget {
               IconButton(
                 onPressed: () {
                   order.delete();
+
                   BlocProvider.of<OrderCubit>(context).fetchAllOrder();
                 },
                 icon: const Icon(
