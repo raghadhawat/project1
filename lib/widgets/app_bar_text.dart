@@ -9,10 +9,11 @@ class AppBarText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Text(
-      'PharmaTrack',
+      kName,
       style: TextStyle(
-        fontFamily: kFont1,
+        fontFamily: kFont2,
         fontSize: 30,
+        fontWeight: FontWeight.bold,
         color: kThirdColor,
       ),
     );

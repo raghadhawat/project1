@@ -94,7 +94,7 @@ class _AddOrderButtomSheeetState extends State<AddOrderButtomSheeet> {
                                     name: name!,
                                     quantity: quantity!,
                                     tName: "fsd",
-                                    image: kLogo,
+                                    image: kLogo2,
                                   );
                                   BlocProvider.of<AddOrderCubit>(context)
                                       .addOrder(addOrderModel);

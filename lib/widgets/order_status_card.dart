@@ -3,19 +3,19 @@ import 'package:intl/intl.dart';
 import 'package:pharma_track/constants.dart';
 
 class OrderStatusCard extends StatelessWidget {
-  const OrderStatusCard({
+  OrderStatusCard({
     super.key,
     required this.id,
     required this.date,
     required this.status,
     required this.paidStatus,
   });
-  final int id;
-  final String date, status, paidStatus;
+  int? id;
+  String? date, status, paidStatus;
 
   @override
   Widget build(BuildContext context) {
-    var inputDate1 = DateTime.parse(date);
+    var inputDate1 = DateTime.parse(date ?? "0000-00-00");
     var outputFormat1 = DateFormat('yyyy-MM-dd');
     var outputDate1 = outputFormat1.format(inputDate1);
     return Padding(

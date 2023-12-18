@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-const kLogo = 'assets/images/scholar.png';
+const kName = 'RepoMed';
+const kLogo1 = 'assets/images/logo1.png';
+const kLogo2 = 'assets/images/logo2.png';
+const kLogo3 = 'assets/images/logo3.png';
 const kPrimaryColor = Color(0xff154c79);
 const kSecondColor = Color(0xffabdbe3);
 const kSecondColor2 = Color(0xff26577C);

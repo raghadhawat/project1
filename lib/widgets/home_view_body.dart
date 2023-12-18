@@ -5,7 +5,6 @@ import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/cubits/order_cubit/order_cubit.dart';
 import 'package:pharma_track/helper/show_snack_bar.dart';
-import 'package:pharma_track/theme_color.dart';
 import 'package:pharma_track/views/add_order_view.dart';
 import 'package:pharma_track/views/all_medicine_view.dart';
 import 'package:pharma_track/views/order_status_view.dart';
@@ -35,17 +34,24 @@ class HomeViewBody extends StatelessWidget {
         child: SingleChildScrollView(
           child: Container(
             height: MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(
-              gradient: ThemeColor(),
-            ),
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color.fromARGB(255, 190, 238, 246),
+                Color(0xffeeeee4),
+                Colors.white,
+                Color.fromARGB(255, 214, 233, 236),
+              ],
+            )),
             child: Column(
               children: [
                 const SizedBox(
                   height: 16,
                 ),
-                Image.asset(
-                  kLogo,
-                  height: 150,
+                const SizedBox(
+                  height: 16,
                 ),
                 const Text(
                   'Welcome To Our StoreHouse',
@@ -53,7 +59,7 @@ class HomeViewBody extends StatelessWidget {
                     fontFamily: kFont1,
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
-                    color: kPrimaryColor,
+                    color: Color(0xff35bcd7),
                   ),
                 ),
                 const Text(
@@ -75,14 +81,14 @@ class HomeViewBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 50,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     CustomMainCard(
-                      color: kThirdColor2,
-                      title: 'Medicine',
+                      image:
+                          'assets/images/medicine-typography-word-art-background-of-drugstore-pharmacy-pill-tablet-bottle-glass-snake-with-outline-style-vector-design-illustration-2E35TBG.jpg',
                       onTap: () {
                         BlocProvider.of<AllApiCubit>(context)
                             .allCategory(context);
@@ -90,44 +96,42 @@ class HomeViewBody extends StatelessWidget {
                             .allMedicine(context);
                       },
                     ),
+                    const CustomMainCard(
+                      image: 'assets/images/download (1).jpg',
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
                     CustomMainCard(
-                      color: kThirdColor2,
-                      title: 'Add Order',
+                      image: 'assets/images/images.jpg',
                       onTap: () {
                         BlocProvider.of<OrderCubit>(context).fetchAllOrder();
                         Navigator.pushNamed(context, AddOrderView.id);
                       },
                     ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
                     CustomMainCard(
                       onTap: () {
                         BlocProvider.of<AllApiCubit>(context)
                             .orderStatus(context);
                         Navigator.pushNamed(context, OrderStatusView.id);
                       },
-                      color: kThirdColor2,
-                      title: 'Order Status',
-                    ),
-                    const CustomMainCard(
-                      color: kThirdColor2,
-                      title: 'Favourit',
+                      image:
+                          'assets/images/order-status-rubber-stamp-vector-14032742.jpg',
                     ),
                   ],
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 15,
                 ),
                 CustomMainCard(
                   onTap: () {},
-                  color: kThirdColor2,
-                  title: 'Report',
+                  image:
+                      'assets/images/report-word-lettering-vector-27785261.jpg',
                 )
               ],
             ),

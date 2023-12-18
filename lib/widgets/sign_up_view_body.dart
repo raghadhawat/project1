@@ -41,7 +41,10 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               const SizedBox(
                 height: 32,
               ),
-              Image.asset(kLogo),
+              Image.asset(
+                kLogo2,
+                height: 150,
+              ),
               const Text(
                 "Welcome To",
                 style: TextStyle(
@@ -51,16 +54,13 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 ),
               ),
               const Text(
-                "PharmaTrack",
+                kName,
                 style: TextStyle(
-                  fontFamily: kFont1,
+                  fontFamily: kFont2,
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                   color: kPrimaryColor,
                 ),
-              ),
-              const SizedBox(
-                height: 32,
               ),
               Row(
                 children: [

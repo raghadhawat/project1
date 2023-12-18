@@ -24,7 +24,7 @@ class DetailCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
-              kLogo,
+              kLogo2,
               height: 350,
               width: MediaQuery.of(context).size.width,
             ),

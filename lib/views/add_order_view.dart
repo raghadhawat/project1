@@ -58,6 +58,7 @@ class AddOrderView extends StatelessWidget {
                   order.delete();
                 }
 
+                print(BlocProvider.of<OrderCubit>(context).orders!);
                 BlocProvider.of<OrderCubit>(context).fetchAllOrder();
               } else if (state is SendOrderFailure) {
                 print(state.errMessage);

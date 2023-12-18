@@ -74,7 +74,7 @@ class _MedicineFormState extends State<MedicineForm> {
                           name: name!,
                           quantity: quantity!,
                           tName: "fsd",
-                          image: kLogo,
+                          image: kLogo2,
                         );
                         BlocProvider.of<AddOrderCubit>(context)
                             .addOrder(addOrderModel);

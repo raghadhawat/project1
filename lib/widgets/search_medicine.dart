@@ -47,7 +47,7 @@ class SearchMedicine extends SearchDelegate {
                     arguments: {
                       'name': "${filter![index].scientificName}",
                       'tName': "${filter![index].tradeName}",
-                      'image': kLogo,
+                      'image': kLogo2,
                       'companyName': "${filter![index].companyName}",
                       'form': "${filter![index].form}",
                       'quantity': filter![index].quantity,
@@ -59,7 +59,7 @@ class SearchMedicine extends SearchDelegate {
                     });
               },
               child: SearchMedicineCard(
-                  image: kLogo,
+                  image: kLogo2,
                   name: "${filter![index].scientificName}",
                   tname: "${filter![index].tradeName}"));
         });
@@ -79,7 +79,7 @@ class SearchMedicine extends SearchDelegate {
                           "${AllApiCubit.get(context).medicineModel!.data![index].scientificName}",
                       'tName':
                           "${AllApiCubit.get(context).medicineModel!.data![index].tradeName}",
-                      'image': kLogo,
+                      'image': kLogo2,
                       'companyName':
                           "${AllApiCubit.get(context).medicineModel!.data![index].companyName}",
                       'form':
@@ -103,7 +103,7 @@ class SearchMedicine extends SearchDelegate {
                     });
               },
               child: SearchMedicineCard(
-                  image: kLogo,
+                  image: kLogo2,
                   name:
                       "${AllApiCubit.get(context).medicineModel!.data![index].scientificName}",
                   tname:
@@ -127,7 +127,7 @@ class SearchMedicine extends SearchDelegate {
                       arguments: {
                         'name': "${filter![index].scientificName}",
                         'tName': "${filter![index].tradeName}",
-                        'image': kLogo,
+                        'image': kLogo2,
                         'companyName': "${filter![index].companyName}",
                         'form': "${filter![index].form}",
                         'quantity': filter![index].quantity,
@@ -139,7 +139,7 @@ class SearchMedicine extends SearchDelegate {
                       });
                 },
                 child: SearchMedicineCard(
-                    image: kLogo,
+                    image: kLogo2,
                     name: "${filter![index].scientificName}",
                     tname: "${filter![index].tradeName}"));
           });

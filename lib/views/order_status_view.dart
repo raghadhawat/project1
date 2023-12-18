@@ -24,11 +24,10 @@ class OrderStatusView extends StatelessWidget {
                 itemCount: cubit.orderStatusModel?.data?.length,
                 itemBuilder: (context, index) {
                   return OrderStatusCard(
-                    status: cubit.orderStatusModel!.data![index].status!,
-                    paidStatus:
-                        cubit.orderStatusModel!.data![index].paidStatus!,
-                    date: cubit.orderStatusModel!.data![index].createdAt!,
-                    id: cubit.orderStatusModel!.data![index].id!,
+                    status: cubit.orderStatusModel?.data?[index].status,
+                    paidStatus: cubit.orderStatusModel?.data?[index].paidStatus,
+                    date: cubit.orderStatusModel?.data?[index].createdAt,
+                    id: cubit.orderStatusModel?.data?[index].id,
                   );
                 }));
       },

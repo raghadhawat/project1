@@ -36,7 +36,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               const SizedBox(
                 height: 70,
               ),
-              Image.asset(kLogo),
+              Image.asset(
+                kLogo2,
+                height: 200,
+              ),
               const SizedBox(
                 height: 30,
               ),
@@ -49,16 +52,16 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 ),
               ),
               const Text(
-                "PharmaTrack",
+                kName,
                 style: TextStyle(
-                  fontFamily: kFont1,
+                  fontFamily: kFont2,
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
                   color: kPrimaryColor,
                 ),
               ),
               const SizedBox(
-                height: 50,
+                height: 30,
               ),
               CustomTextFormField(
                 hint: 'phone',

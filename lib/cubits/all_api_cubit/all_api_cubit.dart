@@ -156,7 +156,6 @@ class AllApiCubit extends Cubit<AllApiState> {
       token: AuthCubit.get(context).enterResponseModel!.data!.token,
     )
         .then((value) {
-      print(value);
       orderStatusModel = OrderStatusModel.fromJson(value);
     });
   }
