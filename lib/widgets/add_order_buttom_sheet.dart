@@ -35,8 +35,7 @@ class _AddOrderButtomSheeetState extends State<AddOrderButtomSheeet> {
         }
       }
     }, builder: (context, state) {
-      return SingleChildScrollView(
-          child: BlocProvider(
+      return BlocProvider(
         create: (context) => AddOrderCubit(),
         child: BlocConsumer<AddOrderCubit, AddOrderState>(
             listener: (context, state) {
@@ -53,7 +52,8 @@ class _AddOrderButtomSheeetState extends State<AddOrderButtomSheeet> {
               child: Form(
                   key: formKey,
                   autovalidateMode: autovalidateMode,
-                  child: Padding(
+                  child: SingleChildScrollView(
+                      child: Padding(
                     padding: EdgeInsets.only(
                         top: 8,
                         left: 8,
@@ -76,7 +76,7 @@ class _AddOrderButtomSheeetState extends State<AddOrderButtomSheeet> {
                           },
                           hint: 'Quantity',
                           label: 'Quantity',
-                          icon: Icons.input,
+                          icon: Icons.add,
                         ),
                         const SizedBox(
                           height: 40,
@@ -111,9 +111,9 @@ class _AddOrderButtomSheeetState extends State<AddOrderButtomSheeet> {
                         )
                       ],
                     ),
-                  )));
+                  ))));
         }),
-      ));
+      );
     });
   }
 }

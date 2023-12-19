@@ -21,7 +21,7 @@ class CategoryCard extends StatelessWidget {
           height: 200,
           width: 220,
           decoration: BoxDecoration(
-            color: kSecondColor2,
+            color: const Color(0xff35bcd7),
             borderRadius: BorderRadius.circular(5),
           ),
           child: Center(

@@ -33,7 +33,7 @@ class AllMedicineList extends StatelessWidget {
               child: MedicineTile(
                 tName: "${cubit.allMedicineModel?.data?[index].tradeName}",
                 name: "${cubit.allMedicineModel?.data?[index].scientificName}",
-                image: kLogo2,
+                image: "${cubit.allMedicineModel?.data?[index].photo}",
                 companyName:
                     "${cubit.allMedicineModel?.data?[index].companyName}",
                 form: "${cubit.allMedicineModel?.data?[index].form}",

@@ -19,7 +19,7 @@ class MedicineTile extends StatelessWidget {
   });
   final String name;
   final String tName;
-  final String image;
+  String? image;
   final String companyName;
 
   final String form;
@@ -61,7 +61,8 @@ class MedicineTile extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(6),
                   child: Image.asset(
-                    image ?? "",
+                    //image ??
+                    "assets/images/medicine-typography-word-art-background-of-drugstore-pharmacy-pill-tablet-bottle-glass-snake-with-outline-style-vector-design-illustration-2E35TBG.jpg",
                     height: 90,
                     width: double.infinity,
                     fit: BoxFit.cover,

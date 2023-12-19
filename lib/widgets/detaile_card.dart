@@ -23,10 +23,28 @@ class DetailCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
-              kLogo2,
-              height: 350,
+            Container(
+              height: 400,
               width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                image: const DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage(
+                      'assets/images/medicine-typography-word-art-background-of-drugstore-pharmacy-pill-tablet-bottle-glass-snake-with-outline-style-vector-design-illustration-2E35TBG.jpg'),
+                ),
+                borderRadius:
+                    const BorderRadius.vertical(bottom: Radius.circular(46)),
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 15,
+                    color: kPrimaryColor.withOpacity(.05),
+                    spreadRadius: 0,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 16,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
@@ -37,61 +55,65 @@ class DetailCard extends StatelessWidget {
                   Text(
                     details['name'],
                     style: const TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: 20,
+                        color: Color(0xff35bcd7),
+                        fontSize: 22,
                         fontWeight: FontWeight.bold),
                   ),
                   const Spacer(),
                   Text(
                     ' ${details['price']} S.P',
                     style: const TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: 20,
+                        color: Color(0xff35bcd7),
+                        fontSize: 22,
                         fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-              child: Container(
-                child: Text(
-                  '${details['tName']} MADE BY ${details['companyName']}',
-                  style: const TextStyle(fontSize: 18, color: Colors.black54),
-                ),
-              ),
-            ),
-            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
-              child: Row(
-                children: [
-                  Text(
-                    "FORM : ${details['form']}",
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const Spacer(),
-                  Text("QUANTITY : ${details['quantity']}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      )),
-                ],
+              child: Text(
+                '${details['tName']}',
+                style: const TextStyle(
+                  fontSize: 20,
+                  color: kPrimaryColor,
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 24,
-                vertical: 8,
+              ),
+              child: Text(
+                "FORM : ${details['form']}",
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: kPrimaryColor,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Text(
+                "QUANTITY : ${details['quantity']}",
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: kPrimaryColor,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
               ),
               child: Text(
                 details['details'],
                 style: const TextStyle(
-                  color: Colors.black87,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w900,
+                  color: kPrimaryColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),

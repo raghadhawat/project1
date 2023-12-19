@@ -20,7 +20,7 @@ class MedicineDetaileView extends StatelessWidget {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        backgroundColor: kPrimaryColor,
+        backgroundColor: Color(0xff35bcd7),
         onPressed: () {
           showModalBottomSheet(
               isScrollControlled: true,
