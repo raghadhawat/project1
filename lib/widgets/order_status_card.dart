@@ -22,43 +22,52 @@ class OrderStatusCard extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10, right: 8, left: 8),
       child: Container(
         decoration: BoxDecoration(
-            color: kThirdColor, borderRadius: BorderRadius.circular(16)),
-        height: 150,
+            color: kThirdColor2, borderRadius: BorderRadius.circular(16)),
+        height: 170,
         child: Card(
           color: kThirdColor2,
-          child: Column(
+          child: Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(4),
-                child: Column(
-                  children: [
-                    Text(
-                      'order number : $id ',
-                      style: const TextStyle(
-                          color: kPrimaryColor,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      ' created at $outputDate1 ',
-                      style: const TextStyle(
-                          color: kPrimaryColor,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
+              Container(
+                height: MediaQuery.of(context).size.height,
+                width: 90,
+                decoration: const BoxDecoration(color: Color(0xff7BD3EA)),
+                child: Center(
+                    child: Text(
+                  '$id ',
+                  style: const TextStyle(
+                      color: kThirdColor2,
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold),
+                )),
               ),
               Padding(
-                padding: const EdgeInsets.all(4),
+                padding: const EdgeInsets.all(16),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Sended at $outputDate1 ',
+                      style: const TextStyle(
+                          color: kPrimaryColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       'status :$status',
                       style: const TextStyle(
                           color: kPrimaryColor,
                           fontSize: 20,
                           fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 10,
                     ),
                     Text(
                       'paid status : $paidStatus',

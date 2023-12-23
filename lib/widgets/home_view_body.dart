@@ -17,166 +17,150 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isLoading = false;
-    return BlocConsumer<AllApiCubit, AllApiState>(listener: (context, state) {
-      if (state is AllApiLoading) {
-        isLoading = true;
-      } else if (state is AllApiSuccess) {
-        Navigator.pushNamed(context, AllMedicineView.id);
-        isLoading = false;
-      } else if (state is AllApiFailur) {
-        showSnakbar(context, state.errMessage);
-        isLoading = false;
-      }
-    }, builder: (context, state) {
-      return BlurryModalProgressHUD(
-        inAsyncCall: isLoading,
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          // decoration: const BoxDecoration(
-          //     gradient: LinearGradient(
-          //   begin: Alignment.topCenter,
-          //   end: Alignment.bottomCenter,
-          //   colors: [
-          //     Color.fromARGB(255, 190, 238, 246),
-          //     Color(0xffeeeee4),
-          //     Colors.white,
-          //     Color.fromARGB(255, 214, 233, 236),
-          //   ],
-          // )),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 16),
-            child: Column(
-              children: [
-                Container(
-                  child: Stack(children: [
-                    Opacity(
-                      opacity: 0.5,
-                      child: ClipPath(
-                          clipper: WaveClipper(),
-                          child: Container(
-                            color: kPrimaryColor,
-                            height: 200,
-                          )),
-                    ),
-                    ClipPath(
-                        clipper: WaveClipper(),
-                        child: Container(
-                          color: kPrimaryColor,
-                          height: 180,
-                          child: const Column(
-                            children: [
-                              // SizedBox(
-                              //   height: 4,
-                              // ),
-                              // Text(
-                              //   'Welcome To Our StoreHouse',
-                              //   style: TextStyle(
-                              //     fontFamily: kFont1,
-                              //     fontSize: 32,
-                              //     fontWeight: FontWeight.bold,
-                              //     color: kThirdColor,
-                              //   ),
-                              // ),
-                              Text(
-                                ' where you can find all your  ',
-                                style: TextStyle(
-                                  fontFamily: kFont1,
-                                  fontSize: 34,
-                                  // fontWeight: FontWeight.bold,
-                                  color: kThirdColor,
-                                ),
-                              ),
-                              Text(
-                                ' needs from medicine',
-                                style: TextStyle(
-                                  fontFamily: kFont1,
-                                  fontSize: 32,
-                                  // fontWeight: FontWeight.bold,
-                                  color: kThirdColor,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                            ],
-                          ),
-                        )),
-                  ]),
-                ),
-                Expanded(
-                  child: ListView(
-                    children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      CustomMainCard(
-                        leftPadding: 90,
-                        height: 350,
-                        image: 'assets/images/pharmacy.png',
-                        name: 'MEDICINE',
-                        onTap: () {
-                          BlocProvider.of<AllApiCubit>(context)
-                              .allCategory(context);
-                          BlocProvider.of<AllApiCubit>(context)
-                              .allMedicine(context);
-                        },
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      CustomMainCard(
-                        leftPadding: 90,
-                        height: 250,
-                        image: 'assets/images/order 1.png',
-                        name: 'ORDER',
-                        onTap: () {
-                          BlocProvider.of<OrderCubit>(context).fetchAllOrder();
-                          Navigator.pushNamed(context, AddOrderView.id);
-                        },
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      CustomMainCard(
-                        leftPadding: 30,
-                        height: 100,
-                        image: 'assets/images/order status.png',
-                        onTap: () {
-                          BlocProvider.of<AllApiCubit>(context)
-                              .orderStatus(context);
-                          Navigator.pushNamed(context, OrderStatusView.id);
-                        },
-                        name: 'ORDER STARUS',
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      const CustomMainCard(
-                        leftPadding: 85,
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      // decoration: const BoxDecoration(
+      //     gradient: LinearGradient(
+      //   begin: Alignment.topCenter,
+      //   end: Alignment.bottomCenter,
+      //   colors: [
+      //     Color.fromARGB(255, 190, 238, 246),
+      //     Color(0xffeeeee4),
+      //     Colors.white,
+      //     Color.fromARGB(255, 214, 233, 236),
+      //   ],
+      // )),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 16),
+        child: Column(
+          children: [
+            Container(
+              child: Stack(children: [
+                Opacity(
+                  opacity: 0.5,
+                  child: ClipPath(
+                      clipper: WaveClipper(),
+                      child: Container(
+                        color: kPrimaryColor,
                         height: 200,
-                        image: 'assets/images/favourite.png',
-                        name: 'FAVOURITE',
+                      )),
+                ),
+                ClipPath(
+                    clipper: WaveClipper(),
+                    child: Container(
+                      color: kPrimaryColor,
+                      height: 180,
+                      child: const Column(
+                        children: [
+                          SizedBox(
+                            height: 8,
+                          ),
+                          // Text(
+                          //   'Welcome To Our StoreHouse',
+                          //   style: TextStyle(
+                          //     fontFamily: kFont1,
+                          //     fontSize: 32,
+                          //     fontWeight: FontWeight.bold,
+                          //     color: kThirdColor,
+                          //   ),
+                          // ),
+                          Text(
+                            ' where you can find all your  ',
+                            style: TextStyle(
+                              fontFamily: kFont2,
+                              fontSize: 28,
+                              // fontWeight: FontWeight.bold,
+                              color: kThirdColor,
+                            ),
+                          ),
+                          Text(
+                            ' needs from medicine',
+                            style: TextStyle(
+                              fontFamily: kFont2,
+                              fontSize: 28,
+                              // fontWeight: FontWeight.bold,
+                              color: kThirdColor,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                        ],
                       ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      CustomMainCard(
-                        leftPadding: 120,
-                        height: 100,
-                        image: 'assets/images/report.png',
-                        onTap: () {},
-                        name: 'REPOET',
-                      ),
-                    ],
-                  ),
-                )
-              ],
+                    )),
+              ]),
             ),
-          ),
+            Expanded(
+              child: ListView(
+                children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  CustomMainCard(
+                    leftPadding: 90,
+                    height: 350,
+                    image: 'assets/images/pharmacy.png',
+                    name: 'MEDICINE',
+                    onTap: () {
+                      BlocProvider.of<AllApiCubit>(context)
+                          .allCategory(context);
+                      BlocProvider.of<AllApiCubit>(context)
+                          .allMedicine(context);
+                    },
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  CustomMainCard(
+                    leftPadding: 90,
+                    height: 250,
+                    image: 'assets/images/order 1.png',
+                    name: 'ORDER',
+                    onTap: () {
+                      BlocProvider.of<OrderCubit>(context).fetchAllOrder();
+                      Navigator.pushNamed(context, AddOrderView.id);
+                    },
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  CustomMainCard(
+                    leftPadding: 30,
+                    height: 100,
+                    image: 'assets/images/order status.png',
+                    onTap: () {
+                      BlocProvider.of<AllApiCubit>(context)
+                          .orderStatus(context);
+                      Navigator.pushNamed(context, OrderStatusView.id);
+                    },
+                    name: 'ORDER STARUS',
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const CustomMainCard(
+                    leftPadding: 80,
+                    height: 250,
+                    image: 'assets/images/favourite.png',
+                    name: 'FAVOURITE',
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  CustomMainCard(
+                    leftPadding: 102.9,
+                    height: 100,
+                    image: 'assets/images/report.png',
+                    onTap: () {},
+                    name: 'REPOET',
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
-      );
-    });
+      ),
+    );
   }
 }
 

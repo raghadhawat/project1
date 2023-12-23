@@ -16,75 +16,59 @@ class AllMedicineView extends StatelessWidget {
   static String id = 'AllMedicineView';
   @override
   Widget build(BuildContext context) {
-    bool isLoading = false;
-    return BlocConsumer<AllApiCubit, AllApiState>(listener: (context, state) {
-      if (state is MedicineLoading) {
-        isLoading = true;
-      } else if (state is MedicineSuccess) {
-        Navigator.pushNamed(context, MedicineView.id);
-        isLoading = false;
-      } else if (state is MedicineFailure) {
-        showSnakbar(context, state.errMessage);
-        isLoading = false;
-      }
-    }, builder: (context, state) {
-      return Scaffold(
-        appBar: AppBar(
-          backgroundColor: kPrimaryColor,
-          centerTitle: true,
-          title: const AppBarText(),
-          actions: [
-            PopupMenuButton(
-                icon: const Icon(
-                  Icons.search,
-                  size: 30,
-                ),
-                itemBuilder: (context) => [
-                      PopupMenuItem(
-                        child: const Text(
-                          'Category',
-                          style: TextStyle(
-                            color: kPrimaryColor,
-                          ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: kPrimaryColor,
+        centerTitle: true,
+        title: const AppBarText(),
+        actions: [
+          PopupMenuButton(
+              icon: const Icon(
+                Icons.search,
+                size: 30,
+              ),
+              itemBuilder: (context) => [
+                    PopupMenuItem(
+                      child: const Text(
+                        'Category',
+                        style: TextStyle(
+                          color: kPrimaryColor,
                         ),
-                        onTap: () {
-                          showSearch(
-                              context: context, delegate: SearchCategory());
-                        },
                       ),
-                      PopupMenuItem(
-                        child: const Text(
-                          'Medicine',
-                          style: TextStyle(
-                            color: kPrimaryColor,
-                          ),
+                      onTap: () {
+                        showSearch(
+                            context: context, delegate: SearchCategory());
+                      },
+                    ),
+                    PopupMenuItem(
+                      child: const Text(
+                        'Medicine',
+                        style: TextStyle(
+                          color: kPrimaryColor,
                         ),
-                        onTap: () {
-                          showSearch(
-                              context: context, delegate: SearchAllMedicine());
-                        },
-                      )
-                    ])
+                      ),
+                      onTap: () {
+                        showSearch(
+                            context: context, delegate: SearchAllMedicine());
+                      },
+                    )
+                  ])
+        ],
+      ),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 12),
+        child: CustomScrollView(
+          physics: BouncingScrollPhysics(),
+          slivers: [
+            SliverToBoxAdapter(child: CategoryList()),
+            SliverToBoxAdapter(
+                child: SizedBox(
+              height: 16,
+            )),
+            SliverToBoxAdapter(child: AllMedicineList()),
           ],
         ),
-        body: BlurryModalProgressHUD(
-          inAsyncCall: isLoading,
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12),
-            child: CustomScrollView(
-              physics: BouncingScrollPhysics(),
-              slivers: [
-                SliverToBoxAdapter(child: CategoryList()),
-                SliverToBoxAdapter(
-                    child: SizedBox(
-                  height: 16,
-                )),
-                SliverToBoxAdapter(child: AllMedicineList()),
-              ],
-            ),
-          ),
-        ),
-      );
-    });
+      ),
+    );
   }
 }

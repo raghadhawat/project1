@@ -22,7 +22,7 @@ class SearchMedicineCard extends StatelessWidget {
             children: [
               Image.asset(image),
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(8),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

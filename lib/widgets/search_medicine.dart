@@ -79,7 +79,7 @@ class SearchMedicine extends SearchDelegate {
                           "${AllApiCubit.get(context).medicineModel!.data![index].scientificName}",
                       'tName':
                           "${AllApiCubit.get(context).medicineModel!.data![index].tradeName}",
-                      'image': kLogo2,
+                      'image': 'assets/images/images (7).png',
                       'companyName':
                           "${AllApiCubit.get(context).medicineModel!.data![index].companyName}",
                       'form':
@@ -127,7 +127,7 @@ class SearchMedicine extends SearchDelegate {
                       arguments: {
                         'name': "${filter![index].scientificName}",
                         'tName': "${filter![index].tradeName}",
-                        'image': kLogo2,
+                        'image': 'assets/images/images (7).png',
                         'companyName': "${filter![index].companyName}",
                         'form': "${filter![index].form}",
                         'quantity': filter![index].quantity,
@@ -139,7 +139,7 @@ class SearchMedicine extends SearchDelegate {
                       });
                 },
                 child: SearchMedicineCard(
-                    image: kLogo2,
+                    image: 'assets/images/images (7).png',
                     name: "${filter![index].scientificName}",
                     tname: "${filter![index].tradeName}"));
           });

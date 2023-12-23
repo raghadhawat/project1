@@ -17,13 +17,26 @@ class OrderCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             color: kThirdColor, borderRadius: BorderRadius.circular(16)),
-        height: 100,
+        height: 130,
         child: Card(
           color: kThirdColor2,
           child: Row(
             children: [
+              Container(
+                height: MediaQuery.of(context).size.height,
+                width: 90,
+                decoration: const BoxDecoration(color: Color(0xff7BD3EA)),
+                child: Center(
+                    child: Text(
+                  order.quantity,
+                  style: const TextStyle(
+                      color: kThirdColor2,
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold),
+                )),
+              ),
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(5),
                 child: Text(
                   order.name,
                   style: const TextStyle(
@@ -32,26 +45,20 @@ class OrderCard extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              const Spacer(),
+              Spacer(),
               Padding(
-                padding: const EdgeInsets.all(8),
-                child: Text(
-                  order.quantity,
-                  style: const TextStyle(
-                      color: kPrimaryColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              IconButton(
-                onPressed: () {
-                  order.delete();
+                padding: const EdgeInsets.only(bottom: 90),
+                child: IconButton(
+                  onPressed: () {
+                    order.delete();
 
-                  BlocProvider.of<OrderCubit>(context).fetchAllOrder();
-                },
-                icon: const Icon(
-                  Icons.close,
-                  color: kPrimaryColor,
+                    BlocProvider.of<OrderCubit>(context).fetchAllOrder();
+                  },
+                  icon: const Icon(
+                    Icons.close,
+                    color: kPrimaryColor,
+                    size: 25,
+                  ),
                 ),
               ),
             ],

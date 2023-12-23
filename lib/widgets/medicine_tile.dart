@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/views/medicine_detail_view.dart';
+import 'package:pharma_track/widgets/medicine_buttom_sheet.dart';
 
 class MedicineTile extends StatelessWidget {
   MedicineTile({
@@ -48,56 +49,102 @@ class MedicineTile extends StatelessWidget {
           });
         },
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: kThirdColor2,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
+            child: Stack(
+              clipBehavior: Clip.none,
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              // mainAxisSize: MainAxisSize.min,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(6),
-                  child: Image.asset(
-                    //image ??
-                    "assets/images/medicine-typography-word-art-background-of-drugstore-pharmacy-pill-tablet-bottle-glass-snake-with-outline-style-vector-design-illustration-2E35TBG.jpg",
-                    height: 90,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: SizedBox(
+                        width: 150,
+                        height: 100,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(6),
+                          child: Image.asset(
+                            //image ??
+                            "assets/images/images (7).png",
+                            height: 90,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                    // const SizedBox(
+                    //   height: 4,
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 8),
+                    //   child: Text(
+                    //     name,
+                    //     maxLines: 2,
+                    //     style: const TextStyle(
+                    //       color: kPrimaryColor,
+                    //       fontSize: 17,
+                    //       fontWeight: FontWeight.w500,
+                    //     ),
+                    //   ),
+                    // ),
+                    // const SizedBox(
+                    //   height: 1,
+                    // ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: Center(
+                        child: Text(
+                          tName,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                          style: const TextStyle(
+                            color: kPrimaryColor,
+                            fontSize: 17,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 12,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8),
-                  child: Text(
-                    name,
-                    maxLines: 2,
-                    style: const TextStyle(
-                      color: kPrimaryColor,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500,
+                Positioned(
+                  right: 50,
+                  top: 155,
+                  child: GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(
+                          isScrollControlled: true,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16)),
+                          context: context,
+                          builder: (context) {
+                            return MedicineButtomSheeet(
+                              name: name,
+                            );
+                          });
+                    },
+                    child: Center(
+                      child: Container(
+                        height: 35,
+                        width: 80,
+                        decoration: BoxDecoration(
+                            color: Color(0xff7BD3EA),
+                            borderRadius: BorderRadius.circular(8)),
+                        child: const Center(
+                            child: Text(
+                          "Buy",
+                          style: TextStyle(color: kThirdColor2, fontSize: 20),
+                        )),
+                      ),
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 1,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8),
-                  child: Text(
-                    tName,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    style: const TextStyle(
-                      color: Color.fromARGB(255, 46, 86, 46),
-                      fontSize: 14,
-                    ),
-                  ),
-                )
               ],
             ),
           ),

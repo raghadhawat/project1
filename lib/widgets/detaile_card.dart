@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/theme_color.dart';
+import 'package:pharma_track/widgets/medicine_buttom_sheet.dart';
 
 class DetailCard extends StatelessWidget {
   const DetailCard({
@@ -24,16 +25,15 @@ class DetailCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 400,
+              height: 350,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 image: const DecorationImage(
                   fit: BoxFit.fill,
-                  image: AssetImage(
-                      'assets/images/medicine-typography-word-art-background-of-drugstore-pharmacy-pill-tablet-bottle-glass-snake-with-outline-style-vector-design-illustration-2E35TBG.jpg'),
+                  image: AssetImage('assets/images/download (2).png'),
                 ),
                 borderRadius:
-                    const BorderRadius.vertical(bottom: Radius.circular(46)),
+                    const BorderRadius.vertical(bottom: Radius.circular(80)),
                 boxShadow: [
                   BoxShadow(
                     blurRadius: 15,
@@ -56,7 +56,7 @@ class DetailCard extends StatelessWidget {
                     details['name'],
                     style: const TextStyle(
                         color: Color(0xff35bcd7),
-                        fontSize: 22,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
                   const Spacer(),
@@ -64,7 +64,7 @@ class DetailCard extends StatelessWidget {
                     ' ${details['price']} S.P',
                     style: const TextStyle(
                         color: Color(0xff35bcd7),
-                        fontSize: 22,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -120,7 +120,7 @@ class DetailCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 260),
               child: Text(
-                'Pro : ${outputDate1}',
+                'Pro : $outputDate1',
                 style: TextStyle(fontSize: 16),
               ),
             ),
@@ -129,6 +129,43 @@ class DetailCard extends StatelessWidget {
               child: Text(
                 'Exp : ${details['expirationAt']}',
                 style: TextStyle(fontSize: 16),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 55, right: 16, left: 120),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(
+                          isScrollControlled: true,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16)),
+                          context: context,
+                          builder: (context) {
+                            return MedicineButtomSheeet(
+                              name: details['name'],
+                            );
+                          });
+                    },
+                    child: Container(
+                      height: 75,
+                      width: 180,
+                      decoration: BoxDecoration(
+                          color: Color(0xff35bcd7),
+                          borderRadius: BorderRadius.circular(8)),
+                      child: const Center(
+                        child: Text(
+                          'Buy',
+                          style: TextStyle(
+                              color: kThirdColor2,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             )
           ],

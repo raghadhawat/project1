@@ -37,14 +37,14 @@ class CustomMainCard extends StatelessWidget {
           ),
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.only(left: 0),
+              padding: const EdgeInsets.all(8),
               child: Row(
                 children: [
                   Text(
                     name,
                     style: const TextStyle(
                         color: kPrimaryColor,
-                        fontSize: 30,
+                        fontSize: 28,
                         fontWeight: FontWeight.bold),
                   ),
                   Padding(

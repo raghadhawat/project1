@@ -16,33 +16,7 @@ class AddOrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: kPrimaryColor,
-        onPressed: () {
-          showModalBottomSheet(
-              isScrollControlled: true,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16)),
-              context: context,
-              builder: (context) {
-                return const AddOrderButtomSheeet();
-              });
-        },
-        child: const Icon(Icons.add),
-      ),
       appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: () {
-                BlocProvider.of<AllApiCubit>(context).sendorder(
-                    orders: BlocProvider.of<OrderCubit>(context).orders!,
-                    context: context);
-              },
-              icon: const Icon(
-                Icons.check,
-                size: 32,
-              ))
-        ],
         backgroundColor: kPrimaryColor,
         centerTitle: true,
         title: const AppBarText(),
@@ -66,25 +40,94 @@ class AddOrderView extends StatelessWidget {
               }
             },
             builder: (context, state) {
-              return ListView.builder(
-                  itemCount: orders.length,
-                  itemBuilder: ((context, index) {
-                    return GestureDetector(
-                        onTap: () {
-                          showModalBottomSheet(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16)),
-                              context: context,
-                              builder: (context) {
-                                return EditOrderButtomSheeet(
-                                  order: orders[index],
-                                );
-                              });
-                        },
-                        child: OrderCard(
-                          order: orders[index],
-                        ));
-                  }));
+              return Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                        itemCount: orders.length,
+                        itemBuilder: ((context, index) {
+                          return GestureDetector(
+                              onTap: () {
+                                showModalBottomSheet(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(16)),
+                                    context: context,
+                                    builder: (context) {
+                                      return EditOrderButtomSheeet(
+                                        order: orders[index],
+                                      );
+                                    });
+                              },
+                              child: OrderCard(
+                                order: orders[index],
+                              ));
+                        })),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            showModalBottomSheet(
+                                isScrollControlled: true,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16)),
+                                context: context,
+                                builder: (context) {
+                                  return const AddOrderButtomSheeet();
+                                });
+                          },
+                          child: Container(
+                            height: 75,
+                            width: 180,
+                            decoration: BoxDecoration(
+                                color: Color(0xff35bcd7),
+                                borderRadius: BorderRadius.circular(8)),
+                            child: const Center(
+                              child: Text(
+                                'Add Order',
+                                style: TextStyle(
+                                    color: kThirdColor2,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 19,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            BlocProvider.of<AllApiCubit>(context).sendorder(
+                                orders: BlocProvider.of<OrderCubit>(context)
+                                    .orders!,
+                                context: context);
+                          },
+                          child: Container(
+                            height: 75,
+                            width: 180,
+                            decoration: BoxDecoration(
+                                color: Color(0xff35bcd7),
+                                borderRadius: BorderRadius.circular(8)),
+                            child: const Center(
+                              child: Text(
+                                'Send Orders',
+                                style: TextStyle(
+                                    color: kThirdColor2,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              );
             },
           );
         },

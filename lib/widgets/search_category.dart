@@ -50,7 +50,7 @@ class SearchCategory extends SearchDelegate {
                   "${filter![index].name}",
                   style: const TextStyle(
                     color: kPrimaryColor,
-                    fontSize: 20,
+                    fontSize: 32,
                   ),
                 ),
               ),
@@ -80,7 +80,7 @@ class SearchCategory extends SearchDelegate {
                     "${AllApiCubit.get(context).categoryModel1?.data?[index].name}",
                     style: const TextStyle(
                       color: kPrimaryColor,
-                      fontSize: 20,
+                      fontSize: 32,
                     ),
                   ),
                 ),
@@ -108,7 +108,7 @@ class SearchCategory extends SearchDelegate {
                     "${filter![index].name}",
                     style: const TextStyle(
                       color: kPrimaryColor,
-                      fontSize: 20,
+                      fontSize: 32,
                     ),
                   ),
                 ),

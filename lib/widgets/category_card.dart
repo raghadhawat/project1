@@ -16,20 +16,19 @@ class CategoryCard extends StatelessWidget {
         BlocProvider.of<AllApiCubit>(context).medicine(context, id: id!);
       },
       child: Padding(
-        padding: const EdgeInsets.only(right: 16),
+        padding: const EdgeInsets.only(right: 10),
         child: Container(
-          height: 200,
-          width: 220,
+          width: 180,
           decoration: BoxDecoration(
-            color: const Color(0xff35bcd7),
-            borderRadius: BorderRadius.circular(5),
+            color: kPrimaryColor,
+            borderRadius: BorderRadius.circular(20),
           ),
           child: Center(
             child: Text(
               categoryName,
               style: const TextStyle(
                 color: kThirdColor2,
-                fontSize: 24,
+                fontSize: 23,
                 fontWeight: FontWeight.bold,
               ),
             ),
