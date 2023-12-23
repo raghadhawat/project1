@@ -91,6 +91,7 @@ class HomeView extends StatelessWidget {
             backgroundColor: kPrimaryColor,
             centerTitle: true,
             title: const AppBarText(),
+            elevation: 0.0,
           ),
           body: const HomeViewBody(),
         ),

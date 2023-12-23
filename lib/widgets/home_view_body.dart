@@ -33,60 +33,76 @@ class HomeViewBody extends StatelessWidget {
         inAsyncCall: isLoading,
         child: Container(
           height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromARGB(255, 190, 238, 246),
-              Color(0xffeeeee4),
-              Colors.white,
-              Color.fromARGB(255, 214, 233, 236),
-            ],
-          )),
+          // decoration: const BoxDecoration(
+          //     gradient: LinearGradient(
+          //   begin: Alignment.topCenter,
+          //   end: Alignment.bottomCenter,
+          //   colors: [
+          //     Color.fromARGB(255, 190, 238, 246),
+          //     Color(0xffeeeee4),
+          //     Colors.white,
+          //     Color.fromARGB(255, 214, 233, 236),
+          //   ],
+          // )),
           child: Padding(
             padding: const EdgeInsets.only(bottom: 16),
             child: Column(
               children: [
-                const Column(
-                  children: [
-                    SizedBox(
-                      height: 16,
+                Container(
+                  child: Stack(children: [
+                    Opacity(
+                      opacity: 0.5,
+                      child: ClipPath(
+                          clipper: WaveClipper(),
+                          child: Container(
+                            color: kPrimaryColor,
+                            height: 200,
+                          )),
                     ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Text(
-                      'Welcome To Our StoreHouse',
-                      style: TextStyle(
-                        fontFamily: kFont1,
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xff35bcd7),
-                      ),
-                    ),
-                    Text(
-                      'here where you can find all  ',
-                      style: TextStyle(
-                        fontFamily: kFont2,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: kPrimaryColor,
-                      ),
-                    ),
-                    Text(
-                      'your needs from medicine',
-                      style: TextStyle(
-                        fontFamily: kFont2,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: kPrimaryColor,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
+                    ClipPath(
+                        clipper: WaveClipper(),
+                        child: Container(
+                          color: kPrimaryColor,
+                          height: 180,
+                          child: const Column(
+                            children: [
+                              // SizedBox(
+                              //   height: 4,
+                              // ),
+                              // Text(
+                              //   'Welcome To Our StoreHouse',
+                              //   style: TextStyle(
+                              //     fontFamily: kFont1,
+                              //     fontSize: 32,
+                              //     fontWeight: FontWeight.bold,
+                              //     color: kThirdColor,
+                              //   ),
+                              // ),
+                              Text(
+                                ' where you can find all your  ',
+                                style: TextStyle(
+                                  fontFamily: kFont1,
+                                  fontSize: 34,
+                                  // fontWeight: FontWeight.bold,
+                                  color: kThirdColor,
+                                ),
+                              ),
+                              Text(
+                                ' needs from medicine',
+                                style: TextStyle(
+                                  fontFamily: kFont1,
+                                  fontSize: 32,
+                                  // fontWeight: FontWeight.bold,
+                                  color: kThirdColor,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                            ],
+                          ),
+                        )),
+                  ]),
                 ),
                 Expanded(
                   child: ListView(
@@ -95,8 +111,10 @@ class HomeViewBody extends StatelessWidget {
                         height: 20,
                       ),
                       CustomMainCard(
-                        image:
-                            'assets/images/medicine-typography-word-art-background-of-drugstore-pharmacy-pill-tablet-bottle-glass-snake-with-outline-style-vector-design-illustration-2E35TBG.jpg',
+                        leftPadding: 90,
+                        height: 350,
+                        image: 'assets/images/pharmacy.png',
+                        name: 'MEDICINE',
                         onTap: () {
                           BlocProvider.of<AllApiCubit>(context)
                               .allCategory(context);
@@ -108,7 +126,10 @@ class HomeViewBody extends StatelessWidget {
                         height: 15,
                       ),
                       CustomMainCard(
-                        image: 'assets/images/images.jpg',
+                        leftPadding: 90,
+                        height: 250,
+                        image: 'assets/images/order 1.png',
+                        name: 'ORDER',
                         onTap: () {
                           BlocProvider.of<OrderCubit>(context).fetchAllOrder();
                           Navigator.pushNamed(context, AddOrderView.id);
@@ -118,27 +139,34 @@ class HomeViewBody extends StatelessWidget {
                         height: 15,
                       ),
                       CustomMainCard(
+                        leftPadding: 30,
+                        height: 100,
+                        image: 'assets/images/order status.png',
                         onTap: () {
                           BlocProvider.of<AllApiCubit>(context)
                               .orderStatus(context);
                           Navigator.pushNamed(context, OrderStatusView.id);
                         },
-                        image:
-                            'assets/images/order-status-rubber-stamp-vector-14032742.jpg',
+                        name: 'ORDER STARUS',
                       ),
                       const SizedBox(
                         height: 15,
                       ),
                       const CustomMainCard(
-                        image: 'assets/images/download (1).jpg',
+                        leftPadding: 85,
+                        height: 200,
+                        image: 'assets/images/favourite.png',
+                        name: 'FAVOURITE',
                       ),
                       const SizedBox(
                         height: 15,
                       ),
                       CustomMainCard(
+                        leftPadding: 120,
+                        height: 100,
+                        image: 'assets/images/report.png',
                         onTap: () {},
-                        image:
-                            'assets/images/report-word-lettering-vector-27785261.jpg',
+                        name: 'REPOET',
                       ),
                     ],
                   ),
@@ -149,5 +177,32 @@ class HomeViewBody extends StatelessWidget {
         ),
       );
     });
+  }
+}
+
+class WaveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    debugPrint(size.width.toString());
+    var path = new Path();
+    path.lineTo(0, size.height);
+    var firstStart = Offset(size.width / 5, size.height);
+    var firstEnd = Offset(size.width / 2.25, size.height - 50.0);
+    path.quadraticBezierTo(
+        firstStart.dx, firstStart.dy, firstEnd.dx, firstEnd.dy);
+
+    var seconedStart =
+        Offset(size.width - (size.width / 3.24), size.height - 105);
+    var seconedEnd = Offset(size.width, size.height - 10);
+    path.quadraticBezierTo(
+        seconedStart.dx, seconedStart.dy, seconedEnd.dx, seconedEnd.dy);
+    path.lineTo(size.width, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return false;
   }
 }
