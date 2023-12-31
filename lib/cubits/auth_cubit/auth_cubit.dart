@@ -1,11 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/helper/api.dart';
 import 'package:pharma_track/models/enter_model.dart';
 import 'package:pharma_track/models/log_out_service.dart';
 import 'package:pharma_track/services/login_service.dart';
 import 'package:pharma_track/services/sign_up_service.dart';
+import 'package:hive/hive.dart';
 
 part 'auth_state.dart';
 
@@ -14,6 +16,7 @@ class AuthCubit extends Cubit<AuthState> {
   static AuthCubit get(context) => BlocProvider.of(context);
   EnterReponseModel? enterResponseModel;
   String? token1;
+  String? token;
   login({required String phone, required String password}) async {
     emit(LoginLoading());
 
@@ -21,7 +24,11 @@ class AuthCubit extends Cubit<AuthState> {
       enterResponseModel =
           await LoginService().loginUser(password: password, phone: phone);
 
-      token1 = enterResponseModel!.data!.token;
+      token = enterResponseModel!.data!.token;
+      Hive.box(kToken).put(kToken1, token);
+      token1 = Hive.box(kToken).get(kToken1);
+      print("${token1}ssssssssssssssssssssssss");
+
       emit(LoginSuccess());
     } catch (e) {
       emit(LoginFailure(e.toString()));
@@ -48,7 +55,10 @@ class AuthCubit extends Cubit<AuthState> {
         email: email,
         confirmPassword: confirmPassword,
       );
-
+      token = enterResponseModel!.data!.token;
+      Hive.box(kToken).put(kToken1, token);
+      token1 = Hive.box(kToken).get(kToken1);
+      print("${token1}ssssssssssssssssssssssss");
       emit(SignUpSuccess());
     } catch (e) {
       emit(SignUpFailure(e.toString()));

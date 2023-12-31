@@ -23,6 +23,7 @@ void main() async {
   Bloc.observer = SimpleBlocObserver();
   Hive.registerAdapter(AddOrderModelAdapter());
   await Hive.openBox<AddOrderModel>(kOrderBox);
+  await Hive.openBox(kToken);
   runApp(const PharmaTrack());
 }
 

@@ -16,4 +16,5 @@ const kLogoColor4 = Color(0xff5cc1ef);
 const kFont1 = 'pacifico';
 const kFont2 = 'Poppins';
 const kToken = 'token';
+const kToken1 = 'token';
 const kOrderBox = 'orders box';

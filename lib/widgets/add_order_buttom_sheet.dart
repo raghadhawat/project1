@@ -76,6 +76,7 @@ class _AddOrderButtomSheeetState extends State<AddOrderButtomSheeet> {
                           hint: 'Quantity',
                           label: 'Quantity',
                           icon: Icons.add,
+                          inputType: TextInputType.number,
                         ),
                         const SizedBox(
                           height: 40,

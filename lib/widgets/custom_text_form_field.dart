@@ -6,7 +6,7 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     required this.hint,
     required this.label,
-    required this.icon,
+    this.icon,
     this.obsecureText = false,
     this.inputType,
     this.onChanged,
@@ -14,7 +14,7 @@ class CustomTextFormField extends StatelessWidget {
   });
   final String hint;
   final String label;
-  final IconData icon;
+  final IconData? icon;
   final bool? obsecureText;
   final TextInputType? inputType;
   final Function(String)? onChanged;

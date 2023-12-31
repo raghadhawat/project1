@@ -1,6 +1,7 @@
 import 'package:blurry_modal_progress_hud/blurry_modal_progress_hud.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
 import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
@@ -128,6 +129,9 @@ class HomeView extends StatelessWidget {
                               onTap: () {
                                 BlocProvider.of<AuthCubit>(context)
                                     .logOut(context);
+                                Hive.box(kToken).delete(kToken1);
+                                print(
+                                    "${Hive.box(kToken).get(kToken1)}lllllllllll");
                                 print(
                                     "${AuthCubit.get(context).logOutModel?.messege?.message}kk");
                               },
@@ -142,10 +146,13 @@ class HomeView extends StatelessWidget {
                         appBar: AppBar(
                           backgroundColor: Colors.white,
                           actions: const [
-                            Icon(
-                              Icons.notifications_none_rounded,
-                              color: Colors.grey,
-                              size: 35,
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Icon(
+                                Icons.notifications_none_rounded,
+                                color: Colors.grey,
+                                size: 35,
+                              ),
                             )
                           ],
                           elevation: 0.0,

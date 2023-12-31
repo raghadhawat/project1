@@ -55,7 +55,8 @@ class _MedicineFormState extends State<MedicineForm> {
                 },
                 hint: 'Quantity',
                 label: 'Quantity',
-                icon: Icons.input,
+                icon: Icons.add,
+                inputType: TextInputType.number,
               ),
               const SizedBox(
                 height: 40,

@@ -36,7 +36,7 @@ class AllApiCubit extends Cubit<AllApiState> {
     await Api()
         .get(
       url: 'http://10.0.2.2:8000/api/Pharmacy/category',
-      token: AuthCubit.get(context).enterResponseModel!.data!.token,
+      token: AuthCubit.get(context).token1,
     )
         .then((value) {
       categoryModel1 = CategoryModel.fromJson(value);
@@ -61,7 +61,7 @@ class AllApiCubit extends Cubit<AllApiState> {
     await Api()
         .get(
       url: 'http://10.0.2.2:8000/api/Pharmacy/medicines',
-      token: AuthCubit.get(context).enterResponseModel!.data!.token,
+      token: AuthCubit.get(context).token1,
     )
         .then((value) {
       allMedicineModel = AllMedicineModel.fromJson(value);
@@ -86,7 +86,7 @@ class AllApiCubit extends Cubit<AllApiState> {
     await Api()
         .get(
       url: 'http://10.0.2.2:8000/api/Pharmacy/category/$id',
-      token: AuthCubit.get(context).enterResponseModel!.data!.token,
+      token: AuthCubit.get(context).token1,
     )
         .then((value) {
       print(value);
@@ -129,7 +129,7 @@ class AllApiCubit extends Cubit<AllApiState> {
     await Api()
         .post(
       url: 'http://10.0.2.2:8000/api/Pharmacy/cart/store',
-      token: AuthCubit.get(context).enterResponseModel!.data!.token,
+      token: AuthCubit.get(context).token1,
       body: jsonEncode(orders),
       header: true,
     )
@@ -156,7 +156,7 @@ class AllApiCubit extends Cubit<AllApiState> {
     await Api()
         .get(
       url: 'http://10.0.2.2:8000/api/Pharmacy/cart/index',
-      token: AuthCubit.get(context).enterResponseModel!.data!.token,
+      token: AuthCubit.get(context).token1,
     )
         .then((value) {
       orderStatusModel = OrderStatusModel.fromJson(value);
@@ -179,7 +179,7 @@ class AllApiCubit extends Cubit<AllApiState> {
     await Api()
         .get(
       url: 'http://10.0.2.2:8000/api/Pharmacy/cart/show/$id',
-      token: AuthCubit.get(context).enterResponseModel!.data!.token,
+      token: AuthCubit.get(context).token1,
     )
         .then((value) {
       orderModel = OrderModel.fromJson(value);

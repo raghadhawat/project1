@@ -54,7 +54,8 @@ class _EditOrderButtomSheeetState extends State<EditOrderButtomSheeet> {
                   },
                   hint: widget.order.quantity,
                   label: widget.order.quantity,
-                  icon: Icons.input,
+                  icon: Icons.add,
+                  inputType: TextInputType.number,
                 ),
                 const SizedBox(
                   height: 40,

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:pharma_track/constants.dart';
 
-class OrderStatusCard extends StatelessWidget {
-  OrderStatusCard({
+class OrderStatusCard2 extends StatelessWidget {
+  OrderStatusCard2({
     super.key,
     required this.id,
     required this.date,

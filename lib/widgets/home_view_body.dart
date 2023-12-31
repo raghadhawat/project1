@@ -7,6 +7,8 @@ import 'package:pharma_track/cubits/order_cubit/order_cubit.dart';
 import 'package:pharma_track/views/add_order_view.dart';
 import 'package:pharma_track/views/order_status_view.dart';
 import 'package:pharma_track/widgets/custom_main_card.dart';
+import 'package:pharma_track/widgets/order_status_card.dart';
+import 'package:pharma_track/widgets/order_status_card2.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({
@@ -266,92 +268,29 @@ class HomeViewBody extends StatelessWidget {
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 16,
                         ),
                         SizedBox(
-                          height: 300,
+                          height: MediaQuery.of(context).size.height / 2.9,
                           child: ListView.builder(
                             itemCount: 4,
                             itemBuilder: (context, index) {
-                              if (list![1].status == "New") {
+                              if (list![1].status == "Ne") {
                                 color = Color(0xff31a9e3);
-                              } else if (list![1].status == "Preparing") {
+                              } else if (list![1].status == "New") {
                                 color = Colors.deepPurple[500]!;
                               } else if (list![1].status == "Delivering") {
                                 color = Colors.orange[500]!;
                               } else if (list![1].status == "Recieved") {
                                 color = Colors.green[500]!;
                               }
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5)),
-                                  height: 90,
-                                  child: Card(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          height: MediaQuery.of(context)
-                                              .size
-                                              .height,
-                                          width: 8,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  const BorderRadius.only(
-                                                      topLeft:
-                                                          Radius.circular(6),
-                                                      bottomLeft:
-                                                          Radius.circular(6)),
-                                              color: color),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 10, horizontal: 24),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                '${list![1].createdAt}',
-                                                style: const TextStyle(
-                                                    fontSize: 18,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(4),
-                                                child: Text(
-                                                  '${list![1].status}',
-                                                  style: const TextStyle(
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Spacer(),
-                                        Padding(
-                                          padding: const EdgeInsets.all(16),
-                                          child: Text(
-                                            '${list![1].Total_price}',
-                                            style: TextStyle(
-                                                color: color,
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                              return OrderStatusCard(
+                                color: color,
+                                date: '${list![1].createdAt}',
+                                status: '${list![1].status}',
+                                price: '${list![1].Total_price}',
+                                paidStatus: '${list![1].paidStatus}',
                               );
                             },
                           ),
