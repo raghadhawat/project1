@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_track/constants.dart';
-import 'package:pharma_track/theme_color.dart';
 import 'package:pharma_track/widgets/medicine_buttom_sheet.dart';
 
-class DetailCard extends StatelessWidget {
+class DetailCard extends StatefulWidget {
   const DetailCard({
     super.key,
     required this.details,
@@ -14,163 +13,198 @@ class DetailCard extends StatelessWidget {
   final String outputDate1;
 
   @override
+  State<DetailCard> createState() => _DetailCardState();
+}
+
+class _DetailCardState extends State<DetailCard> {
+  bool fav = false;
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      decoration: BoxDecoration(
-        gradient: ThemeColor(),
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 350,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                image: const DecorationImage(
-                  fit: BoxFit.fill,
-                  image: AssetImage('assets/images/download (2).png'),
-                ),
-                borderRadius:
-                    const BorderRadius.vertical(bottom: Radius.circular(80)),
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 15,
-                    color: kPrimaryColor.withOpacity(.05),
-                    spreadRadius: 0,
-                  ),
-                ],
-              ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Center(
+          child: Container(
+            height: 180,
+            width: 200,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+            child: Image.asset(
+              "assets/images/images (8).png",
+              height: 200,
             ),
-            const SizedBox(
-              height: 16,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 24,
-              ),
-              child: Row(
-                children: [
-                  Text(
-                    details['name'],
-                    style: const TextStyle(
-                        color: Color(0xff35bcd7),
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const Spacer(),
-                  Text(
-                    ' ${details['price']} S.P',
-                    style: const TextStyle(
-                        color: Color(0xff35bcd7),
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
-              child: Text(
-                '${details['tName']}',
-                style: const TextStyle(
-                  fontSize: 20,
-                  color: kPrimaryColor,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 24,
-              ),
-              child: Text(
-                "FORM : ${details['form']}",
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: kPrimaryColor,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Text(
-                "QUANTITY : ${details['quantity']}",
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: kPrimaryColor,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 24,
-              ),
-              child: Text(
-                details['details'],
-                style: const TextStyle(
-                  color: kPrimaryColor,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 260),
-              child: Text(
-                'Pro : $outputDate1',
-                style: const TextStyle(fontSize: 16),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 260),
-              child: Text(
-                'Exp : ${details['expirationAt']}',
-                style: const TextStyle(fontSize: 16),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 55, right: 16, left: 120),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      showModalBottomSheet(
-                          isScrollControlled: true,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16)),
-                          context: context,
-                          builder: (context) {
-                            return MedicineButtomSheeet(
-                              name: details['name'],
-                            );
-                          });
-                    },
-                    child: Container(
-                      height: 75,
-                      width: 180,
-                      decoration: BoxDecoration(
-                          color: const Color(0xff35bcd7),
-                          borderRadius: BorderRadius.circular(8)),
-                      child: const Center(
-                        child: Text(
-                          'Buy',
-                          style: TextStyle(
-                              color: kThirdColor2,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
+          ),
         ),
-      ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: Container(
+              height: 300,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Card(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 24),
+                                    child: Text(
+                                      '${widget.details['tName']}',
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 6),
+                                    child: Text(
+                                      widget.details['name'],
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 180),
+                              child: GestureDetector(
+                                  onTap: () {
+                                    fav = !fav;
+                                    setState(() {});
+                                  },
+                                  child: Icon(
+                                    !fav
+                                        ? Icons.favorite_outline
+                                        : Icons.favorite,
+                                    color: Colors.red,
+                                    size: 32,
+                                  )),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(4),
+                                child: Text(
+                                  "Company:${widget.details['companyName']}",
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(4),
+                                child: Text(
+                                  "Form:${widget.details["form"]}",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(4),
+                                child: Text(
+                                  widget.details['details'],
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 230,
+                                  ),
+                                  Column(
+                                    children: [
+                                      Text(
+                                        widget.outputDate1,
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      Text(
+                                        widget.details['expirationAt'],
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  top: 16,
+                                ),
+                                child: Text(
+                                  ' ${widget.details['price']} S.P',
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        const SizedBox(
+                          height: 240,
+                        ),
+                        Container(
+                          height: 50,
+                          width: 50,
+                          decoration: const BoxDecoration(
+                            color: Color(0xff31a9e3),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(64),
+                            ),
+                          ),
+                          child: GestureDetector(
+                            onTap: () {
+                              showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16)),
+                                  context: context,
+                                  builder: (context) {
+                                    return MedicineButtomSheeet(
+                                      name: '${widget.details['tName']}',
+                                    );
+                                  });
+                            },
+                            child: const Padding(
+                              padding: EdgeInsets.all(16),
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                                size: 30,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

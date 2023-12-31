@@ -17,34 +17,32 @@ class SearchMedicineCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
         height: 100,
-        child: Card(
-          child: Row(
-            children: [
-              Image.asset(image),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      name,
-                      style: const TextStyle(
-                          color: kPrimaryColor,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
+        child: Row(
+          children: [
+            Image.asset(
+              image,
+              height: 70,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    tname,
+                    style: const TextStyle(
+                      fontSize: 18,
                     ),
-                    Text(
-                      tname,
-                      style: const TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

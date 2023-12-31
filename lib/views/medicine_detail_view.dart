@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:pharma_track/constants.dart';
-import 'package:pharma_track/widgets/app_bar_text.dart';
 import 'package:pharma_track/widgets/detaile_card.dart';
 
 class MedicineDetaileView extends StatelessWidget {
@@ -19,9 +17,27 @@ class MedicineDetaileView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kPrimaryColor,
-        centerTitle: true,
-        title: const AppBarText(),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.grey,
+              size: 32,
+            )),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.notifications_none_rounded,
+              color: Colors.grey,
+              size: 35,
+            ),
+          )
+        ],
       ),
       body: DetailCard(details: details, outputDate1: outputDate1),
     );

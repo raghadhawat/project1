@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/widgets/favourite_card.dart';
-import 'package:pharma_track/widgets/medicine_tile.dart';
 
 class FavouriteList extends StatelessWidget {
   const FavouriteList({

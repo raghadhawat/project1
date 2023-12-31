@@ -32,6 +32,8 @@ class _AllMedicineViewState extends State<AllMedicineView> {
         elevation: 0,
         actions: [
           PopupMenuButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
               icon: const Icon(
                 Icons.search,
                 size: 30,

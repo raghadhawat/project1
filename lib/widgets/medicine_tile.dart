@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/views/medicine_detail_view.dart';
 import 'package:pharma_track/widgets/medicine_buttom_sheet.dart';
 
@@ -153,7 +152,7 @@ class _MedicineTileState extends State<MedicineTile> {
                                     context: context,
                                     builder: (context) {
                                       return MedicineButtomSheeet(
-                                        name: widget.name,
+                                        name: widget.tName,
                                       );
                                     });
                               },

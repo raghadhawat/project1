@@ -221,7 +221,7 @@ class HomeViewBody extends StatelessWidget {
                   ],
                 ),
               ),
-              list == null
+              cubit.orderStatusModel?.data != null
                   ? Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 140, horizontal: 50),
@@ -278,21 +278,23 @@ class HomeViewBody extends StatelessWidget {
                           child: ListView.builder(
                             itemCount: 4,
                             itemBuilder: (context, index) {
-                              if (list![1].status == "New") {
-                                color = Color(0xff31a9e3);
-                              } else if (list![1].status == "Preparng") {
-                                color = Colors.deepPurple[500]!;
-                              } else if (list![1].status == "Delivering") {
-                                color = Colors.orange[500]!;
-                              } else if (list![1].status == "Recieved") {
-                                color = Colors.green[500]!;
+                              if (list != null) {
+                                if (list?[1].status == "New") {
+                                  color = Color(0xff31a9e3);
+                                } else if (list![1].status == "Preparng") {
+                                  color = Colors.deepPurple[500]!;
+                                } else if (list![1].status == "Delivering") {
+                                  color = Colors.orange[500]!;
+                                } else if (list![1].status == "Recieved") {
+                                  color = Colors.green[500]!;
+                                }
                               }
                               return OrderStatusCard(
                                 color: color,
-                                date: '${list![1].createdAt}',
-                                status: '${list![1].status}',
-                                price: '${list![1].Total_price}',
-                                paidStatus: '${list![1].paidStatus}',
+                                date: '${list?[1].createdAt}',
+                                status: '${list?[1].status}',
+                                price: '${list?[1].Total_price}',
+                                paidStatus: '${list?[1].paidStatus}',
                               );
                             },
                           ),

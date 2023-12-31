@@ -43,15 +43,12 @@ class SearchCategory extends SearchDelegate {
               BlocProvider.of<AllApiCubit>(context)
                   .medicine(context, id: filter![index].id);
             },
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Text(
-                  "${filter![index].name}",
-                  style: const TextStyle(
-                    color: kPrimaryColor,
-                    fontSize: 32,
-                  ),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(
+                "${filter![index].name}",
+                style: const TextStyle(
+                  fontSize: 24,
                 ),
               ),
             ),
@@ -73,15 +70,12 @@ class SearchCategory extends SearchDelegate {
                         .data![index]
                         .id!);
               },
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Text(
-                    "${AllApiCubit.get(context).categoryModel1?.data?[index].name}",
-                    style: const TextStyle(
-                      color: kPrimaryColor,
-                      fontSize: 32,
-                    ),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text(
+                  "${AllApiCubit.get(context).categoryModel1?.data?[index].name}",
+                  style: const TextStyle(
+                    fontSize: 24,
                   ),
                 ),
               ),
@@ -101,15 +95,12 @@ class SearchCategory extends SearchDelegate {
                 BlocProvider.of<AllApiCubit>(context)
                     .medicine(context, id: filter![index].id);
               },
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Text(
-                    "${filter![index].name}",
-                    style: const TextStyle(
-                      color: kPrimaryColor,
-                      fontSize: 32,
-                    ),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text(
+                  "${filter![index].name}",
+                  style: const TextStyle(
+                    fontSize: 24,
                   ),
                 ),
               ),
