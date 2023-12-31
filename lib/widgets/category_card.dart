@@ -18,17 +18,17 @@ class CategoryCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(right: 10),
         child: Container(
-          width: 180,
+          width: 150,
           decoration: BoxDecoration(
-            color: kPrimaryColor,
-            borderRadius: BorderRadius.circular(20),
+            color: Color(0xff31a9e3),
+            borderRadius: BorderRadius.circular(8),
           ),
           child: Center(
             child: Text(
               categoryName,
               style: const TextStyle(
-                color: kThirdColor2,
-                fontSize: 23,
+                color: Colors.white,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),

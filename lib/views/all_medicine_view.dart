@@ -19,14 +19,23 @@ class _AllMedicineViewState extends State<AllMedicineView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kPrimaryColor,
-        centerTitle: true,
-        title: const AppBarText(),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.grey,
+              size: 32,
+            )),
+        backgroundColor: Colors.white,
+        elevation: 0,
         actions: [
           PopupMenuButton(
               icon: const Icon(
                 Icons.search,
                 size: 30,
+                color: Colors.grey,
               ),
               itemBuilder: (context) => [
                     PopupMenuItem(
@@ -53,7 +62,15 @@ class _AllMedicineViewState extends State<AllMedicineView> {
                             context: context, delegate: SearchAllMedicine());
                       },
                     )
-                  ])
+                  ]),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.notifications_none_rounded,
+              color: Colors.grey,
+              size: 35,
+            ),
+          ),
         ],
       ),
       body: const Padding(

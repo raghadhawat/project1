@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_track/widgets/medicine_list.dart';
-import 'package:pharma_track/widgets/search_medicine.dart';
+import 'package:pharma_track/widgets/favourite_list.dart';
 
-class MedicineView extends StatelessWidget {
-  const MedicineView({super.key});
-  static String id = 'MedicineView';
+class FavouriteView extends StatelessWidget {
+  const FavouriteView({super.key});
+  static String id = 'FavouriteView';
 
   @override
   Widget build(BuildContext context) {
@@ -21,18 +20,8 @@ class MedicineView extends StatelessWidget {
               )),
           backgroundColor: Colors.white,
           elevation: 0,
-          actions: [
-            IconButton(
-              onPressed: () {
-                showSearch(context: context, delegate: SearchMedicine());
-              },
-              icon: const Icon(
-                Icons.search,
-                size: 30,
-                color: Colors.grey,
-              ),
-            ),
-            const Padding(
+          actions: const [
+            Padding(
               padding: EdgeInsets.all(8.0),
               child: Icon(
                 Icons.notifications_none_rounded,
@@ -46,7 +35,7 @@ class MedicineView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 12),
             child: Padding(
               padding: EdgeInsets.only(top: 12),
-              child: MedicineList(),
+              child: FavouriteList(),
             )));
   }
 }

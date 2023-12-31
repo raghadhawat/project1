@@ -21,36 +21,27 @@ class AllMedicineList extends StatelessWidget {
       }
     }, builder: (context, state) {
       return SizedBox(
-        height: 665,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 8),
-          child: GridView.builder(
-            clipBehavior: Clip.none,
-            itemCount: cubit.allMedicineModel?.data?.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 1,
-              crossAxisSpacing: 5,
-              mainAxisSpacing: 14,
-            ),
-            itemBuilder: (context, index) {
-              return MedicineTile(
-                tName: "${cubit.allMedicineModel?.data?[index].tradeName}",
-                name: "${cubit.allMedicineModel?.data?[index].scientificName}",
-                image: "${cubit.allMedicineModel?.data?[index].photo}",
-                companyName:
-                    "${cubit.allMedicineModel?.data?[index].companyName}",
-                form: "${cubit.allMedicineModel?.data?[index].form}",
-                details: "${cubit.allMedicineModel?.data?[index].details}",
-                expirationAt:
-                    '${cubit.allMedicineModel?.data?[index].expirationAt}',
-                createdAt: '${cubit.allMedicineModel?.data?[index].createdAt}',
-                updatedAt: '${cubit.allMedicineModel?.data?[index].updatedAt}',
-                price: cubit.allMedicineModel?.data?[index].price,
-                quantity: cubit.allMedicineModel?.data?[index].quantity,
-              );
-            },
-          ),
+        height: MediaQuery.of(context).size.height / 1.3,
+        child: ListView.builder(
+          itemCount: cubit.allMedicineModel?.data?.length,
+          itemBuilder: (context, index) {
+            return MedicineTile(
+              tName: "${cubit.allMedicineModel?.data?[index].tradeName}",
+              name: "${cubit.allMedicineModel?.data?[index].scientificName}",
+              image: "${cubit.allMedicineModel?.data?[index].photo}",
+              companyName:
+                  "${cubit.allMedicineModel?.data?[index].companyName}",
+              form: "${cubit.allMedicineModel?.data?[index].form}",
+              details: "${cubit.allMedicineModel?.data?[index].details}",
+              expirationAt:
+                  '${cubit.allMedicineModel?.data?[index].expirationAt}',
+              createdAt: '${cubit.allMedicineModel?.data?[index].createdAt}',
+              updatedAt: '${cubit.allMedicineModel?.data?[index].updatedAt}',
+              price: cubit.allMedicineModel?.data?[index].price,
+              quantity: cubit.allMedicineModel?.data?[index].quantity,
+              id: cubit.allMedicineModel?.data?[index].id,
+            );
+          },
         ),
       );
     });

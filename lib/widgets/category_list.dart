@@ -12,7 +12,7 @@ class CategoryList extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 16),
       child: SizedBox(
-        height: 70,
+        height: 60,
         child: ListView.builder(
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,

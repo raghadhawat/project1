@@ -9,6 +9,7 @@ import 'package:pharma_track/models/add_order_model.dart';
 import 'package:pharma_track/simple_bloc_observer.dart';
 import 'package:pharma_track/views/add_order_view.dart';
 import 'package:pharma_track/views/all_medicine_view.dart';
+import 'package:pharma_track/views/favourite_view.dart';
 import 'package:pharma_track/views/home_view.dart';
 import 'package:pharma_track/views/login_view.dart';
 import 'package:pharma_track/views/medicine_detail_view.dart';
@@ -50,8 +51,10 @@ class PharmaTrack extends StatelessWidget {
           AddOrderView.id: (context) => const AddOrderView(),
           OrderStatusView.id: (context) => const OrderStatusView(),
           OrderView.id: (context) => const OrderView(),
+          FavouriteView.id: (context) => const FavouriteView(),
         },
-        initialRoute: LoginView.id,
+        initialRoute:
+            Hive.box(kToken).get(kToken) == null ? LoginView.id : HomeView.id,
       ),
     );
   }

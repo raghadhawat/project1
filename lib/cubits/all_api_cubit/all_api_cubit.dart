@@ -2,8 +2,9 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
-import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
+import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/helper/api.dart';
 import 'package:pharma_track/models/category_model.dart';
 import 'package:pharma_track/models/all_medicine_model.dart';
@@ -36,7 +37,7 @@ class AllApiCubit extends Cubit<AllApiState> {
     await Api()
         .get(
       url: 'http://10.0.2.2:8000/api/Pharmacy/category',
-      token: AuthCubit.get(context).token1,
+      token: Hive.box(kToken).get(kToken),
     )
         .then((value) {
       categoryModel1 = CategoryModel.fromJson(value);
@@ -61,7 +62,7 @@ class AllApiCubit extends Cubit<AllApiState> {
     await Api()
         .get(
       url: 'http://10.0.2.2:8000/api/Pharmacy/medicines',
-      token: AuthCubit.get(context).token1,
+      token: Hive.box(kToken).get(kToken),
     )
         .then((value) {
       allMedicineModel = AllMedicineModel.fromJson(value);
@@ -86,7 +87,7 @@ class AllApiCubit extends Cubit<AllApiState> {
     await Api()
         .get(
       url: 'http://10.0.2.2:8000/api/Pharmacy/category/$id',
-      token: AuthCubit.get(context).token1,
+      token: Hive.box(kToken).get(kToken),
     )
         .then((value) {
       print(value);
@@ -129,7 +130,7 @@ class AllApiCubit extends Cubit<AllApiState> {
     await Api()
         .post(
       url: 'http://10.0.2.2:8000/api/Pharmacy/cart/store',
-      token: AuthCubit.get(context).token1,
+      token: Hive.box(kToken).get(kToken),
       body: jsonEncode(orders),
       header: true,
     )
@@ -156,7 +157,7 @@ class AllApiCubit extends Cubit<AllApiState> {
     await Api()
         .get(
       url: 'http://10.0.2.2:8000/api/Pharmacy/cart/index',
-      token: AuthCubit.get(context).token1,
+      token: Hive.box(kToken).get(kToken),
     )
         .then((value) {
       orderStatusModel = OrderStatusModel.fromJson(value);
@@ -179,7 +180,7 @@ class AllApiCubit extends Cubit<AllApiState> {
     await Api()
         .get(
       url: 'http://10.0.2.2:8000/api/Pharmacy/cart/show/$id',
-      token: AuthCubit.get(context).token1,
+      token: Hive.box(kToken).get(kToken),
     )
         .then((value) {
       orderModel = OrderModel.fromJson(value);

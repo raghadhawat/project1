@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
+import 'package:pharma_track/widgets/favourite_card.dart';
 import 'package:pharma_track/widgets/medicine_tile.dart';
 
-class MedicineList extends StatelessWidget {
-  const MedicineList({
+class FavouriteList extends StatelessWidget {
+  const FavouriteList({
     super.key,
   });
 
@@ -16,7 +17,7 @@ class MedicineList extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 16),
-          child: MedicineTile(
+          child: FavouriteCard(
             tName: "${cubit.medicineModel?.data?[index].tradeName}",
             name: "${cubit.medicineModel?.data?[index].scientificName}",
             image: "${cubit.medicineModel?.data?[index].photo}",

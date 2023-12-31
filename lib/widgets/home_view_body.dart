@@ -5,10 +5,10 @@ import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
 import 'package:pharma_track/cubits/order_cubit/order_cubit.dart';
 import 'package:pharma_track/views/add_order_view.dart';
+import 'package:pharma_track/views/favourite_view.dart';
 import 'package:pharma_track/views/order_status_view.dart';
 import 'package:pharma_track/widgets/custom_main_card.dart';
 import 'package:pharma_track/widgets/order_status_card.dart';
-import 'package:pharma_track/widgets/order_status_card2.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({
@@ -178,7 +178,9 @@ class HomeViewBody extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, FavouriteView.id);
+                      },
                       child: Padding(
                         padding: const EdgeInsets.only(
                             top: 8.0, bottom: 8.0, right: 10, left: 2),
@@ -225,7 +227,7 @@ class HomeViewBody extends StatelessWidget {
                           vertical: 140, horizontal: 50),
                       child: Center(
                           child: Text(
-                        'There is no order yet',
+                        'There is no orders yet',
                         style: TextStyle(fontSize: 24, color: Colors.grey[400]),
                       )),
                     )
@@ -276,9 +278,9 @@ class HomeViewBody extends StatelessWidget {
                           child: ListView.builder(
                             itemCount: 4,
                             itemBuilder: (context, index) {
-                              if (list![1].status == "Ne") {
+                              if (list![1].status == "New") {
                                 color = Color(0xff31a9e3);
-                              } else if (list![1].status == "New") {
+                              } else if (list![1].status == "Preparng") {
                                 color = Colors.deepPurple[500]!;
                               } else if (list![1].status == "Delivering") {
                                 color = Colors.orange[500]!;

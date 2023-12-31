@@ -84,7 +84,7 @@ class AuthCubit extends Cubit<AuthState> {
     await Api()
         .get(
       url: 'http://10.0.2.2:8000/api/Pharmacy/logout',
-      token: AuthCubit.get(context).enterResponseModel!.data!.token,
+      token: Hive.box(kToken).get(kToken),
     )
         .then((value) {
       logOutModel = LogOutModel.fromJson(value);

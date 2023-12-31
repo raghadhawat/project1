@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/views/medicine_detail_view.dart';
 import 'package:pharma_track/widgets/medicine_buttom_sheet.dart';
 
-class MedicineTile extends StatefulWidget {
-  MedicineTile({
+class FavouriteCard extends StatefulWidget {
+  FavouriteCard({
     super.key,
     required this.name,
     required this.tName,
@@ -34,10 +33,10 @@ class MedicineTile extends StatefulWidget {
   final String updatedAt;
 
   @override
-  State<MedicineTile> createState() => _MedicineTileState();
+  State<FavouriteCard> createState() => _FavouriteCardState();
 }
 
-class _MedicineTileState extends State<MedicineTile> {
+class _FavouriteCardState extends State<FavouriteCard> {
   bool fav = false;
   @override
   Widget build(BuildContext context) {
@@ -118,21 +117,6 @@ class _MedicineTileState extends State<MedicineTile> {
                       Spacer(),
                       Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: GestureDetector(
-                                onTap: () {
-                                  fav = !fav;
-                                  setState(() {});
-                                },
-                                child: Icon(
-                                  !fav
-                                      ? Icons.favorite_outline
-                                      : Icons.favorite,
-                                  color: Colors.red,
-                                  size: 28,
-                                )),
-                          ),
                           Spacer(),
                           Container(
                             height: 50,
