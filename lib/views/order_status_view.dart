@@ -6,7 +6,7 @@ import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/helper/show_snack_bar.dart';
 import 'package:pharma_track/views/order_view.dart';
 import 'package:pharma_track/widgets/app_bar_text.dart';
-import 'package:pharma_track/widgets/order_status_card.dart';
+import 'package:pharma_track/widgets/order_status_card2.dart';
 
 class OrderStatusView extends StatelessWidget {
   const OrderStatusView({super.key});

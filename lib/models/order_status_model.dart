@@ -33,9 +33,15 @@ class OrderStatusData {
   String? status;
   String? paidStatus;
   String? createdAt;
+  int? Total_price;
 
   OrderStatusData(
-      {this.id, this.userId, this.status, this.paidStatus, this.createdAt});
+      {this.id,
+      this.userId,
+      this.status,
+      this.paidStatus,
+      this.createdAt,
+      this.Total_price});
 
   OrderStatusData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -43,6 +49,7 @@ class OrderStatusData {
     status = json['status'];
     paidStatus = json['paid_status'];
     createdAt = json['created_at'];
+    Total_price = json['Total_price'];
   }
 
   Map<String, dynamic> toJson() {

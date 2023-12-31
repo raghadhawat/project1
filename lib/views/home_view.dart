@@ -4,12 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
+import 'package:pharma_track/cubits/order_cubit/order_cubit.dart';
 import 'package:pharma_track/helper/show_snack_bar.dart';
+import 'package:pharma_track/views/add_order_view.dart';
 import 'package:pharma_track/views/all_medicine_view.dart';
 import 'package:pharma_track/views/login_view.dart';
 import 'package:pharma_track/views/medicine_view.dart';
-import 'package:pharma_track/views/order_status_view.dart';
-import 'package:pharma_track/widgets/app_bar_text.dart';
+
 import 'package:pharma_track/widgets/drawer_text.dart';
 import 'package:pharma_track/widgets/home_view_body.dart';
 
@@ -19,13 +20,13 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<AllApiCubit>(context).orderStatus(context);
     bool isLoading = false;
     return BlocConsumer<AllApiCubit, AllApiState>(
       listener: (context, state) {
         if (state is OrderStateLoading) {
           isLoading = true;
         } else if (state is OrderStateSuccess) {
-          Navigator.pushNamed(context, OrderStatusView.id);
           isLoading = false;
         } else if (state is OrderStateFailure) {
           showSnakbar(context, state.errMessage);
@@ -72,6 +73,15 @@ class HomeView extends StatelessWidget {
                     return BlurryModalProgressHUD(
                       inAsyncCall: isLoading,
                       child: Scaffold(
+                        floatingActionButton: FloatingActionButton(
+                          backgroundColor: Color(0xff31a9e3),
+                          onPressed: () {
+                            BlocProvider.of<OrderCubit>(context)
+                                .fetchAllOrder();
+                            Navigator.pushNamed(context, AddOrderView.id);
+                          },
+                          child: Icon(Icons.shopping_cart_outlined),
+                        ),
                         drawer: Drawer(
                           backgroundColor: kThirdColor,
                           child: ListView(children: [
@@ -130,9 +140,14 @@ class HomeView extends StatelessWidget {
                           ]),
                         ),
                         appBar: AppBar(
-                          backgroundColor: kPrimaryColor,
-                          centerTitle: true,
-                          title: const AppBarText(),
+                          backgroundColor: Colors.white,
+                          actions: const [
+                            Icon(
+                              Icons.notifications_none_rounded,
+                              color: Colors.grey,
+                              size: 35,
+                            )
+                          ],
                           elevation: 0.0,
                         ),
                         body: const HomeViewBody(),

@@ -113,8 +113,9 @@ class AllApiCubit extends Cubit<AllApiState> {
     }
     print(map);
     emit(SendOrderLoading());
-    await sendOrders(context, orders: map);
+
     try {
+      await sendOrders(context, orders: map);
       emit(SendOrderSuccess());
     } catch (e) {
       emit(SendOrderFailure(e.toString()));

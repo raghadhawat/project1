@@ -39,9 +39,6 @@ class PharmaTrack extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          fontFamily: 'Poppins',
-        ),
         routes: {
           LoginView.id: (context) => const LoginView(),
           SignUpView.id: (context) => const SignUpView(),

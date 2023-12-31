@@ -25,7 +25,7 @@ class _EditOrderButtomSheeetState extends State<EditOrderButtomSheeet> {
       listener: (context, state) {
         if (state is AllMedicineSuccess) {
           for (var name in AllApiCubit.get(context).allMedicineModel!.data!) {
-            names.add(name.scientificName!);
+            names.add(name.tradeName!);
           }
         }
       },

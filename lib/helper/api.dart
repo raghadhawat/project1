@@ -31,7 +31,7 @@ class Api {
       headers.addAll({'Authorization': 'Bearer $token'});
     }
     if (header == true) {
-      headers.addAll({'Accept': 'application/json'});
+      headers.addAll({'Content-Type': 'application/json'});
     }
     http.Response response =
         await http.post(Uri.parse(url), body: body, headers: headers);

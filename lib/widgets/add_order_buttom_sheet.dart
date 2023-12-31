@@ -30,7 +30,7 @@ class _AddOrderButtomSheeetState extends State<AddOrderButtomSheeet> {
     return BlocConsumer<AllApiCubit, AllApiState>(listener: (context, state) {
       if (state is AllMedicineSuccess) {
         for (var name in AllApiCubit.get(context).allMedicineModel!.data!) {
-          names.add(name.scientificName!);
+          names.add(name.tradeName!);
         }
       }
     }, builder: (context, state) {
