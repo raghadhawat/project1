@@ -17,9 +17,27 @@ class AddOrderView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kPrimaryColor,
-        centerTitle: true,
-        title: const AppBarText(),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.grey,
+              size: 32,
+            )),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.notifications_none_rounded,
+              color: Colors.grey,
+              size: 35,
+            ),
+          )
+        ],
       ),
       body: BlocBuilder<OrderCubit, OrderState>(
         builder: (context, state) {
@@ -83,13 +101,13 @@ class AddOrderView extends StatelessWidget {
                             height: 75,
                             width: 180,
                             decoration: BoxDecoration(
-                                color: const Color(0xff35bcd7),
+                                border: Border.all(color: Color(0xff31a9e3)),
                                 borderRadius: BorderRadius.circular(8)),
                             child: const Center(
                               child: Text(
                                 'Add Order',
                                 style: TextStyle(
-                                    color: kThirdColor2,
+                                    color: Color(0xff31a9e3),
                                     fontSize: 24,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -110,13 +128,13 @@ class AddOrderView extends StatelessWidget {
                             height: 75,
                             width: 180,
                             decoration: BoxDecoration(
-                                color: const Color(0xff35bcd7),
+                                border: Border.all(color: Color(0xff31a9e3)),
                                 borderRadius: BorderRadius.circular(8)),
                             child: const Center(
                               child: Text(
                                 'Send Orders',
                                 style: TextStyle(
-                                    color: kThirdColor2,
+                                    color: Color(0xff31a9e3),
                                     fontSize: 24,
                                     fontWeight: FontWeight.bold),
                               ),

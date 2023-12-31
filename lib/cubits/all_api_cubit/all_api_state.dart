@@ -58,3 +58,12 @@ final class OrderFailure extends AllApiState {
   final String errMessage;
   OrderFailure(this.errMessage);
 }
+
+final class AddFavouriteLoading extends AllApiState {}
+
+final class AddFavouriteSuccess extends AllApiState {}
+
+final class AddFavouriteFailure extends AllApiState {
+  final String errMessage;
+  AddFavouriteFailure(this.errMessage);
+}

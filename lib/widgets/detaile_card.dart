@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_track/constants.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/widgets/medicine_buttom_sheet.dart';
 
 class DetailCard extends StatefulWidget {
@@ -86,6 +87,10 @@ class _DetailCardState extends State<DetailCard> {
                                   onTap: () {
                                     fav = !fav;
                                     setState(() {});
+                                    BlocProvider.of<AllApiCubit>(context)
+                                        .addFavourit(context,
+                                            fav: fav,
+                                            id: widget.details["id"]!);
                                   },
                                   child: Icon(
                                     !fav
@@ -125,18 +130,18 @@ class _DetailCardState extends State<DetailCard> {
                               ),
                               Row(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 230,
                                   ),
                                   Column(
                                     children: [
                                       Text(
                                         widget.outputDate1,
-                                        style: TextStyle(fontSize: 16),
+                                        style: const TextStyle(fontSize: 16),
                                       ),
                                       Text(
                                         widget.details['expirationAt'],
-                                        style: TextStyle(fontSize: 16),
+                                        style: const TextStyle(fontSize: 16),
                                       ),
                                     ],
                                   ),

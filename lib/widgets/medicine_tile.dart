@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/views/medicine_detail_view.dart';
 import 'package:pharma_track/widgets/medicine_buttom_sheet.dart';
 
@@ -54,6 +56,7 @@ class _MedicineTileState extends State<MedicineTile> {
             'details': widget.details,
             'createdAt': widget.createdAt,
             'updatedAt': widget.updatedAt,
+            'id': widget.id,
           });
         },
         child: Padding(
@@ -123,6 +126,9 @@ class _MedicineTileState extends State<MedicineTile> {
                                 onTap: () {
                                   fav = !fav;
                                   setState(() {});
+                                  BlocProvider.of<AllApiCubit>(context)
+                                      .addFavourit(context,
+                                          fav: fav, id: widget.id!);
                                 },
                                 child: Icon(
                                   !fav

@@ -221,7 +221,7 @@ class HomeViewBody extends StatelessWidget {
                   ],
                 ),
               ),
-              cubit.orderStatusModel?.data != null
+              cubit.orderStatusModel?.data == null
                   ? Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 140, horizontal: 50),
@@ -289,12 +289,18 @@ class HomeViewBody extends StatelessWidget {
                                   color = Colors.green[500]!;
                                 }
                               }
-                              return OrderStatusCard(
-                                color: color,
-                                date: '${list?[1].createdAt}',
-                                status: '${list?[1].status}',
-                                price: '${list?[1].Total_price}',
-                                paidStatus: '${list?[1].paidStatus}',
+                              return GestureDetector(
+                                onTap: () {
+                                  BlocProvider.of<AllApiCubit>(context)
+                                      .orders(context, id: list?[1].id);
+                                },
+                                child: OrderStatusCard(
+                                  color: color,
+                                  date: '${list?[1].createdAt}',
+                                  status: '${list?[1].status}',
+                                  price: '${list?[1].Total_price}',
+                                  paidStatus: '${list?[1].paidStatus}',
+                                ),
                               );
                             },
                           ),

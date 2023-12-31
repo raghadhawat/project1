@@ -13,6 +13,6 @@ class OrderCubit extends Cubit<OrderState> {
     var orderBox = Hive.box<AddOrderModel>(kOrderBox);
     orders = orderBox.values.toList();
 
-    emit(OrderSuccess());
+    emit(OrderSuccess1());
   }
 }

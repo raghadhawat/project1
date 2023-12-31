@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/helper/api.dart';
+import 'package:pharma_track/models/add_favourite_model.dart';
 import 'package:pharma_track/models/category_model.dart';
 import 'package:pharma_track/models/all_medicine_model.dart';
 import 'package:pharma_track/models/medicine_model.dart';
@@ -164,6 +165,7 @@ class AllApiCubit extends Cubit<AllApiState> {
     });
   }
 
+// show order
   orders(context, {required int id}) async {
     emit(OrderLoading());
     try {
@@ -186,4 +188,54 @@ class AllApiCubit extends Cubit<AllApiState> {
       orderModel = OrderModel.fromJson(value);
     });
   }
+
+  ///favourite post
+  AddFavourite? addFavourite;
+  addToFavourite({context, required bool fav, required int id}) async {
+    emit(AddFavouriteLoading());
+
+    try {
+      await addFavourit(context, fav: fav, id: id);
+      emit(AddFavouriteSuccess());
+    } catch (e) {
+      emit(AddFavouriteFailure(e.toString()));
+    }
+  }
+
+  Future<AddFavourite?> addFavourit(context,
+      {required bool fav, required int id}) async {
+    await Api()
+        .post(
+            url: 'http://10.0.2.2:8000/api/Pharmacy/favorite/add',
+            token: Hive.box(kToken).get(kToken),
+            body: jsonEncode({"medicine_id": "$id", "is_favorite": fav}),
+            header: true)
+        .then((value) {
+      addFavourite = AddFavourite.fromJson(value);
+    });
+  }
+
+  /////show favourite
+  //  showFavourite(context, {required int id}) async {
+  //   emit(OrderLoading());
+  //   try {
+  //     await order(context, id: id);
+
+  //     emit(OrderSuccess());
+  //   } catch (e) {
+  //     emit(OrderFailure(e.toString()));
+  //   }
+  // }
+
+  // OrderModel? orderModel;
+  // Future<List<OrderStatusData>?> order(context, {required int id}) async {
+  //   await Api()
+  //       .get(
+  //     url: 'http://10.0.2.2:8000/api/Pharmacy/cart/show/$id',
+  //     token: Hive.box(kToken).get(kToken),
+  //   )
+  //       .then((value) {
+  //     orderModel = OrderModel.fromJson(value);
+  //   });
+  // }
 }
