@@ -8,7 +8,7 @@ import 'package:pharma_track/models/add_order_model.dart';
 import 'package:pharma_track/widgets/add_order_buttom_sheet.dart';
 import 'package:pharma_track/widgets/app_bar_text.dart';
 import 'package:pharma_track/widgets/custom_edit_order_buttom_sheet.dart';
-import 'package:pharma_track/widgets/order_card.dart';
+import 'package:pharma_track/widgets/add_order_card.dart';
 
 class AddOrderView extends StatelessWidget {
   const AddOrderView({super.key});
@@ -59,7 +59,7 @@ class AddOrderView extends StatelessWidget {
                                       );
                                     });
                               },
-                              child: OrderCard(
+                              child: AddOrderCard(
                                 order: orders[index],
                               ));
                         })),
@@ -83,7 +83,7 @@ class AddOrderView extends StatelessWidget {
                             height: 75,
                             width: 180,
                             decoration: BoxDecoration(
-                                color: Color(0xff35bcd7),
+                                color: const Color(0xff35bcd7),
                                 borderRadius: BorderRadius.circular(8)),
                             child: const Center(
                               child: Text(
@@ -110,7 +110,7 @@ class AddOrderView extends StatelessWidget {
                             height: 75,
                             width: 180,
                             decoration: BoxDecoration(
-                                color: Color(0xff35bcd7),
+                                color: const Color(0xff35bcd7),
                                 borderRadius: BorderRadius.circular(8)),
                             child: const Center(
                               child: Text(

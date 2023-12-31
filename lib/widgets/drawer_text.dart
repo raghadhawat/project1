@@ -26,7 +26,7 @@ class DrawerText extends StatelessWidget {
               icon,
               color: kPrimaryColor,
             ),
-            SizedBox(
+            const SizedBox(
               width: 8,
             ),
             Text(

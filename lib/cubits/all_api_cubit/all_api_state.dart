@@ -49,3 +49,12 @@ final class OrderStateFailure extends AllApiState {
   final String errMessage;
   OrderStateFailure(this.errMessage);
 }
+
+final class OrderLoading extends AllApiState {}
+
+final class OrderSuccess extends AllApiState {}
+
+final class OrderFailure extends AllApiState {
+  final String errMessage;
+  OrderFailure(this.errMessage);
+}

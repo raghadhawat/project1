@@ -121,14 +121,14 @@ class DetailCard extends StatelessWidget {
               padding: const EdgeInsets.only(left: 260),
               child: Text(
                 'Pro : $outputDate1',
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 260),
               child: Text(
                 'Exp : ${details['expirationAt']}',
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             ),
             Padding(
@@ -152,7 +152,7 @@ class DetailCard extends StatelessWidget {
                       height: 75,
                       width: 180,
                       decoration: BoxDecoration(
-                          color: Color(0xff35bcd7),
+                          color: const Color(0xff35bcd7),
                           borderRadius: BorderRadius.circular(8)),
                       child: const Center(
                         child: Text(

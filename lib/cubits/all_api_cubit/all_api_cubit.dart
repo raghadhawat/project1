@@ -8,6 +8,7 @@ import 'package:pharma_track/helper/api.dart';
 import 'package:pharma_track/models/category_model.dart';
 import 'package:pharma_track/models/all_medicine_model.dart';
 import 'package:pharma_track/models/medicine_model.dart';
+import 'package:pharma_track/models/order_model.dart';
 import 'package:pharma_track/models/order_status_model.dart';
 import 'package:pharma_track/models/send_order_model.dart';
 
@@ -129,6 +130,7 @@ class AllApiCubit extends Cubit<AllApiState> {
       url: 'http://10.0.2.2:8000/api/Pharmacy/cart/store',
       token: AuthCubit.get(context).enterResponseModel!.data!.token,
       body: jsonEncode(orders),
+      header: true,
     )
         .then((value) {
       sendOrderModel = SendOrderModel.fromJson(value);
@@ -157,6 +159,29 @@ class AllApiCubit extends Cubit<AllApiState> {
     )
         .then((value) {
       orderStatusModel = OrderStatusModel.fromJson(value);
+    });
+  }
+
+  orders(context, {required int id}) async {
+    emit(OrderLoading());
+    try {
+      await order(context, id: id);
+
+      emit(OrderSuccess());
+    } catch (e) {
+      emit(OrderFailure(e.toString()));
+    }
+  }
+
+  OrderModel? orderModel;
+  Future<List<OrderStatusData>?> order(context, {required int id}) async {
+    await Api()
+        .get(
+      url: 'http://10.0.2.2:8000/api/Pharmacy/cart/show/$id',
+      token: AuthCubit.get(context).enterResponseModel!.data!.token,
+    )
+        .then((value) {
+      orderModel = OrderModel.fromJson(value);
     });
   }
 }

@@ -3,7 +3,7 @@ import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/views/medicine_detail_view.dart';
 import 'package:pharma_track/widgets/medicine_buttom_sheet.dart';
 
-class MedicineTile extends StatelessWidget {
+class MedicineTile extends StatefulWidget {
   MedicineTile({
     super.key,
     required this.name,
@@ -30,26 +30,33 @@ class MedicineTile extends StatelessWidget {
   final String details;
   final String createdAt;
   final String updatedAt;
+
+  @override
+  State<MedicineTile> createState() => _MedicineTileState();
+}
+
+class _MedicineTileState extends State<MedicineTile> {
+  bool fav = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
           Navigator.pushNamed(context, MedicineDetaileView.id, arguments: {
-            'name': name,
-            'tName': tName,
-            'image': image,
-            'companyName': companyName,
-            'form': form,
-            'quantity': quantity,
-            'price': price,
-            'expirationAt': expirationAt,
-            'details': details,
-            'createdAt': createdAt,
-            'updatedAt': updatedAt,
+            'name': widget.name,
+            'tName': widget.tName,
+            'image': widget.image,
+            'companyName': widget.companyName,
+            'form': widget.form,
+            'quantity': widget.quantity,
+            'price': widget.price,
+            'expirationAt': widget.expirationAt,
+            'details': widget.details,
+            'createdAt': widget.createdAt,
+            'updatedAt': widget.updatedAt,
           });
         },
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 5),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -57,13 +64,15 @@ class MedicineTile extends StatelessWidget {
             ),
             child: Stack(
               clipBehavior: Clip.none,
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              // mainAxisSize: MainAxisSize.min,
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // const SizedBox(
+                    //   height: 32,
+                    // ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 8),
+                      padding: const EdgeInsets.only(top: 8, left: 12),
                       child: SizedBox(
                         width: 150,
                         height: 100,
@@ -79,9 +88,6 @@ class MedicineTile extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // const SizedBox(
-                    //   height: 4,
-                    // ),
                     // Padding(
                     //   padding: const EdgeInsets.only(left: 8),
                     //   child: Text(
@@ -99,23 +105,35 @@ class MedicineTile extends StatelessWidget {
                     // ),
                     Padding(
                       padding: const EdgeInsets.only(left: 8),
-                      child: Center(
-                        child: Text(
-                          tName,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                          style: const TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 17,
-                          ),
+                      child: Text(
+                        widget.tName,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                        style: const TextStyle(
+                          color: kPrimaryColor,
+                          fontSize: 17,
                         ),
                       ),
                     ),
+                    Row(
+                      children: [
+                        const Spacer(),
+                        IconButton(
+                            onPressed: () {
+                              fav = !fav;
+                              setState(() {});
+                            },
+                            icon: const Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                            )),
+                      ],
+                    )
                   ],
                 ),
                 Positioned(
                   right: 50,
-                  top: 155,
+                  top: 165,
                   child: GestureDetector(
                     onTap: () {
                       showModalBottomSheet(
@@ -125,7 +143,7 @@ class MedicineTile extends StatelessWidget {
                           context: context,
                           builder: (context) {
                             return MedicineButtomSheeet(
-                              name: name,
+                              name: widget.name,
                             );
                           });
                     },
@@ -145,6 +163,25 @@ class MedicineTile extends StatelessWidget {
                     ),
                   ),
                 ),
+                // Positioned(
+                //     right: 4,
+                //     top: -190,
+                //     child: GestureDetector(
+                //         onTap: () {
+                //           fav = !fav;
+                //           setState(() {});
+                //         },
+                //         child: fav
+                //             ? const Icon(
+                //                 Icons.favorite_border_outlined,
+                //                 size: 30,
+                //                 color: Colors.red,
+                //               )
+                //             : const Icon(
+                //                 Icons.favorite,
+                //                 size: 30,
+                //                 color: Colors.red,
+                //               )))
               ],
             ),
           ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/helper/show_snack_bar.dart';
 import 'package:pharma_track/widgets/medicine_tile.dart';
@@ -22,15 +21,20 @@ class AllMedicineList extends StatelessWidget {
       }
     }, builder: (context, state) {
       return SizedBox(
-        height: 700,
-        child: GridView.builder(
-          itemCount: cubit.allMedicineModel?.data?.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2),
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 16),
-              child: MedicineTile(
+        height: 665,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: GridView.builder(
+            clipBehavior: Clip.none,
+            itemCount: cubit.allMedicineModel?.data?.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 1,
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 14,
+            ),
+            itemBuilder: (context, index) {
+              return MedicineTile(
                 tName: "${cubit.allMedicineModel?.data?[index].tradeName}",
                 name: "${cubit.allMedicineModel?.data?[index].scientificName}",
                 image: "${cubit.allMedicineModel?.data?[index].photo}",
@@ -44,9 +48,9 @@ class AllMedicineList extends StatelessWidget {
                 updatedAt: '${cubit.allMedicineModel?.data?[index].updatedAt}',
                 price: cubit.allMedicineModel?.data?[index].price,
                 quantity: cubit.allMedicineModel?.data?[index].quantity,
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       );
     });

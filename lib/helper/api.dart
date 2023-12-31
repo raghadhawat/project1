@@ -24,13 +24,19 @@ class Api {
   Future<dynamic> post(
       {required String url,
       @required dynamic body,
+      @required bool? header,
       @required String? token}) async {
     Map<String, String> headers = {};
     if (token != null) {
       headers.addAll({'Authorization': 'Bearer $token'});
     }
+    if (header == true) {
+      headers.addAll({'Accept': 'application/json'});
+    }
     http.Response response =
         await http.post(Uri.parse(url), body: body, headers: headers);
+    print(response.statusCode);
+    print(response.body);
     if (response.statusCode == 200) {
       Map<String, dynamic> data = jsonDecode(response.body);
       return data;

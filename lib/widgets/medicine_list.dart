@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/widgets/medicine_tile.dart';
 

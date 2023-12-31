@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/constants.dart';
-import 'package:pharma_track/cubits/order_cubit/order_cubit.dart';
-import 'package:pharma_track/models/add_order_model.dart';
 
 class OrderCard extends StatelessWidget {
   const OrderCard({
     super.key,
-    required this.order,
+    required this.name,
+    required this.quantity,
+    required this.id,
   });
-  final AddOrderModel order;
+  final String name;
+  final int quantity;
+  final int id;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,7 +29,7 @@ class OrderCard extends StatelessWidget {
                 decoration: const BoxDecoration(color: Color(0xff7BD3EA)),
                 child: Center(
                     child: Text(
-                  order.quantity,
+                  '$id',
                   style: const TextStyle(
                       color: kThirdColor2,
                       fontSize: 32,
@@ -36,29 +37,31 @@ class OrderCard extends StatelessWidget {
                 )),
               ),
               Padding(
-                padding: const EdgeInsets.all(5),
-                child: Text(
-                  order.name,
-                  style: const TextStyle(
-                      color: kPrimaryColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Spacer(),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 90),
-                child: IconButton(
-                  onPressed: () {
-                    order.delete();
-
-                    BlocProvider.of<OrderCubit>(context).fetchAllOrder();
-                  },
-                  icon: const Icon(
-                    Icons.close,
-                    color: kPrimaryColor,
-                    size: 25,
-                  ),
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: Text(
+                        name,
+                        style: const TextStyle(
+                            color: kPrimaryColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: Text(
+                        '$quantity',
+                        style: const TextStyle(
+                            color: kPrimaryColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

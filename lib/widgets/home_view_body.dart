@@ -131,7 +131,6 @@ class HomeViewBody extends StatelessWidget {
                     onTap: () {
                       BlocProvider.of<AllApiCubit>(context)
                           .orderStatus(context);
-                      Navigator.pushNamed(context, OrderStatusView.id);
                     },
                     name: 'ORDER STARUS',
                   ),
