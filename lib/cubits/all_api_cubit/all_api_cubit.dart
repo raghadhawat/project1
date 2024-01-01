@@ -17,6 +17,8 @@ import 'package:pharma_track/models/send_order_model.dart';
 part 'all_api_state.dart';
 
 class AllApiCubit extends Cubit<AllApiState> {
+  String basUrl = 'http://192.168.1.36:8000/api';
+
   AllApiCubit() : super(AllApiInitial());
   static AllApiCubit get(context) => BlocProvider.of(context);
 
@@ -37,7 +39,7 @@ class AllApiCubit extends Cubit<AllApiState> {
   Future<List<Data>?> getAllCategory(context) async {
     await Api()
         .get(
-      url: 'http://10.0.2.2:8000/api/Pharmacy/category',
+      url: '$basUrl/Pharmacy/category',
       token: Hive.box(kToken).get(kToken),
     )
         .then((value) {
@@ -62,7 +64,7 @@ class AllApiCubit extends Cubit<AllApiState> {
   Future<List<AllMedicineData>?> getAllMedicine(context) async {
     await Api()
         .get(
-      url: 'http://10.0.2.2:8000/api/Pharmacy/medicines',
+      url: '$basUrl/Pharmacy/medicines',
       token: Hive.box(kToken).get(kToken),
     )
         .then((value) {
@@ -87,7 +89,7 @@ class AllApiCubit extends Cubit<AllApiState> {
   Future<Map<String, dynamic>?> getMedicine(context, {required int id}) async {
     await Api()
         .get(
-      url: 'http://10.0.2.2:8000/api/Pharmacy/category/$id',
+      url: '$basUrl/Pharmacy/category/$id',
       token: Hive.box(kToken).get(kToken),
     )
         .then((value) {
@@ -130,7 +132,7 @@ class AllApiCubit extends Cubit<AllApiState> {
   }) async {
     await Api()
         .post(
-      url: 'http://10.0.2.2:8000/api/Pharmacy/cart/store',
+      url: '$basUrl/Pharmacy/cart/store',
       token: Hive.box(kToken).get(kToken),
       body: jsonEncode(orders),
       header: true,
@@ -157,7 +159,7 @@ class AllApiCubit extends Cubit<AllApiState> {
   Future<List<OrderStatusData>?> orderState(context) async {
     await Api()
         .get(
-      url: 'http://10.0.2.2:8000/api/Pharmacy/cart/index',
+      url: '$basUrl/Pharmacy/cart/index',
       token: Hive.box(kToken).get(kToken),
     )
         .then((value) {
@@ -181,7 +183,7 @@ class AllApiCubit extends Cubit<AllApiState> {
   Future<List<OrderStatusData>?> order(context, {required int id}) async {
     await Api()
         .get(
-      url: 'http://10.0.2.2:8000/api/Pharmacy/cart/show/$id',
+      url: '$basUrl/Pharmacy/cart/show/$id',
       token: Hive.box(kToken).get(kToken),
     )
         .then((value) {
@@ -206,7 +208,7 @@ class AllApiCubit extends Cubit<AllApiState> {
       {required bool fav, required int id}) async {
     await Api()
         .post(
-            url: 'http://10.0.2.2:8000/api/Pharmacy/favorite/add',
+            url: '$basUrl/Pharmacy/favorite/add',
             token: Hive.box(kToken).get(kToken),
             body: jsonEncode({"medicine_id": "$id", "is_favorite": fav}),
             header: true)
