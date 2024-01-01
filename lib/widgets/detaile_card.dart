@@ -81,25 +81,6 @@ class _DetailCardState extends State<DetailCard> {
                                 ],
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 180),
-                              child: GestureDetector(
-                                  onTap: () {
-                                    fav = !fav;
-                                    setState(() {});
-                                    BlocProvider.of<AllApiCubit>(context)
-                                        .addFavourit(context,
-                                            fav: fav,
-                                            id: widget.details["id"]!);
-                                  },
-                                  child: Icon(
-                                    !fav
-                                        ? Icons.favorite_outline
-                                        : Icons.favorite,
-                                    color: Colors.red,
-                                    size: 32,
-                                  )),
-                            ),
                           ],
                         ),
                         Padding(
@@ -166,8 +147,24 @@ class _DetailCardState extends State<DetailCard> {
                     ),
                     Column(
                       children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 4),
+                          child: GestureDetector(
+                              onTap: () {
+                                fav = !fav;
+                                setState(() {});
+                                BlocProvider.of<AllApiCubit>(context)
+                                    .addFavourit(context,
+                                        fav: fav, id: widget.details["id"]!);
+                              },
+                              child: Icon(
+                                !fav ? Icons.favorite_outline : Icons.favorite,
+                                color: Colors.red,
+                                size: 32,
+                              )),
+                        ),
                         const SizedBox(
-                          height: 240,
+                          height: 210,
                         ),
                         Container(
                           height: 50,

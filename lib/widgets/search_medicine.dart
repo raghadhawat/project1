@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/views/medicine_detail_view.dart';
 import 'package:pharma_track/widgets/search_medicine_card.dart';

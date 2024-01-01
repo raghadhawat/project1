@@ -7,7 +7,6 @@ import 'package:pharma_track/cubits/order_cubit/order_cubit.dart';
 import 'package:pharma_track/views/add_order_view.dart';
 import 'package:pharma_track/views/favourite_view.dart';
 import 'package:pharma_track/views/order_status_view.dart';
-import 'package:pharma_track/widgets/custom_main_card.dart';
 import 'package:pharma_track/widgets/order_status_card.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -18,15 +17,12 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AllApiCubit cubit = AllApiCubit.get(context);
-    BlocProvider.of<AllApiCubit>(context).orderStatus(context);
+    BlocProvider.of<AllApiCubit>(context).lastFour(context);
     Color color = Color(0xff31a9e3);
-    List<dynamic>? list;
-    print(cubit.orderStatusModel);
+
     return BlocConsumer<AllApiCubit, AllApiState>(
       listener: (context, state) {
-        if (state is OrderStateSuccess) {
-          list = cubit.orderStatusModel?.data;
-        }
+        if (state is LastFourSuccess) {}
       },
       builder: (context, state) {
         return Padding(
@@ -78,9 +74,7 @@ class HomeViewBody extends StatelessWidget {
                               fontSize: 24,
                               fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
+                        Spacer(),
                         Text(
                           'Where You can find all',
                           style: TextStyle(
@@ -158,8 +152,9 @@ class HomeViewBody extends StatelessWidget {
                                     height: 55,
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: 12,
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height / 100,
                                 ),
                                 const Padding(
                                   padding: EdgeInsets.all(16),
@@ -179,7 +174,8 @@ class HomeViewBody extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, FavouriteView.id);
+                        BlocProvider.of<AllApiCubit>(context)
+                            .showFavourite(context);
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(
@@ -199,8 +195,9 @@ class HomeViewBody extends StatelessWidget {
                                     height: 45,
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: 4,
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height / 100,
                                 ),
                                 const Padding(
                                   padding: EdgeInsets.all(16),
@@ -221,7 +218,8 @@ class HomeViewBody extends StatelessWidget {
                   ],
                 ),
               ),
-              cubit.orderStatusModel?.data == null
+              ((cubit.lastFourModel?.data) == null) ||
+                      (cubit.lastFourModel!.data!.isEmpty)
                   ? Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 140, horizontal: 50),
@@ -276,30 +274,43 @@ class HomeViewBody extends StatelessWidget {
                         SizedBox(
                           height: MediaQuery.of(context).size.height / 2.9,
                           child: ListView.builder(
-                            itemCount: 4,
+                            itemCount: cubit.lastFourModel?.data!.length,
                             itemBuilder: (context, index) {
-                              if (list != null) {
-                                if (list?[1].status == "New") {
+                              if ((cubit.lastFourModel?.data) != null) {
+                                if (cubit.lastFourModel?.data?[index].status ==
+                                    "New") {
                                   color = Color(0xff31a9e3);
-                                } else if (list![1].status == "Preparng") {
+                                } else if (cubit
+                                        .lastFourModel?.data![index].status ==
+                                    "Preparng") {
                                   color = Colors.deepPurple[500]!;
-                                } else if (list![1].status == "Delivering") {
+                                } else if (cubit
+                                        .lastFourModel?.data![1].status ==
+                                    "Delivering") {
                                   color = Colors.orange[500]!;
-                                } else if (list![1].status == "Recieved") {
+                                } else if (cubit
+                                        .lastFourModel?.data![index].status ==
+                                    "Recieved") {
                                   color = Colors.green[500]!;
                                 }
                               }
                               return GestureDetector(
                                 onTap: () {
-                                  BlocProvider.of<AllApiCubit>(context)
-                                      .orders(context, id: list?[1].id);
+                                  BlocProvider.of<AllApiCubit>(context).orders(
+                                      context,
+                                      id: cubit
+                                          .lastFourModel!.data![index].id!);
                                 },
                                 child: OrderStatusCard(
                                   color: color,
-                                  date: '${list?[1].createdAt}',
-                                  status: '${list?[1].status}',
-                                  price: '${list?[1].Total_price}',
-                                  paidStatus: '${list?[1].paidStatus}',
+                                  date:
+                                      '${cubit.lastFourModel?.data?[index].createdAt!.substring(0, 10)}',
+                                  status:
+                                      '${cubit.lastFourModel?.data?[index].status}',
+                                  price:
+                                      '${cubit.lastFourModel?.data?[index].totalPrice}',
+                                  paidStatus:
+                                      '${cubit.lastFourModel?.data?[index].paidStatus}',
                                 ),
                               );
                             },

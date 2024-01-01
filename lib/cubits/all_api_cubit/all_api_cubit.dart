@@ -9,10 +9,12 @@ import 'package:pharma_track/helper/api.dart';
 import 'package:pharma_track/models/add_favourite_model.dart';
 import 'package:pharma_track/models/category_model.dart';
 import 'package:pharma_track/models/all_medicine_model.dart';
+import 'package:pharma_track/models/last_four_status_model.dart';
 import 'package:pharma_track/models/medicine_model.dart';
 import 'package:pharma_track/models/order_model.dart';
 import 'package:pharma_track/models/order_status_model.dart';
 import 'package:pharma_track/models/send_order_model.dart';
+import 'package:pharma_track/models/show_favourite_model.dart';
 
 part 'all_api_state.dart';
 
@@ -178,7 +180,7 @@ class AllApiCubit extends Cubit<AllApiState> {
   }
 
   OrderModel? orderModel;
-  Future<List<OrderStatusData>?> order(context, {required int id}) async {
+  Future<List<OrderData>?> order(context, {required int id}) async {
     await Api()
         .get(
       url: 'http://10.0.2.2:8000/api/Pharmacy/cart/show/$id',
@@ -216,26 +218,56 @@ class AllApiCubit extends Cubit<AllApiState> {
   }
 
   /////show favourite
-  //  showFavourite(context, {required int id}) async {
-  //   emit(OrderLoading());
-  //   try {
-  //     await order(context, id: id);
+  showFavourite(context) async {
+    emit(ShowFavouriteLoading());
+    try {
+      await ShowFavouritr(
+        context,
+      );
 
-  //     emit(OrderSuccess());
-  //   } catch (e) {
-  //     emit(OrderFailure(e.toString()));
-  //   }
-  // }
+      emit(ShowFavouriteSuccess());
+    } catch (e) {
+      emit(ShowFavouriteFailure(e.toString()));
+    }
+  }
 
-  // OrderModel? orderModel;
-  // Future<List<OrderStatusData>?> order(context, {required int id}) async {
-  //   await Api()
-  //       .get(
-  //     url: 'http://10.0.2.2:8000/api/Pharmacy/cart/show/$id',
-  //     token: Hive.box(kToken).get(kToken),
-  //   )
-  //       .then((value) {
-  //     orderModel = OrderModel.fromJson(value);
-  //   });
-  // }
+  ShowFavouritreModel? showFavouritrModel;
+  Future<List<ShowFavouritreData>?> ShowFavouritr(context) async {
+    await Api()
+        .get(
+      url: 'http://10.0.2.2:8000/api/Pharmacy/favorite',
+      token: Hive.box(kToken).get(kToken),
+    )
+        .then((value) {
+      showFavouritrModel = ShowFavouritreModel.fromJson(value);
+    });
+  }
+
+  /////last four
+
+  /////show favourite
+  lastFour(context) async {
+    emit(LastFourLoading());
+    try {
+      await lastFourStatus(
+        context,
+      );
+
+      emit(LastFourSuccess());
+    } catch (e) {
+      emit(LastFourFailure(e.toString()));
+    }
+  }
+
+  LastFourModel? lastFourModel;
+  Future<List<lastFourData>?> lastFourStatus(context) async {
+    await Api()
+        .get(
+      url: 'http://10.0.2.2:8000/api/Pharmacy/cart/LatestCarts',
+      token: Hive.box(kToken).get(kToken),
+    )
+        .then((value) {
+      lastFourModel = LastFourModel.fromJson(value);
+    });
+  }
 }

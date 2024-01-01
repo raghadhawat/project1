@@ -67,3 +67,21 @@ final class AddFavouriteFailure extends AllApiState {
   final String errMessage;
   AddFavouriteFailure(this.errMessage);
 }
+
+final class ShowFavouriteLoading extends AllApiState {}
+
+final class ShowFavouriteSuccess extends AllApiState {}
+
+final class ShowFavouriteFailure extends AllApiState {
+  final String errMessage;
+  ShowFavouriteFailure(this.errMessage);
+}
+
+final class LastFourLoading extends AllApiState {}
+
+final class LastFourSuccess extends AllApiState {}
+
+final class LastFourFailure extends AllApiState {
+  final String errMessage;
+  LastFourFailure(this.errMessage);
+}

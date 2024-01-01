@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_track/constants.dart';
 
 class SearchMedicineCard extends StatelessWidget {
   const SearchMedicineCard({
