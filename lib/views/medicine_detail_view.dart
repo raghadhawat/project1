@@ -26,7 +26,7 @@ class MedicineDetaileView extends StatelessWidget {
               color: Colors.grey,
               size: 32,
             )),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         actions: const [
           Padding(

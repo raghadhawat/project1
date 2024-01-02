@@ -77,6 +77,15 @@ final class ShowFavouriteFailure extends AllApiState {
   ShowFavouriteFailure(this.errMessage);
 }
 
+final class ShowFavouriteLoading1 extends AllApiState {}
+
+final class ShowFavouriteSuccess1 extends AllApiState {}
+
+final class ShowFavouriteFailure1 extends AllApiState {
+  final String errMessage;
+  ShowFavouriteFailure1(this.errMessage);
+}
+
 final class LastFourLoading extends AllApiState {}
 
 final class LastFourSuccess extends AllApiState {}

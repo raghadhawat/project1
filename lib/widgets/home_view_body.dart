@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
-import 'package:pharma_track/cubits/auth_cubit/auth_cubit.dart';
-import 'package:pharma_track/cubits/order_cubit/order_cubit.dart';
-import 'package:pharma_track/views/add_order_view.dart';
-import 'package:pharma_track/views/favourite_view.dart';
 import 'package:pharma_track/views/order_status_view.dart';
+import 'package:pharma_track/views/report_view.dart';
 import 'package:pharma_track/widgets/order_status_card.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -62,55 +59,60 @@ class HomeViewBody extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: const Padding(
+                  child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Hello To RepoMed',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 24,
                               fontWeight: FontWeight.bold),
                         ),
-                        Spacer(),
-                        Text(
+                        const Spacer(),
+                        const Text(
                           'Where You can find all',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                           ),
                         ),
-                        Text(
+                        const Text(
                           '   your needs from ',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                           ),
                         ),
-                        Text(
+                        const Text(
                           '      medicines',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                           ),
                         ),
-                        Spacer(),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.arrow_forward,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              "Details",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
+                        const Spacer(),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, ReportView.id);
+                          },
+                          child: const Row(
+                            children: [
+                              Icon(
+                                Icons.arrow_forward,
+                                color: Colors.white,
+                              ),
+                              Text(
+                                "Details",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
                         )
                       ],
                     ),

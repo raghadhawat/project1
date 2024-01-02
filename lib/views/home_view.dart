@@ -126,7 +126,7 @@ class HomeView extends StatelessWidget {
                                       child: Icon(Icons.shopping_cart_outlined),
                                     ),
                                     appBar: AppBar(
-                                      backgroundColor: Colors.white,
+                                      backgroundColor: Colors.transparent,
                                       actions: [
                                         const Padding(
                                           padding: EdgeInsets.all(4),

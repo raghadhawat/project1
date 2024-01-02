@@ -16,7 +16,7 @@ class CustomAddOrderButton extends StatelessWidget {
         height: 55,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: kPrimaryColor,
+          color: Color(0xff31a9e3),
         ),
         child: Center(
           child: isLoading

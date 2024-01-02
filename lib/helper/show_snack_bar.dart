@@ -11,7 +11,7 @@ void showSnakbar(BuildContext context, String message) {
       backgroundColor: Color(0xff31a9e3),
       content: Text(
         message.substring(10),
-        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
       ),
     ),
   );

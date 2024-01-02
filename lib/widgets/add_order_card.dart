@@ -17,15 +17,16 @@ class AddOrderCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             color: kThirdColor, borderRadius: BorderRadius.circular(16)),
-        height: 130,
+        height: 100,
         child: Card(
-          color: kThirdColor2,
           child: Row(
             children: [
               Container(
                 height: MediaQuery.of(context).size.height,
                 width: 90,
-                decoration: const BoxDecoration(color: Color(0xff7BD3EA)),
+                decoration: const BoxDecoration(
+                  color: Color(0xff31a9e3),
+                ),
                 child: Center(
                     child: Text(
                   order.quantity,

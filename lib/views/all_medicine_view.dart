@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_track/constants.dart';
-import 'package:pharma_track/widgets/app_bar_text.dart';
 import 'package:pharma_track/widgets/category_list.dart';
 import 'package:pharma_track/widgets/all_medicine_list.dart';
 import 'package:pharma_track/widgets/search_all_medicine.dart';
@@ -28,7 +27,7 @@ class _AllMedicineViewState extends State<AllMedicineView> {
               color: Colors.grey,
               size: 32,
             )),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
           PopupMenuButton(

@@ -243,9 +243,34 @@ class AllApiCubit extends Cubit<AllApiState> {
     });
   }
 
+  /////show favourite1
+  showFavourite1(context) async {
+    emit(ShowFavouriteLoading1());
+    try {
+      await ShowFavouritr1(
+        context,
+      );
+
+      emit(ShowFavouriteSuccess1());
+    } catch (e) {
+      emit(ShowFavouriteFailure1(e.toString()));
+    }
+  }
+
+  ShowFavouritreModel? showFavouritrModel1;
+  Future<List<ShowFavouritreData>?> ShowFavouritr1(context) async {
+    await Api()
+        .get(
+      url: 'http://10.0.2.2:8000/api/Pharmacy/favorite',
+      token: Hive.box(kToken).get(kToken),
+    )
+        .then((value) {
+      showFavouritrModel1 = ShowFavouritreModel.fromJson(value);
+    });
+  }
+
   /////last four
 
-  /////show favourite
   lastFour(context) async {
     emit(LastFourLoading());
     try {

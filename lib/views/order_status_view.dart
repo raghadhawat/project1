@@ -41,7 +41,7 @@ class OrderStatusView extends StatelessWidget {
                       color: Colors.grey,
                       size: 32,
                     )),
-                backgroundColor: Colors.white,
+                backgroundColor: Colors.transparent,
                 actions: const [
                   Padding(
                     padding: EdgeInsets.all(8.0),
@@ -57,7 +57,7 @@ class OrderStatusView extends StatelessWidget {
               body: ListView.builder(
                   itemCount: cubit.orderStatusModel?.data?.length,
                   itemBuilder: (context, index) {
-                    if (cubit.orderStatusModel!.data![index].status == "New") {
+                    if (cubit.orderStatusModel?.data![index].status == "New") {
                       color = Color(0xff31a9e3);
                     } else if (cubit.orderStatusModel!.data![index].status ==
                         "Preparing") {

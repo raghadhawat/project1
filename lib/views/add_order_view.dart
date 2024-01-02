@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/cubits/order_cubit/order_cubit.dart';
 import 'package:pharma_track/helper/show_snack_bar.dart';
 import 'package:pharma_track/models/add_order_model.dart';
 import 'package:pharma_track/widgets/add_order_buttom_sheet.dart';
-import 'package:pharma_track/widgets/app_bar_text.dart';
 import 'package:pharma_track/widgets/custom_edit_order_buttom_sheet.dart';
 import 'package:pharma_track/widgets/add_order_card.dart';
 
@@ -19,6 +17,7 @@ class AddOrderView extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
+              BlocProvider.of<AllApiCubit>(context).lastFour(context);
               Navigator.pop(context);
             },
             icon: const Icon(
@@ -26,7 +25,7 @@ class AddOrderView extends StatelessWidget {
               color: Colors.grey,
               size: 32,
             )),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         actions: const [
           Padding(

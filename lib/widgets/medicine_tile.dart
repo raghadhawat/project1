@@ -40,144 +40,161 @@ class MedicineTile extends StatefulWidget {
 
 class _MedicineTileState extends State<MedicineTile> {
   bool fav = false;
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: () {
-          Navigator.pushNamed(context, MedicineDetaileView.id, arguments: {
-            'name': widget.name,
-            'tName': widget.tName,
-            'image': widget.image,
-            'companyName': widget.companyName,
-            'form': widget.form,
-            'quantity': widget.quantity,
-            'price': widget.price,
-            'expirationAt': widget.expirationAt,
-            'details': widget.details,
-            'createdAt': widget.createdAt,
-            'updatedAt': widget.updatedAt,
-            'id': widget.id,
-          });
-        },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4),
-            child: Container(
-                height: 150,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Card(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 120,
-                        width: 120,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Image.asset(
-                          "assets/images/images (8).png",
-                          height: 120,
-                        ),
-                      ),
-                      Column(
+    // AllApiCubit cubit = AllApiCubit.get(context);
+    // cubit.showFavourite1(context);
+    // if (cubit.showFavouritrModel1?.data != null) {
+    //   for (var favo in cubit.showFavouritrModel1!.data!) {
+    //     if (favo.id == id) {
+    //       fav = true;
+    //     }
+    //   }
+    // }
+    return BlocConsumer<AllApiCubit, AllApiState>(
+      listener: (context, state) {
+        if (state is ShowFavouriteSuccess1) {}
+      },
+      builder: (context, state) {
+        return GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, MedicineDetaileView.id, arguments: {
+                'name': widget.name,
+                'tName': widget.tName,
+                'image': widget.image,
+                'companyName': widget.companyName,
+                'form': widget.form,
+                'quantity': widget.quantity,
+                'price': widget.price,
+                'expirationAt': widget.expirationAt,
+                'details': widget.details,
+                'createdAt': widget.createdAt,
+                'updatedAt': widget.updatedAt,
+                'id': widget.id,
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                child: Container(
+                    height: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Card(
+                      child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 24),
-                            child: Text(
-                              widget.tName,
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 6),
-                            child: Text(
-                              widget.name,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 16),
-                            child: Text(
-                              "${widget.price} S.P",
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: GestureDetector(
-                                onTap: () {
-                                  fav = !fav;
-                                  setState(() {});
-                                  BlocProvider.of<AllApiCubit>(context)
-                                      .addFavourit(context,
-                                          fav: fav, id: widget.id!);
-                                },
-                                child: Icon(
-                                  !fav
-                                      ? Icons.favorite_outline
-                                      : Icons.favorite,
-                                  color: Colors.red,
-                                  size: 28,
-                                )),
-                          ),
-                          Spacer(),
                           Container(
-                            height: 50,
-                            width: 50,
-                            decoration: const BoxDecoration(
-                              color: Color(0xff31a9e3),
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(64),
-                              ),
+                            height: 120,
+                            width: 120,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Image.asset(
+                              "assets/images/images (8).png",
+                              height: 120,
                             ),
-                            child: GestureDetector(
-                              onTap: () {
-                                showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(16)),
-                                    context: context,
-                                    builder: (context) {
-                                      return MedicineButtomSheeet(
-                                        name: widget.tName,
-                                      );
-                                    });
-                              },
-                              child: const Padding(
-                                padding: EdgeInsets.all(16),
-                                child: Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                  size: 30,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 24),
+                                child: Text(
+                                  widget.tName,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
-                            ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 6),
+                                child: Text(
+                                  widget.name,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 16),
+                                child: Text(
+                                  "${widget.price} S.P",
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Spacer(),
+                          Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                    onTap: () {
+                                      fav = !fav;
+                                      setState(() {});
+                                      BlocProvider.of<AllApiCubit>(context)
+                                          .addFavourit(context,
+                                              fav: fav, id: widget.id!);
+                                    },
+                                    child: Icon(
+                                      !fav
+                                          ? Icons.favorite_outline
+                                          : Icons.favorite,
+                                      color: Colors.red,
+                                      size: 28,
+                                    )),
+                              ),
+                              Spacer(),
+                              Container(
+                                height: 50,
+                                width: 50,
+                                decoration: const BoxDecoration(
+                                  color: Color(0xff31a9e3),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(64),
+                                  ),
+                                ),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(16)),
+                                        context: context,
+                                        builder: (context) {
+                                          return MedicineButtomSheeet(
+                                            name: widget.tName,
+                                          );
+                                        });
+                                  },
+                                  child: const Padding(
+                                    padding: EdgeInsets.all(16),
+                                    child: Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                      size: 30,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                )),
-          ),
-        ));
+                    )),
+              ),
+            ));
+      },
+    );
   }
 }

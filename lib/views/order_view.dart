@@ -14,9 +14,27 @@ class OrderView extends StatelessWidget {
     print(cubit.orderModel!.data);
     return Scaffold(
         appBar: AppBar(
-          centerTitle: true,
-          title: const AppBarText(),
-          backgroundColor: kPrimaryColor,
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.arrow_back,
+                color: Colors.grey,
+                size: 32,
+              )),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          actions: const [
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.notifications_none_rounded,
+                color: Colors.grey,
+                size: 35,
+              ),
+            ),
+          ],
         ),
         body: ListView.builder(
             itemCount: cubit.orderModel?.data?.length,
