@@ -58,7 +58,15 @@ class AddOrderView extends StatelessWidget {
             },
             builder: (context, state) {
               return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Your cart: ",
+                      style: TextStyle(color: Colors.grey[600], fontSize: 20),
+                    ),
+                  ),
                   Expanded(
                     child: ListView.builder(
                         itemCount: orders.length,
@@ -84,6 +92,7 @@ class AddOrderView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         GestureDetector(
                           onTap: () {
@@ -97,8 +106,8 @@ class AddOrderView extends StatelessWidget {
                                 });
                           },
                           child: Container(
-                            height: 75,
-                            width: 180,
+                            height: 60,
+                            width: 150,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Color(0xff31a9e3)),
                                 borderRadius: BorderRadius.circular(8)),
@@ -107,34 +116,71 @@ class AddOrderView extends StatelessWidget {
                                 'Add Order',
                                 style: TextStyle(
                                     color: Color(0xff31a9e3),
-                                    fontSize: 24,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
                         ),
                         const SizedBox(
-                          width: 19,
+                          width: 25,
                         ),
                         GestureDetector(
                           onTap: () {
-                            BlocProvider.of<AllApiCubit>(context).sendorder(
-                                orders: BlocProvider.of<OrderCubit>(context)
-                                    .orders!,
-                                context: context);
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: Text(
+                                      "Warning",
+                                      style:
+                                          TextStyle(color: Color(0xff31a9e3)),
+                                    ),
+                                    content: Text(
+                                      "are you sure to send this cart?",
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          "cancel",
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                      ),
+                                      TextButton(
+                                          onPressed: () {
+                                            BlocProvider.of<AllApiCubit>(
+                                                    context)
+                                                .sendorder(
+                                                    orders: BlocProvider.of<
+                                                            OrderCubit>(context)
+                                                        .orders!,
+                                                    context: context);
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            "ok",
+                                            style: TextStyle(fontSize: 20),
+                                          ))
+                                    ],
+                                  );
+                                });
                           },
                           child: Container(
-                            height: 75,
-                            width: 180,
+                            height: 60,
+                            width: 150,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Color(0xff31a9e3)),
                                 borderRadius: BorderRadius.circular(8)),
                             child: const Center(
                               child: Text(
-                                'Send Orders',
+                                'Send cart',
                                 style: TextStyle(
                                     color: Color(0xff31a9e3),
-                                    fontSize: 24,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),

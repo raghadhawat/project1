@@ -11,93 +11,93 @@ class ReportView extends StatelessWidget {
     AllApiCubit cubit = AllApiCubit.get(context);
 
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.grey,
-                size: 32,
-              )),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          actions: const [
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(
-                Icons.notifications_none_rounded,
-                color: Colors.grey,
-                size: 35,
-              ),
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.grey,
+              size: 32,
+            )),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.notifications_none_rounded,
+              color: Colors.grey,
+              size: 35,
             ),
-          ],
-        ),
-        body: (cubit.reportModel) == null
-            ? Center(
-                child: Text(
-                "There is no order yet ",
-                style: TextStyle(fontSize: 24),
-              ))
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 50,
+          ),
+        ],
+      ),
+      body: (cubit.reportModel) == null
+          ? Center(
+              child: Text(
+              "There is no order yet ",
+              style: TextStyle(fontSize: 24),
+            ))
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 50,
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 32, horizontal: 8),
+                  child: Text(
+                    "report of this month",
+                    style: TextStyle(color: Color(0xff31a9e3), fontSize: 18),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 32, horizontal: 8),
-                    child: Text(
-                      "report of this month",
-                      style: TextStyle(color: Color(0xff31a9e3), fontSize: 18),
-                    ),
-                  ),
-                  Container(
-                    height: 500,
-                    child: ListView.builder(
-                      itemCount: cubit.reportModel!.data!.length,
-                      itemBuilder: (context, index) {
-                        return ReportCard(
-                          list: cubit.reportModel!.data![index],
-                        );
-                      },
-                    ),
-                  ),
-                  Divider(
-                    thickness: 2,
-                    indent: 15,
-                    endIndent: 15,
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 30),
-                    height: 40,
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: Text(
-                            "Total amount",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  height: 40,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        child: Text(
+                          "Total amount",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                        Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: Text(
-                            "${cubit.reportModel!.data1![0].totalSales!}SYP",
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Color(0xff31a9e3),
-                                fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ));
+                      ),
+                      Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        child: Text(
+                          "${cubit.reportModel!.data1![0].totalSales!}SYP",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Color(0xff31a9e3),
+                              fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Divider(
+                  thickness: 2,
+                  indent: 15,
+                  endIndent: 15,
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: cubit.reportModel!.data!.length,
+                    itemBuilder: (context, index) {
+                      return ReportCard(
+                        list: cubit.reportModel!.data![index],
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+    );
   }
 }

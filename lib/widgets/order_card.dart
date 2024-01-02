@@ -16,29 +16,24 @@ class OrderCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10, right: 8, left: 8),
       child: Container(
-        decoration: BoxDecoration(
-            color: kThirdColor, borderRadius: BorderRadius.circular(16)),
-        height: 110,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
+        height: 100,
         child: Card(
           child: Row(
             children: [
               Container(
                 height: MediaQuery.of(context).size.height,
-                width: 90,
+                width: 10,
                 decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(6),
+                      bottomLeft: Radius.circular(6)),
                   color: Color(0xff31a9e3),
                 ),
-                child: Center(
-                    child: Text(
-                  '$id',
-                  style: const TextStyle(
-                      color: kThirdColor2,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold),
-                )),
+                child: Text(""),
               ),
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -47,19 +42,15 @@ class OrderCard extends StatelessWidget {
                       child: Text(
                         name,
                         style: const TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(5),
                       child: Text(
-                        '$quantity',
+                        'quantity: $quantity',
                         style: const TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],

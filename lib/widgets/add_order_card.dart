@@ -15,53 +15,86 @@ class AddOrderCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10, right: 8, left: 8),
       child: Container(
-        decoration: BoxDecoration(
-            color: kThirdColor, borderRadius: BorderRadius.circular(16)),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
         height: 100,
         child: Card(
           child: Row(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height,
-                width: 90,
-                decoration: const BoxDecoration(
-                  color: Color(0xff31a9e3),
-                ),
-                child: Center(
-                    child: Text(
-                  order.quantity,
-                  style: const TextStyle(
-                      color: kThirdColor2,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold),
-                )),
-              ),
+                  height: MediaQuery.of(context).size.height,
+                  width: 10,
+                  decoration: BoxDecoration(
+                      color: Color(0xff31a9e3),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(6),
+                          bottomLeft: Radius.circular(6))),
+                  child: Text("")),
               Padding(
-                padding: const EdgeInsets.all(5),
-                child: Text(
-                  order.name,
-                  style: const TextStyle(
-                      color: kPrimaryColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(4),
+                      child: Text(
+                        order.name,
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(2),
+                      child: Text(
+                        "quantity: ${order.quantity}",
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
                 ),
               ),
               Spacer(),
               Padding(
-                padding: const EdgeInsets.only(bottom: 90),
+                padding: const EdgeInsets.only(bottom: 40),
                 child: IconButton(
-                  onPressed: () {
-                    order.delete();
-
-                    BlocProvider.of<OrderCubit>(context).fetchAllOrder();
-                  },
-                  icon: const Icon(
-                    Icons.close,
-                    color: kPrimaryColor,
-                    size: 25,
-                  ),
-                ),
-              ),
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text(
+                                "Warning",
+                                style: TextStyle(color: Color(0xff31a9e3)),
+                              ),
+                              content: Text(
+                                  "Are you sure from deleting this order?"),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                    "cancel",
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ),
+                                TextButton(
+                                    onPressed: () {
+                                      order.delete();
+                                      BlocProvider.of<OrderCubit>(context)
+                                          .fetchAllOrder();
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      "delete",
+                                      style: TextStyle(fontSize: 20),
+                                    ))
+                              ],
+                            );
+                          });
+                    },
+                    icon: Icon(Icons.close)),
+              )
             ],
           ),
         ),

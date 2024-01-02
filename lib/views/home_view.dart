@@ -156,15 +156,57 @@ class HomeView extends StatelessWidget {
                                             ),
                                             IconButton(
                                                 onPressed: () {
-                                                  BlocProvider.of<AuthCubit>(
-                                                          context)
-                                                      .logOut(context);
-                                                  Hive.box(kToken)
-                                                      .delete(kToken1);
-                                                  print(
-                                                      "${Hive.box(kToken).get(kToken1)}lllllllllll");
-                                                  print(
-                                                      "${AuthCubit.get(context).logOutModel?.messege?.message}kk");
+                                                  // BlocProvider.of<AuthCubit>(
+                                                  //         context)
+                                                  //     .logOut(context);
+                                                  // Hive.box(kToken)
+                                                  //     .delete(kToken1);
+                                                  showDialog(
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                            "Warning",
+                                                            style: TextStyle(
+                                                                color: Color(
+                                                                    0xff31a9e3)),
+                                                          ),
+                                                          content: Text(
+                                                              "Are you sure ?"),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: Text(
+                                                                "cancel",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        20),
+                                                              ),
+                                                            ),
+                                                            TextButton(
+                                                                onPressed: () {
+                                                                  BlocProvider.of<
+                                                                              AuthCubit>(
+                                                                          context)
+                                                                      .logOut(
+                                                                          context);
+                                                                  Hive.box(
+                                                                          kToken)
+                                                                      .delete(
+                                                                          kToken1);
+                                                                },
+                                                                child: Text(
+                                                                  "exit",
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          20),
+                                                                ))
+                                                          ],
+                                                        );
+                                                      });
                                                 },
                                                 icon: const Icon(
                                                   Icons.logout,

@@ -163,29 +163,29 @@ class _MedicineTileState extends State<MedicineTile> {
                                     )),
                               ),
                               Spacer(),
-                              Container(
-                                height: 50,
-                                width: 50,
-                                decoration: const BoxDecoration(
-                                  color: Color(0xff31a9e3),
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(64),
+                              GestureDetector(
+                                onTap: () {
+                                  showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(16)),
+                                      context: context,
+                                      builder: (context) {
+                                        return MedicineButtomSheeet(
+                                          name: widget.tName,
+                                        );
+                                      });
+                                },
+                                child: Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xff31a9e3),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(64),
+                                    ),
                                   ),
-                                ),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(16)),
-                                        context: context,
-                                        builder: (context) {
-                                          return MedicineButtomSheeet(
-                                            name: widget.tName,
-                                          );
-                                        });
-                                  },
                                   child: const Padding(
                                     padding: EdgeInsets.all(16),
                                     child: Icon(

@@ -45,7 +45,6 @@ class _CustomDropDownState extends State<CustomDropDown> {
         items: widget.name,
         dropdownDecoratorProps: DropDownDecoratorProps(
           dropdownSearchDecoration: InputDecoration(
-            focusColor: kPrimaryColor,
             enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: kPrimaryColor, width: 1),
                 borderRadius: BorderRadius.all(Radius.circular(16))),

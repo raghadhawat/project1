@@ -171,31 +171,30 @@ class _DetailCardState extends State<DetailCard> {
                         const SizedBox(
                           height: 240,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16),
-                          child: Container(
-                            height: 50,
-                            width: 50,
-                            decoration: const BoxDecoration(
-                              color: Color(0xff31a9e3),
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(64),
+                        GestureDetector(
+                          onTap: () {
+                            showModalBottomSheet(
+                                isScrollControlled: true,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16)),
+                                context: context,
+                                builder: (context) {
+                                  return MedicineButtomSheeet(
+                                    name: '${widget.details['tName']}',
+                                  );
+                                });
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 16),
+                            child: Container(
+                              height: 50,
+                              width: 50,
+                              decoration: const BoxDecoration(
+                                color: Color(0xff31a9e3),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(64),
+                                ),
                               ),
-                            ),
-                            child: GestureDetector(
-                              onTap: () {
-                                showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(16)),
-                                    context: context,
-                                    builder: (context) {
-                                      return MedicineButtomSheeet(
-                                        name: '${widget.details['tName']}',
-                                      );
-                                    });
-                              },
                               child: const Padding(
                                 padding: EdgeInsets.all(16),
                                 child: Icon(
