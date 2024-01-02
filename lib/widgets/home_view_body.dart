@@ -96,7 +96,8 @@ class HomeViewBody extends StatelessWidget {
                         const Spacer(),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, ReportView.id);
+                            BlocProvider.of<AllApiCubit>(context)
+                                .report(context);
                           },
                           child: const Row(
                             children: [

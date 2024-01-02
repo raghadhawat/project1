@@ -25,6 +25,7 @@ class AllMedicineData {
   String? categoriesName;
   int? quantity;
   int? price;
+  int? favourite;
   String? form;
   String? photo;
   String? details;
@@ -47,7 +48,8 @@ class AllMedicineData {
       this.expirationAt,
       this.deletedAt,
       this.createdAt,
-      this.updatedAt});
+      this.updatedAt,
+      this.favourite});
 
   AllMedicineData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -64,5 +66,6 @@ class AllMedicineData {
     deletedAt = json['deleted_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
+    favourite = json['favorite'];
   }
 }

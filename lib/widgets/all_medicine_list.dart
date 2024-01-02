@@ -40,6 +40,7 @@ class AllMedicineList extends StatelessWidget {
               price: cubit.allMedicineModel?.data?[index].price,
               quantity: cubit.allMedicineModel?.data?[index].quantity,
               id: cubit.allMedicineModel?.data?[index].id,
+              favourite: cubit.allMedicineModel?.data?[index].favourite,
             );
           },
         ),

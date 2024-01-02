@@ -13,6 +13,7 @@ import 'package:pharma_track/views/favourite_view.dart';
 import 'package:pharma_track/views/login_view.dart';
 import 'package:pharma_track/views/medicine_view.dart';
 import 'package:pharma_track/views/order_view.dart';
+import 'package:pharma_track/views/report_view.dart';
 import 'package:pharma_track/widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
@@ -25,12 +26,12 @@ class HomeView extends StatelessWidget {
     bool isLoading = false;
     return BlocConsumer<AllApiCubit, AllApiState>(
       listener: (context, state) {
-        if (state is ShowFavouriteLoading) {
+        if (state is ReportLoading) {
           isLoading = true;
-        } else if (state is ShowFavouriteSuccess) {
-          Navigator.pushNamed(context, FavouriteView.id);
+        } else if (state is ReportSuccess) {
+          Navigator.pushNamed(context, ReportView.id);
           isLoading = false;
-        } else if (state is ShowFavouriteFailure) {
+        } else if (state is ReportFailure) {
           showSnakbar(context, state.errMessage);
           isLoading = false;
         }
@@ -38,12 +39,12 @@ class HomeView extends StatelessWidget {
       builder: (context, state) {
         return BlocConsumer<AllApiCubit, AllApiState>(
           listener: (context, state) {
-            if (state is OrderLoading) {
+            if (state is ShowFavouriteLoading) {
               isLoading = true;
-            } else if (state is OrderSuccess) {
-              Navigator.pushNamed(context, OrderView.id);
+            } else if (state is ShowFavouriteSuccess) {
+              Navigator.pushNamed(context, FavouriteView.id);
               isLoading = false;
-            } else if (state is OrderFailure) {
+            } else if (state is ShowFavouriteFailure) {
               showSnakbar(context, state.errMessage);
               isLoading = false;
             }
@@ -51,12 +52,12 @@ class HomeView extends StatelessWidget {
           builder: (context, state) {
             return BlocConsumer<AllApiCubit, AllApiState>(
               listener: (context, state) {
-                if (state is AddFavouriteLoading) {
+                if (state is OrderLoading) {
                   isLoading = true;
-                } else if (state is AddFavouriteSuccess) {
-                  Navigator.pushNamed(context, FavouriteView.id);
+                } else if (state is OrderSuccess) {
+                  Navigator.pushNamed(context, OrderView.id);
                   isLoading = false;
-                } else if (state is AddFavouriteFailure) {
+                } else if (state is OrderFailure) {
                   showSnakbar(context, state.errMessage);
                   isLoading = false;
                 }
@@ -64,101 +65,121 @@ class HomeView extends StatelessWidget {
               builder: (context, state) {
                 return BlocConsumer<AllApiCubit, AllApiState>(
                   listener: (context, state) {
-                    if (state is OrderStateLoading) {
+                    if (state is AddFavouriteLoading) {
                       isLoading = true;
-                    } else if (state is OrderStateSuccess) {
+                    } else if (state is AddFavouriteSuccess) {
+                      Navigator.pushNamed(context, FavouriteView.id);
                       isLoading = false;
-                    } else if (state is OrderStateFailure) {
+                    } else if (state is AddFavouriteFailure) {
                       showSnakbar(context, state.errMessage);
                       isLoading = false;
                     }
                   },
                   builder: (context, state) {
-                    return BlocConsumer<AuthCubit, AuthState>(
-                        listener: (context, state) {
-                          if (state is LogoutLoading) {
-                            isLoading = true;
-                          } else if (state is LogoutSuccess) {
-                            Navigator.pushNamed(context, LoginView.id);
-                            isLoading = false;
-                          } else if (state is LogoutFailure) {
-                            showSnakbar(context, state.errMessage);
-                            isLoading = false;
-                          }
-                        },
-                        builder: (context, state) =>
-                            BlocConsumer<AllApiCubit, AllApiState>(
-                                listener: (context, state) {
-                              if (state is AllApiLoading) {
+                    return BlocConsumer<AllApiCubit, AllApiState>(
+                      listener: (context, state) {
+                        if (state is OrderStateLoading) {
+                          isLoading = true;
+                        } else if (state is OrderStateSuccess) {
+                          isLoading = false;
+                        } else if (state is OrderStateFailure) {
+                          showSnakbar(context, state.errMessage);
+                          isLoading = false;
+                        }
+                      },
+                      builder: (context, state) {
+                        return BlocConsumer<AuthCubit, AuthState>(
+                            listener: (context, state) {
+                              if (state is LogoutLoading) {
                                 isLoading = true;
-                              } else if (state is AllApiSuccess) {
-                                Navigator.pushNamed(
-                                    context, AllMedicineView.id);
+                              } else if (state is LogoutSuccess) {
+                                Navigator.pushNamed(context, LoginView.id);
                                 isLoading = false;
-                              } else if (state is AllApiFailur) {
+                              } else if (state is LogoutFailure) {
                                 showSnakbar(context, state.errMessage);
                                 isLoading = false;
                               }
-                            }, builder: (context, state) {
-                              return BlocConsumer<AllApiCubit, AllApiState>(
-                                  listener: (context, state) {
-                                if (state is MedicineLoading) {
-                                  isLoading = true;
-                                } else if (state is MedicineSuccess) {
-                                  Navigator.pushNamed(context, MedicineView.id);
-                                  isLoading = false;
-                                } else if (state is MedicineFailure) {
-                                  showSnakbar(context, state.errMessage);
-                                  isLoading = false;
-                                }
-                              }, builder: (context, state) {
-                                return BlurryModalProgressHUD(
-                                  inAsyncCall: isLoading,
-                                  child: Scaffold(
-                                    floatingActionButton: FloatingActionButton(
-                                      backgroundColor: Color(0xff31a9e3),
-                                      onPressed: () {
-                                        BlocProvider.of<OrderCubit>(context)
-                                            .fetchAllOrder();
-                                        Navigator.pushNamed(
-                                            context, AddOrderView.id);
-                                      },
-                                      child: Icon(Icons.shopping_cart_outlined),
-                                    ),
-                                    appBar: AppBar(
-                                      backgroundColor: Colors.transparent,
-                                      actions: [
-                                        const Padding(
-                                          padding: EdgeInsets.all(4),
+                            },
+                            builder: (context, state) =>
+                                BlocConsumer<AllApiCubit, AllApiState>(
+                                    listener: (context, state) {
+                                  if (state is AllApiLoading) {
+                                    isLoading = true;
+                                  } else if (state is AllApiSuccess) {
+                                    Navigator.pushNamed(
+                                        context, AllMedicineView.id);
+                                    isLoading = false;
+                                  } else if (state is AllApiFailur) {
+                                    showSnakbar(context, state.errMessage);
+                                    isLoading = false;
+                                  }
+                                }, builder: (context, state) {
+                                  return BlocConsumer<AllApiCubit, AllApiState>(
+                                      listener: (context, state) {
+                                    if (state is MedicineLoading) {
+                                      isLoading = true;
+                                    } else if (state is MedicineSuccess) {
+                                      Navigator.pushNamed(
+                                          context, MedicineView.id);
+                                      isLoading = false;
+                                    } else if (state is MedicineFailure) {
+                                      showSnakbar(context, state.errMessage);
+                                      isLoading = false;
+                                    }
+                                  }, builder: (context, state) {
+                                    return BlurryModalProgressHUD(
+                                      inAsyncCall: isLoading,
+                                      child: Scaffold(
+                                        floatingActionButton:
+                                            FloatingActionButton(
+                                          backgroundColor: Color(0xff31a9e3),
+                                          onPressed: () {
+                                            BlocProvider.of<OrderCubit>(context)
+                                                .fetchAllOrder();
+                                            Navigator.pushNamed(
+                                                context, AddOrderView.id);
+                                          },
                                           child: Icon(
-                                            Icons.notifications_none_rounded,
-                                            color: Colors.grey,
-                                            size: 35,
-                                          ),
+                                              Icons.shopping_cart_outlined),
                                         ),
-                                        IconButton(
-                                            onPressed: () {
-                                              BlocProvider.of<AuthCubit>(
-                                                      context)
-                                                  .logOut(context);
-                                              Hive.box(kToken).delete(kToken1);
-                                              print(
-                                                  "${Hive.box(kToken).get(kToken1)}lllllllllll");
-                                              print(
-                                                  "${AuthCubit.get(context).logOutModel?.messege?.message}kk");
-                                            },
-                                            icon: const Icon(
-                                              Icons.logout,
-                                              color: Colors.grey,
-                                            )),
-                                      ],
-                                      elevation: 0.0,
-                                    ),
-                                    body: const HomeViewBody(),
-                                  ),
-                                );
-                              });
-                            }));
+                                        appBar: AppBar(
+                                          backgroundColor: Colors.transparent,
+                                          actions: [
+                                            const Padding(
+                                              padding: EdgeInsets.all(4),
+                                              child: Icon(
+                                                Icons
+                                                    .notifications_none_rounded,
+                                                color: Colors.grey,
+                                                size: 35,
+                                              ),
+                                            ),
+                                            IconButton(
+                                                onPressed: () {
+                                                  BlocProvider.of<AuthCubit>(
+                                                          context)
+                                                      .logOut(context);
+                                                  Hive.box(kToken)
+                                                      .delete(kToken1);
+                                                  print(
+                                                      "${Hive.box(kToken).get(kToken1)}lllllllllll");
+                                                  print(
+                                                      "${AuthCubit.get(context).logOutModel?.messege?.message}kk");
+                                                },
+                                                icon: const Icon(
+                                                  Icons.logout,
+                                                  color: Colors.grey,
+                                                )),
+                                          ],
+                                          elevation: 0.0,
+                                        ),
+                                        body: const HomeViewBody(),
+                                      ),
+                                    );
+                                  });
+                                }));
+                      },
+                    );
                   },
                 );
               },

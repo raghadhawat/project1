@@ -94,3 +94,12 @@ final class LastFourFailure extends AllApiState {
   final String errMessage;
   LastFourFailure(this.errMessage);
 }
+
+final class ReportLoading extends AllApiState {}
+
+final class ReportSuccess extends AllApiState {}
+
+final class ReportFailure extends AllApiState {
+  final String errMessage;
+  ReportFailure(this.errMessage);
+}

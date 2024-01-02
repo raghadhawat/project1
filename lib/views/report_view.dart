@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/widgets/report_card.dart';
 
 class ReportView extends StatelessWidget {
@@ -7,6 +8,8 @@ class ReportView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AllApiCubit cubit = AllApiCubit.get(context);
+
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -31,50 +34,70 @@ class ReportView extends StatelessWidget {
             ),
           ],
         ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
-              child: Text(
-                "report of this month",
-                style: TextStyle(color: Colors.grey, fontSize: 18),
-              ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return ReportCard(
-                    index: index,
-                  );
-                },
-              ),
-            ),
-            Divider(
-              thickness: 2,
-              indent: 15,
-              endIndent: 15,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 7),
-              height: 40,
-              child: Row(
+        body: (cubit.reportModel) == null
+            ? Center(
+                child: Text(
+                "There is no order yet ",
+                style: TextStyle(fontSize: 24),
+              ))
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Spacer(),
+                  SizedBox(
+                    height: 50,
+                  ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 28),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 32, horizontal: 8),
                     child: Text(
-                      "500 SYP",
-                      style: TextStyle(
-                          fontSize: 24,
-                          color: Color(0xff31a9e3),
-                          fontWeight: FontWeight.bold),
+                      "report of this month",
+                      style: TextStyle(color: Color(0xff31a9e3), fontSize: 18),
+                    ),
+                  ),
+                  Container(
+                    height: 500,
+                    child: ListView.builder(
+                      itemCount: cubit.reportModel!.data!.length,
+                      itemBuilder: (context, index) {
+                        return ReportCard(
+                          list: cubit.reportModel!.data![index],
+                        );
+                      },
+                    ),
+                  ),
+                  Divider(
+                    thickness: 2,
+                    indent: 15,
+                    endIndent: 15,
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 30),
+                    height: 40,
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          child: Text(
+                            "Total amount",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          child: Text(
+                            "${cubit.reportModel!.data1![0].totalSales!}SYP",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Color(0xff31a9e3),
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      ],
                     ),
                   )
                 ],
-              ),
-            )
-          ],
-        ));
+              ));
   }
 }

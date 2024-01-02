@@ -13,6 +13,7 @@ import 'package:pharma_track/models/last_four_status_model.dart';
 import 'package:pharma_track/models/medicine_model.dart';
 import 'package:pharma_track/models/order_model.dart';
 import 'package:pharma_track/models/order_status_model.dart';
+import 'package:pharma_track/models/report_model.dart';
 import 'package:pharma_track/models/send_order_model.dart';
 import 'package:pharma_track/models/show_favourite_model.dart';
 
@@ -72,7 +73,7 @@ class AllApiCubit extends Cubit<AllApiState> {
     });
   }
 
-  /// medicine service
+  /// medicine
 
   medicine(context, {required int id}) async {
     emit(MedicineLoading());
@@ -243,32 +244,6 @@ class AllApiCubit extends Cubit<AllApiState> {
     });
   }
 
-  /////show favourite1
-  showFavourite1(context) async {
-    emit(ShowFavouriteLoading1());
-    try {
-      await ShowFavouritr1(
-        context,
-      );
-
-      emit(ShowFavouriteSuccess1());
-    } catch (e) {
-      emit(ShowFavouriteFailure1(e.toString()));
-    }
-  }
-
-  ShowFavouritreModel? showFavouritrModel1;
-  Future<List<ShowFavouritreData>?> ShowFavouritr1(context) async {
-    await Api()
-        .get(
-      url: 'http://10.0.2.2:8000/api/Pharmacy/favorite',
-      token: Hive.box(kToken).get(kToken),
-    )
-        .then((value) {
-      showFavouritrModel1 = ShowFavouritreModel.fromJson(value);
-    });
-  }
-
   /////last four
 
   lastFour(context) async {
@@ -293,6 +268,33 @@ class AllApiCubit extends Cubit<AllApiState> {
     )
         .then((value) {
       lastFourModel = LastFourModel.fromJson(value);
+    });
+  }
+
+  /////Report
+
+  report(context) async {
+    emit(ReportLoading());
+    try {
+      await getReort(
+        context,
+      );
+
+      emit(ReportSuccess());
+    } catch (e) {
+      emit(ReportFailure(e.toString()));
+    }
+  }
+
+  ReportModel? reportModel;
+  Future<List<ReportModel>?> getReort(context) async {
+    await Api()
+        .get(
+      url: 'http://10.0.2.2:8000/api/Pharmacy/report',
+      token: Hive.box(kToken).get(kToken),
+    )
+        .then((value) {
+      reportModel = ReportModel.fromJson(value);
     });
   }
 }

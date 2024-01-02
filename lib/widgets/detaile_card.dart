@@ -21,6 +21,7 @@ class _DetailCardState extends State<DetailCard> {
   bool fav = false;
   @override
   Widget build(BuildContext context) {
+    fav = widget.details['favourite'] == 0 ? false : true;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -147,53 +148,61 @@ class _DetailCardState extends State<DetailCard> {
                     ),
                     Column(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 4),
-                          child: GestureDetector(
-                              onTap: () {
-                                fav = !fav;
-                                setState(() {});
-                                BlocProvider.of<AllApiCubit>(context)
-                                    .addFavourit(context,
-                                        fav: fav, id: widget.details["id"]!);
-                              },
-                              child: Icon(
-                                !fav ? Icons.favorite_outline : Icons.favorite,
-                                color: Colors.red,
-                                size: 32,
-                              )),
-                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(left: 24),
+                        //   child: GestureDetector(
+                        //       onTap: () {
+                        //         fav = !fav;
+                        //         BlocProvider.of<AllApiCubit>(context)
+                        //             .allMedicine(
+                        //           context,
+                        //         );
+                        //         setState(() {});
+                        //         BlocProvider.of<AllApiCubit>(context)
+                        //             .addFavourit(context,
+                        //                 fav: fav, id: widget.details["id"]!);
+                        //       },
+                        //       child: Icon(
+                        //         !fav ? Icons.favorite_outline : Icons.favorite,
+                        //         color: Colors.red,
+                        //         size: 32,
+                        //       )),
+                        // ),
                         const SizedBox(
-                          height: 210,
+                          height: 240,
                         ),
-                        Container(
-                          height: 50,
-                          width: 50,
-                          decoration: const BoxDecoration(
-                            color: Color(0xff31a9e3),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(64),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 16),
+                          child: Container(
+                            height: 50,
+                            width: 50,
+                            decoration: const BoxDecoration(
+                              color: Color(0xff31a9e3),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(64),
+                              ),
                             ),
-                          ),
-                          child: GestureDetector(
-                            onTap: () {
-                              showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16)),
-                                  context: context,
-                                  builder: (context) {
-                                    return MedicineButtomSheeet(
-                                      name: '${widget.details['tName']}',
-                                    );
-                                  });
-                            },
-                            child: const Padding(
-                              padding: EdgeInsets.all(16),
-                              child: Icon(
-                                Icons.add,
-                                color: Colors.white,
-                                size: 30,
+                            child: GestureDetector(
+                              onTap: () {
+                                showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(16)),
+                                    context: context,
+                                    builder: (context) {
+                                      return MedicineButtomSheeet(
+                                        name: '${widget.details['tName']}',
+                                      );
+                                    });
+                              },
+                              child: const Padding(
+                                padding: EdgeInsets.all(16),
+                                child: Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
                               ),
                             ),
                           ),

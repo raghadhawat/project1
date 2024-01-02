@@ -5,21 +5,21 @@ import 'package:pharma_track/views/medicine_detail_view.dart';
 import 'package:pharma_track/widgets/medicine_buttom_sheet.dart';
 
 class MedicineTile extends StatefulWidget {
-  MedicineTile({
-    super.key,
-    required this.name,
-    required this.tName,
-    required this.image,
-    required this.companyName,
-    required this.form,
-    required this.expirationAt,
-    required this.details,
-    required this.createdAt,
-    required this.updatedAt,
-    this.price,
-    this.quantity,
-    this.id,
-  });
+  MedicineTile(
+      {super.key,
+      required this.name,
+      required this.tName,
+      required this.image,
+      required this.companyName,
+      required this.form,
+      required this.expirationAt,
+      required this.details,
+      required this.createdAt,
+      required this.updatedAt,
+      this.price,
+      this.quantity,
+      this.id,
+      this.favourite});
   final String name;
   final String tName;
   String? image;
@@ -29,6 +29,7 @@ class MedicineTile extends StatefulWidget {
   int? quantity;
   int? price;
   int? id;
+  int? favourite;
   final String expirationAt;
   final String details;
   final String createdAt;
@@ -39,12 +40,15 @@ class MedicineTile extends StatefulWidget {
 }
 
 class _MedicineTileState extends State<MedicineTile> {
-  bool fav = false;
+  bool? fav;
 
   @override
   Widget build(BuildContext context) {
+    fav = widget.favourite == 0 ? false : true;
+    print("${widget.favourite}ssssssssssss");
+    print("${fav}kkkkkkkkkkkkkkkk");
     // AllApiCubit cubit = AllApiCubit.get(context);
-    // cubit.showFavourite1(context);
+    // cubit.allMedicine(context);
     // if (cubit.showFavouritrModel1?.data != null) {
     //   for (var favo in cubit.showFavouritrModel1!.data!) {
     //     if (favo.id == id) {
@@ -72,6 +76,7 @@ class _MedicineTileState extends State<MedicineTile> {
                 'createdAt': widget.createdAt,
                 'updatedAt': widget.updatedAt,
                 'id': widget.id,
+                'favourite': widget.favourite,
               });
             },
             child: Padding(
@@ -139,14 +144,18 @@ class _MedicineTileState extends State<MedicineTile> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: GestureDetector(
                                     onTap: () {
-                                      fav = !fav;
+                                      fav = !fav!;
                                       setState(() {});
                                       BlocProvider.of<AllApiCubit>(context)
                                           .addFavourit(context,
-                                              fav: fav, id: widget.id!);
+                                              fav: fav!, id: widget.id!);
+                                      BlocProvider.of<AllApiCubit>(context)
+                                          .allMedicine(
+                                        context,
+                                      );
                                     },
                                     child: Icon(
-                                      !fav
+                                      !fav!
                                           ? Icons.favorite_outline
                                           : Icons.favorite,
                                       color: Colors.red,
