@@ -38,10 +38,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               ),
               Image.asset(
                 kLogo2,
-                height: 200,
+                height: 120,
               ),
               const SizedBox(
-                height: 30,
+                height: 25,
               ),
               const Text(
                 "Welcome To",

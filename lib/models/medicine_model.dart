@@ -2,8 +2,9 @@ class MedicineModel {
   bool? success;
   List<MedicineData>? data;
   String? messege;
+  int? catId;
 
-  MedicineModel({this.success, this.data, this.messege});
+  MedicineModel({this.success, this.data, this.messege, this.catId});
 
   MedicineModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
@@ -14,6 +15,7 @@ class MedicineModel {
       });
     }
     messege = json['messege'];
+    catId = json['data'][0]['id'];
   }
 }
 
@@ -32,23 +34,24 @@ class MedicineData {
   Null deletedAt;
   String? createdAt;
   String? updatedAt;
+  int? favorite;
 
-  MedicineData({
-    this.id,
-    this.scientificName,
-    this.tradeName,
-    this.companyName,
-    this.photo,
-    this.categoriesName,
-    this.form,
-    this.quantity,
-    this.price,
-    this.expirationAt,
-    this.details,
-    this.deletedAt,
-    this.createdAt,
-    this.updatedAt,
-  });
+  MedicineData(
+      {this.id,
+      this.scientificName,
+      this.tradeName,
+      this.companyName,
+      this.photo,
+      this.categoriesName,
+      this.form,
+      this.quantity,
+      this.price,
+      this.expirationAt,
+      this.details,
+      this.deletedAt,
+      this.createdAt,
+      this.updatedAt,
+      this.favorite});
 
   MedicineData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -65,5 +68,6 @@ class MedicineData {
     deletedAt = json['deleted_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
+    favorite = json['favorite'];
   }
 }

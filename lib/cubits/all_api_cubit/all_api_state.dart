@@ -32,6 +32,15 @@ final class MedicineFailure extends AllApiState {
   MedicineFailure(this.errMessage);
 }
 
+final class MedicineLoading2 extends AllApiState {}
+
+final class MedicineSuccess2 extends AllApiState {}
+
+final class MedicineFailure2 extends AllApiState {
+  final String errMessage;
+  MedicineFailure2(this.errMessage);
+}
+
 final class SendOrderLoading extends AllApiState {}
 
 final class SendOrderSuccess extends AllApiState {}

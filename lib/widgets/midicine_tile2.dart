@@ -4,8 +4,8 @@ import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 import 'package:pharma_track/views/medicine_detail_view.dart';
 import 'package:pharma_track/widgets/medicine_buttom_sheet.dart';
 
-class MedicineTile extends StatefulWidget {
-  MedicineTile(
+class MedicineTile2 extends StatefulWidget {
+  MedicineTile2(
       {super.key,
       required this.name,
       required this.tName,
@@ -19,6 +19,7 @@ class MedicineTile extends StatefulWidget {
       this.price,
       this.quantity,
       this.id,
+      this.catId,
       this.favourite});
   final String name;
   final String tName;
@@ -30,16 +31,17 @@ class MedicineTile extends StatefulWidget {
   int? price;
   int? id;
   int? favourite;
+  int? catId;
   final String expirationAt;
   final String details;
   final String createdAt;
   final String updatedAt;
 
   @override
-  State<MedicineTile> createState() => _MedicineTileState();
+  State<MedicineTile2> createState() => _MedicineTileState();
 }
 
-class _MedicineTileState extends State<MedicineTile> {
+class _MedicineTileState extends State<MedicineTile2> {
   bool? fav;
 
   @override
@@ -109,8 +111,6 @@ class _MedicineTileState extends State<MedicineTile> {
                                 padding: const EdgeInsets.only(top: 24),
                                 child: Text(
                                   widget.tName,
-                                  softWrap: false,
-                                  overflow: TextOverflow.clip,
                                   style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -152,9 +152,8 @@ class _MedicineTileState extends State<MedicineTile> {
                                           .addFavourit(context,
                                               fav: fav!, id: widget.id!);
                                       BlocProvider.of<AllApiCubit>(context)
-                                          .allMedicine(
-                                        context,
-                                      );
+                                          .medicine2(context,
+                                              id: widget.catId!);
                                     },
                                     child: Icon(
                                       !fav!

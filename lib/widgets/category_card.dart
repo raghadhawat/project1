@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pharma_track/constants.dart';
 import 'package:pharma_track/cubits/all_api_cubit/all_api_cubit.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -13,6 +12,7 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        BlocProvider.of<AllApiCubit>(context).medicine2(context, id: id!);
         BlocProvider.of<AllApiCubit>(context).medicine(context, id: id!);
       },
       child: Padding(
