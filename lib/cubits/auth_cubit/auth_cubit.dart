@@ -13,7 +13,7 @@ part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
-  var baseurl = "http://192.168.1.110:8000/api";
+  String baseUrl = 'http://192.168.42.66:8000/api';
   static AuthCubit get(context) => BlocProvider.of(context);
   EnterReponseModel? enterResponseModel;
   String? token1;
@@ -84,7 +84,7 @@ class AuthCubit extends Cubit<AuthState> {
     //print(cubit.enterResponseModel!.token);
     await Api()
         .get(
-      url: '$baseurl/Pharmacy/logout',
+      url: '$baseUrl/Pharmacy/logout',
       token: Hive.box(kToken).get(kToken),
     )
         .then((value) {

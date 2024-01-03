@@ -54,7 +54,7 @@ class ReportData {
 }
 
 class FinalPriceData {
-  String? totalSales;
+  dynamic? totalSales;
 
   FinalPriceData({this.totalSales});
 

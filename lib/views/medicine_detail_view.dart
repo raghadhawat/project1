@@ -30,7 +30,7 @@ class MedicineDetaileView extends StatelessWidget {
         elevation: 0,
         actions: const [
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
             child: Icon(
               Icons.notifications_none_rounded,
               color: Colors.grey,

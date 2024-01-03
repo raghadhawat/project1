@@ -37,9 +37,9 @@ class _DetailCardState extends State<DetailCard> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4),
+            padding: const EdgeInsets.symmetric(vertical: 20),
             child: Container(
               height: 300,
               decoration: BoxDecoration(

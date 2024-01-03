@@ -13,10 +13,10 @@ class AddOrderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10, right: 8, left: 8),
+      padding: const EdgeInsets.only(top: 10, right: 8, left: 8, bottom: 8),
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
-        height: 100,
+        height: 110,
         child: Card(
           child: Row(
             children: [

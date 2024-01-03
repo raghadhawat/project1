@@ -148,21 +148,21 @@ class HomeViewBody extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Image.asset(
-                                    "assets/images/images (8).png",
-                                    height: 55,
-                                  ),
+                                SizedBox(
+                                  height: 8,
+                                ),
+                                Image.asset(
+                                  "assets/images/images (8).png",
+                                  height: 55,
                                 ),
                                 SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height / 100,
+                                  height: 20,
                                 ),
-                                const Padding(
-                                  padding: EdgeInsets.all(16),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12),
                                   child: Text(
-                                    'Mesdicines',
+                                    'Medicines',
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 24,
@@ -199,11 +199,11 @@ class HomeViewBody extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height / 100,
+                                  height: 10,
                                 ),
-                                const Padding(
-                                  padding: EdgeInsets.all(16),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12.0),
                                   child: Text(
                                     'Favourite',
                                     style: TextStyle(

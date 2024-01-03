@@ -63,9 +63,10 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 ),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 180,
+                    width: 185,
                     child: CustomTextFormField(
                       hint: "pharmacy name",
                       label: 'Pharmacy Name',
@@ -76,7 +77,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     ),
                   ),
                   SizedBox(
-                    width: 180,
+                    width: 185,
                     child: CustomTextFormField(
                       hint: 'address',
                       label: 'Address',
@@ -92,9 +93,10 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 height: 8,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 180,
+                    width: 185,
                     child: CustomTextFormField(
                       hint: "pharmacist name",
                       label: 'Pharmacist Name',
@@ -105,7 +107,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     ),
                   ),
                   SizedBox(
-                    width: 180,
+                    width: 185,
                     child: CustomTextFormField(
                       hint: 'phone',
                       label: 'Phone',
