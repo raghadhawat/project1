@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharma_track/widgets/medicine_list.dart';
 import 'package:pharma_track/widgets/search_medicine.dart';
+
+import '../cubits/all_api_cubit/all_api_cubit.dart';
 
 class MedicineView extends StatelessWidget {
   const MedicineView({super.key});
@@ -12,6 +15,9 @@ class MedicineView extends StatelessWidget {
         appBar: AppBar(
           leading: IconButton(
               onPressed: () {
+                BlocProvider.of<AllApiCubit>(context).allMedicine(
+                  context,
+                );
                 Navigator.pop(context);
               },
               icon: const Icon(

@@ -28,7 +28,7 @@ class _DetailCardState extends State<DetailCard> {
         Center(
           child: Container(
             height: 180,
-            width: 200,
+            width: 220,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
             child: Image.asset(
               "assets/images/images (8).png",
@@ -37,108 +37,34 @@ class _DetailCardState extends State<DetailCard> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: Container(
-              height: 300,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Card(
-                child: Row(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Card(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
                       children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 24),
-                                    child: Text(
-                                      '${widget.details['tName']}',
-                                      style: const TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 6),
-                                    child: Text(
-                                      widget.details['name'],
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(4),
-                                child: Text(
-                                  "Company:${widget.details['companyName']}",
-                                  style: TextStyle(fontSize: 18),
+                              Text(
+                                '${widget.details['tName']}',
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(4),
-                                child: Text(
-                                  "Form:${widget.details["form"]}",
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(4),
-                                child: Text(
-                                  widget.details['details'],
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                              ),
-                              Row(
-                                children: [
-                                  const SizedBox(
-                                    width: 230,
-                                  ),
-                                  Column(
-                                    children: [
-                                      Text(
-                                        widget.outputDate1,
-                                        style: const TextStyle(fontSize: 16),
-                                      ),
-                                      Text(
-                                        widget.details['expirationAt'],
-                                        style: const TextStyle(fontSize: 16),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  top: 16,
-                                ),
-                                child: Text(
-                                  ' ${widget.details['price']} S.P',
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              Text(
+                                widget.details['name'],
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
                                 ),
                               ),
                             ],
@@ -146,71 +72,83 @@ class _DetailCardState extends State<DetailCard> {
                         ),
                       ],
                     ),
-                    Column(
-                      children: [
-                        // Padding(
-                        //   padding: const EdgeInsets.only(left: 24),
-                        //   child: GestureDetector(
-                        //       onTap: () {
-                        //         fav = !fav;
-                        //         BlocProvider.of<AllApiCubit>(context)
-                        //             .allMedicine(
-                        //           context,
-                        //         );
-                        //         setState(() {});
-                        //         BlocProvider.of<AllApiCubit>(context)
-                        //             .addFavourit(context,
-                        //                 fav: fav, id: widget.details["id"]!);
-                        //       },
-                        //       child: Icon(
-                        //         !fav ? Icons.favorite_outline : Icons.favorite,
-                        //         color: Colors.red,
-                        //         size: 32,
-                        //       )),
-                        // ),
-                        const SizedBox(
-                          height: 240,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            showModalBottomSheet(
-                                isScrollControlled: true,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16)),
-                                context: context,
-                                builder: (context) {
-                                  return MedicineButtomSheeet(
-                                    name: '${widget.details['tName']}',
-                                  );
-                                });
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 16),
-                            child: Container(
-                              height: 50,
-                              width: 50,
-                              decoration: const BoxDecoration(
-                                color: Color(0xff31a9e3),
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(64),
-                                ),
-                              ),
-                              child: const Padding(
-                                padding: EdgeInsets.all(16),
-                                child: Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Company: ${widget.details['companyName']}",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          Text(
+                            "Form: ${widget.details["form"]}",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            "Details: ${widget.details['details']}",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            widget.outputDate1,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            widget.details['expirationAt'],
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 225),
+                            child: Text(
+                              ' ${widget.details['price']} S.P',
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
-              ),
+                const SizedBox(
+                  height: 200,
+                ),
+                // GestureDetector(
+                //   onTap: () {
+                //     showModalBottomSheet(
+                //         isScrollControlled: true,
+                //         shape: RoundedRectangleBorder(
+                //             borderRadius: BorderRadius.circular(16)),
+                //         context: context,
+                //         builder: (context) {
+                //           return MedicineButtomSheeet(
+                //             name: '${widget.details['tName']}',
+                //           );
+                //         });
+                //   },
+                //   child: Container(
+                //     height: 50,
+                //     width: 50,
+                //     decoration: const BoxDecoration(
+                //       color: Color(0xff31a9e3),
+                //       borderRadius: BorderRadius.only(
+                //         topLeft: Radius.circular(64),
+                //       ),
+                //     ),
+                //     child: Icon(
+                //       Icons.add,
+                //       color: Colors.white,
+                //       size: 30,
+                //     ),
+                //   ),
+                // ),
+              ],
             ),
           ),
         ),

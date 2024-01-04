@@ -285,10 +285,10 @@ class HomeViewBody extends StatelessWidget {
                                   color = Color(0xff31a9e3);
                                 } else if (cubit
                                         .lastFourModel?.data![index].status ==
-                                    "Preparng") {
+                                    "Preparing") {
                                   color = Colors.deepPurple[500]!;
                                 } else if (cubit
-                                        .lastFourModel?.data![1].status ==
+                                        .lastFourModel?.data![index].status ==
                                     "Delivering") {
                                   color = Colors.orange[500]!;
                                 } else if (cubit

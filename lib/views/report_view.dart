@@ -12,6 +12,11 @@ class ReportView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          'report of this month',
+          style: TextStyle(color: Color(0xff31a9e3)),
+        ),
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -43,17 +48,17 @@ class ReportView extends StatelessWidget {
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 50,
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 32, horizontal: 8),
-                  child: Text(
-                    "report of this month",
-                    style: TextStyle(color: Color(0xff31a9e3), fontSize: 18),
-                  ),
-                ),
+                // SizedBox(
+                //   height: 50,
+                // ),
+                // Padding(
+                //   padding:
+                //       const EdgeInsets.symmetric(vertical: 32, horizontal: 8),
+                //   child: Text(
+                //     "report of this month",
+                //     style: TextStyle(color: Color(0xff31a9e3), fontSize: 18),
+                //   ),
+                // ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10),
                   height: 40,

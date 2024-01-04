@@ -27,7 +27,7 @@ class ReportCard extends StatelessWidget {
                 ),
                 Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(top: 28),
+                  padding: const EdgeInsets.only(top: 22),
                   child: Text("${list.totalPrice}SYP",
                       style: TextStyle(
                         fontSize: 18,

@@ -39,7 +39,7 @@ class OrderStatusCard extends StatelessWidget {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 19),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -49,7 +49,8 @@ class OrderStatusCard extends StatelessWidget {
                           fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(4),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 5),
                       child: Text(
                         status,
                         style: const TextStyle(
@@ -64,7 +65,7 @@ class OrderStatusCard extends StatelessWidget {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
+                    const EdgeInsets.symmetric(vertical: 4, horizontal: 25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
